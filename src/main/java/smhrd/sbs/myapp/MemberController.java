@@ -23,9 +23,4 @@ public class MemberController {
 		return "main";
 	}
 	
-	@RequestMapping("/main.do")
-	public String test() {
-		return "";
-	}
-	
 }
