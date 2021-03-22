@@ -22,4 +22,10 @@ public class MemberController {
 		model.addAttribute("memberList", memberList);
 		return "main";
 	}
+	@RequestMapping("/main.do")
+	public String memberList(Model model) {
+		List<MemberVO> memberList = dao.memberList();
+		model.addAttribute("memberList", memberList);
+		return "main";
+	}
 }
