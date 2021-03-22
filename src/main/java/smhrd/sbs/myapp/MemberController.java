@@ -22,4 +22,10 @@ public class MemberController {
 		model.addAttribute("memberList", memberList);
 		return "main";
 	}
+	
+	@RequestMapping("/main.do")
+	public String test() {
+		return "";
+	}
+	
 }
