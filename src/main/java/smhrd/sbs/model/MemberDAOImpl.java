@@ -23,7 +23,9 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public int memberCreate(MemberVO vo) {
-		return 0;
+		SqlSession session = sqlSessionFactory.openSession();
+		int cnt = session.insert("memberCreate", vo);
+		return cnt;
 	}
 
 	@Override
