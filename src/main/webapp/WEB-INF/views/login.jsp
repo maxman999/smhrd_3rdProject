@@ -22,12 +22,13 @@
 					
 					<h2>로그인</h2>    
 					<div class="container">
-					  <div id="content">
-						  <!-- Content -->
+					<div id="content">
+					<!-- Content -->
+						<form>
 						<div class="form-group">
-							<label for="id"> 아이디 *</label>
+							<label for="id"> 아이디 *</label>  <!-- input 태그를 설명 -->
 							<input placeholder="아이디를 입력해주세요" type="text"
-							required class="form-control" name="id" >
+							 class="form-control" name="id" id="id" required />
 						</div>
 						<br>
 						<br>
@@ -35,15 +36,16 @@
 						<div class="form-group">
 							<label for="pw"> 비밀번호 *</label>
 							<input placeholder="비밀번호를 입력해주세요" type="password"
-							required class="form-control" name="password" >
+							required class="form-control" name="password" />
 						</div>
 						<br>
 						<br>
 						<br>
 						<div>
 							<input id="login_submit" type="submit" value="확인"
-							class="btn btn-success btn-lg btn-block">
+							class="btn btn-success btn-lg btn-block" />
 						</div>
+						</form>
 					  </div>
 					</div>
 				</div>

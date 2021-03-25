@@ -3,19 +3,19 @@
 <%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>   
 <head>
 
-<meta charset="UTF-8">
+<meta charset="UTF-8">  <!-- meta : 웹 페이지에 추가 정보를 전달 -->
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <meta name="description" content="">
 <meta name="keywords" content="">
 <meta name="author" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-<title>Main Page</title>
+<title>Main Page</title>  <!-- title : 웹 페이지의 제목 -->
 
-<link rel="stylesheet" href="resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="resources/css/bootstrap.min.css">	<!-- link : 웹 페이지에 다른 파일을 추가 -->
 <link rel="stylesheet" href="resources/css/font-awesome.min.css">
 
 <!-- Main css -->
@@ -25,14 +25,10 @@
 </head>
 <body>
 
-<!-- PRE LOADER -->
-
-
 <!-- Navigation section  -->
-
-<div class="navbar navbar-default navbar-static-top" role="navigation">
+<!-- 기본 공간 분할 태그 -> div : block 형식으로 공간을 분할(줄바꿈됨) / span : inline 형식으로 공간 분할(줄바꿈x) -->
+<div class="navbar navbar-default navbar-static-top" role="navigation">  
      <div class="container">
-
           <div class="navbar-header">
                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon icon-bar"></span>
@@ -66,8 +62,7 @@
        
 
 <!-- Home Section -->
-
-<section id="home">
+<section id="home">   <!-- section : 여러 중심 내용을 감싸는 공간 -->
      <div class="container">
           <div class="row">
 
@@ -80,111 +75,13 @@
      </div>
 </section>
 
-<!-- Portfolio Section -->
-
-<section id="portfolio">
-     <div class="container">
-          <div class="row">
-
-               <div class="col-md-4 col-sm-6">
-                    <a href="single-project.html">
-                         <div class="portfolio-thumb">
-                              <img src="images/portfolio-img1.jpg" class="img-responsive" alt="Portfolio">
-                                   <div class="portfolio-overlay">
-                                        <div class="portfolio-item">
-                                             <h3>Project Name</h3>
-                                             <small>Brand Identity</small>
-                                        </div>
-                                   </div>
-                         </div>
-                    </a>
-               </div>
-
-               <div class="col-md-4 col-sm-6">
-                    <a href="single-project.html">
-                         <div class="portfolio-thumb">
-                              <img src="images/portfolio-img2.jpg" class="img-responsive" alt="Portfolio">
-                                   <div class="portfolio-overlay">
-                                        <div class="portfolio-item">
-                                             <h3>Project Name</h3>
-                                             <small>Web Development</small>
-                                        </div>
-                                   </div>
-                         </div>
-                    </a>
-               </div>
-
-               <div class="col-md-4 col-sm-6">
-                    <a href="single-project.html">
-                         <div class="portfolio-thumb">
-                              <img src="images/portfolio-img3.jpg" class="img-responsive" alt="Portfolio">
-                                   <div class="portfolio-overlay">
-                                        <div class="portfolio-item">
-                                             <h3>Project Name</h3>
-                                             <small>Mobile App</small>
-                                        </div>
-                                   </div>
-                         </div>
-                    </a>
-               </div>
-
-               <div class="col-md-4 col-sm-6">
-                    <a href="single-project.html">
-                         <div class="portfolio-thumb">
-                              <img src="images/portfolio-img4.jpg" class="img-responsive" alt="Portfolio">
-                                   <div class="portfolio-overlay">
-                                        <div class="portfolio-item">
-                                             <h3>Project Name</h3>
-                                             <small>Logo Design</small>
-                                        </div>
-                                   </div>
-                         </div>
-                    </a>
-               </div>
-
-               <div class="col-md-4 col-sm-6">
-                    <a href="single-project.html">
-                         <div class="portfolio-thumb">
-                              <img src="images/portfolio-img5.jpg" class="img-responsive" alt="Portfolio">
-                                   <div class="portfolio-overlay">
-                                        <div class="portfolio-item">
-                                             <h3>Project Name</h3>
-                                             <small>Social marketing</small>
-                                        </div>
-                                   </div>
-                         </div>
-                    </a>
-               </div>
-
-               <div class="col-md-4 col-sm-6">
-                    <a href="single-project.html">
-                         <div class="portfolio-thumb">
-                              <img src="images/portfolio-img6.jpg" class="img-responsive" alt="Portfolio">
-                                   <div class="portfolio-overlay">
-                                        <div class="portfolio-item">
-                                             <h3>Project Name</h3>
-                                             <small>Fyler Design</small>
-                                        </div>
-                                   </div>
-                         </div>
-                    </a>
-               </div>
-
-               <div class="col-md-12 col-sm-12 text-center">
-                    <h3>hello, if you interest working together. just send message <a href="contact.html">contact page</a></h3>
-               </div>
-
-          </div>
-     </div>
-</section>
 
 <!-- Footer Section -->
-
 <footer>
      <div class="container">
           <div class="row">
 
-               <div class="col-md-3 col-sm-3">
+               <div class="col-md-3">
                     <i class="fa fa-magnet"></i>
                </div>
 
