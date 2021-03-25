@@ -13,7 +13,7 @@
 <meta name="author" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-<title>Magnet - Minimal Portfolio Template</title>
+<title>Main Page</title>
 
 <link rel="stylesheet" href="resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="resources/css/font-awesome.min.css">
@@ -27,11 +27,6 @@
 
 <!-- PRE LOADER -->
 
-<div class="preloader">
-     <div class="sk-spinner sk-spinner-wordpress">
-          <span class="sk-inner-circle"></span>
-     </div>
-</div>
 
 <!-- Navigation section  -->
 
@@ -44,19 +39,31 @@
                     <span class="icon icon-bar"></span>
                     <span class="icon icon-bar"></span>
                </button>
-               <a href="index.html" class="navbar-brand"><i class="fa fa-magnet"></i></a>
+               <a href="main.do" class="navbar-brand"><i class="fa fa-magnet"></i></a>
           </div>
           <div class="collapse navbar-collapse">
                <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="index.html">Projects</a></li>
-                    <li><a href="about.html">Our Studio</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-               </ul>
-          </div>
+               <%--  <% if( info == null){ %> --%>
+                    <li class="active"><a href="main.do">홈</a></li>
+                    <li><a href="about.html">서비스 소개</a></li>
+                    <li><a href="blog.html">커뮤니티</a></li>
+           				 <!-- login/Register-btn -->
+                     	<a href="login.do" class="loginbu">로그인</a>
+            			<a href="join.do">/ 회원가입</a>
+            	</ul>
+            	 <%--  }else { --%>
+            	<%-- <li class="active"><a href="main.do">홈</a></li>
+                    <li><a href="about.html">서비스 소개</a></li>
+                    <li><a href="community.do">커뮤니티</a></li>
+                    <li><a href="mypage.do">마이페이지</a></li>
+                    <li><a href="main.do">로그아웃</a></li>
+            	</ul>  --%>
+            	<%-- <% } %>  --%>
+            	</div>
+			</div>
+		</div>
 
-  </div>
-</div>
+       
 
 <!-- Home Section -->
 
@@ -218,6 +225,21 @@
 <script src="resources/js/jquery.js"></script>
 <script src="resources/js/bootstrap.min.js"></script>
 <script src="resources/js/custom.js"></script>
+<script>
+		function openNav() {
+			document.getElementById("myNav").style.width = "100%";
+		}
+
+		function closeNav() {
+			document.getElementById("myNav").style.width = "0%";
+		}
+		$(document).ready(function() {
+			myCheck();
+		});
+</script>
 
 </body>
 </html>
+
+
+
