@@ -7,8 +7,8 @@
 <title>Join Page</title>
 <link rel="stylesheet" href="resources/css/join.css">
 </head>
-<body>
 	<%@ include file="header.jsp"%>
+<body>
 	
 	<div id="header">
 		<div id="myNav" class="overlay">

@@ -6,10 +6,10 @@
 <meta charset="UTF-8">
 <title>My Page</title>
 </head>
+
+<%@ include file="header.jsp"%>
 <body>
 
-	<%@ include file="header.jsp"%>
-	
 	<div class="mypage content">
 				<h3>마이페이지</h3>
 			</div>
