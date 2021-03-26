@@ -7,6 +7,7 @@
 <title>Picture Register Page</title>
 <link rel="stylesheet" href="resources/css/upload.css">
 </head>
+	<%@ include file="header.jsp"%>
 <body>
 	<div class="field" align="center">
 		<div class="image_box">
