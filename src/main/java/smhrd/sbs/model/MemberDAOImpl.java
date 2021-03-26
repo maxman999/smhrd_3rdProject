@@ -35,7 +35,9 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public int memberUpdate(MemberVO vo) {
-		return 0;
+		SqlSession session = sqlSessionFactory.openSession();
+		int cnt = session.update("memberUpdate", vo);
+		return cnt;
 	}
 
 	@Override

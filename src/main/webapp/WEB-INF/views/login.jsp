@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="header.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +10,6 @@
 </head>
 <body>
 	
-	<%@ include file="header.jsp"%>
 	
 	<div id="header">
 		<div id="myNav" class="overlay">

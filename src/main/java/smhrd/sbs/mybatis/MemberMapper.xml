@@ -7,9 +7,12 @@
 	<select id="memberList" resultType="MemberVO">
 		select * from member
 	</select>
-	<insert id="memberCreate" parameterType="MemberVO">
-		insert into
-		member(id,pass,name,age,phone,email)
-		values(#{id},#{pass},#{name},#{age},#{phone},#{email})
-	</insert>
+	
+	
+	
+	<update id="memberUpdate" parameterType="MemberVO">
+	    update member
+	    set password = #{password}, nickname = #{nickname}, email = #{email}, phone = #{phone}
+	    where id = #{id}	    
+	</update>
 </mapper>
