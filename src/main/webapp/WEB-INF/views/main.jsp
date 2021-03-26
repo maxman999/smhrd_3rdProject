@@ -58,24 +58,29 @@
             	</div>
 			</div>
 		</div>
-
-       
-
+<br>
+<br>
+<br>
+<br>
 <!-- Home Section -->
 <section id="home">   <!-- section : 여러 중심 내용을 감싸는 공간 -->
      <div class="container">
           <div class="row">
-
                <div class="col-md-12 col-sm-12">
-                    <h2>The creative web & mobile studio. we are young designers and focused on brand identity, web development and social marketing.</h2>
+                    <h2>The creative web & mobile studio. 
+                    <br>
+                    <br> 
+                    we are young designers and focused on brand identity, web development and social marketing.</h2>
                     <hr>
                </div>
-
           </div>
      </div>
 </section>
 
-
+  <div class="row">
+	<button id="picture_upload_btn"><a href="upload.do"> 사진 업로드 </a></button>
+  </div>
+  
 <!-- Footer Section -->
 <footer>
      <div class="container">

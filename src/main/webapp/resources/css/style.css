@@ -270,7 +270,11 @@ a:hover, a:active, a:focus {
   margin-top: 32px;
 }
 
-
+/* 사진 업로드 버튼 */
+button#picture_upload_btn {
+	position: relative;
+    left: 50%;
+}
 
 /*---------------------------------------
    About section              

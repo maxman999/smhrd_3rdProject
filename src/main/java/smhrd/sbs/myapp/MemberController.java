@@ -34,4 +34,14 @@ public class MemberController {
 	
 		return "mypage";
 	}
+	@RequestMapping("/upload.do")
+	public String upload() {
+	
+		return "upload";
+	}
+	@RequestMapping("/img_register.do")
+	public String img_register() {
+	
+		return "img_register";
+	}
 }
