@@ -2,6 +2,10 @@ package smhrd.sbs.myapp;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.omg.CORBA.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,9 +33,21 @@ public class MemberController {
 	}
 
 	@RequestMapping("/memberRead.do")
-	public String memberRead(String id, Model model) {
-		MemberVO vo = dao.memberRead(id);
-		model.addAttribute("vo", vo);
+	public String memberRead(MemberVO loginVO, Model model) {
+		try {
+			MemberVO vo = dao.memberRead(loginVO);
+			
+			if (vo == null) {
+				System.out.println("로그인 실패");
+			} else {
+				System.out.println("로그인 성공");
+			}
+			model.addAttribute("info", vo);
+
+		} catch (NullPointerException e) {
+			System.out.println("아이디나 비번이 틀렸습니다");
+		}
+
 		return "main";
 	}
 
@@ -43,7 +59,7 @@ public class MemberController {
 	@RequestMapping("/memberInsert.do")
 	public String memberInsert(MemberVO vo) {
 		int cnt = dao.memberInsert(vo);
-		return "login";
+		return "redirect:/login.do";
 	}
 
 	@RequestMapping("/mypage.do")
@@ -72,6 +88,6 @@ public class MemberController {
 		} else {
 			System.out.println("회원정보 갱신 실패");
 		}
-		return "main";
+		return "redirect:/main.do";
 	}
 }
