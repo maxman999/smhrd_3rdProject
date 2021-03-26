@@ -51,7 +51,7 @@
                     <li><a href="about.html">서비스 소개</a></li>
                     <li><a href="community.do">커뮤니티</a></li>
                     <li><a href="mypage.do">마이페이지</a></li>
-                    <li><a href="main.do">로그아웃</a></li>
+                    <li><a href="logout.do">로그아웃</a></li>
                     <li><a>
             	</ul>
             	</c:when>

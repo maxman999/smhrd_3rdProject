@@ -31,6 +31,12 @@ public class MemberController {
 	public String login() {
 		return "login";
 	}
+	
+	@RequestMapping("/logout.do")
+	public String logout(Model model) {
+		model.addAttribute("info", null);
+		return "main";
+	}
 
 	@RequestMapping("/memberRead.do")
 	public String memberRead(MemberVO loginVO, Model model) {
