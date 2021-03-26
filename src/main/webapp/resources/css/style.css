@@ -273,7 +273,7 @@ a:hover, a:active, a:focus {
 /* 사진 업로드 버튼 */
 button#picture_upload_btn {
 	position: relative;
-    left: 50%;
+    left: 47%;
 }
 
 /*---------------------------------------

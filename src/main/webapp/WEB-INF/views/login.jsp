@@ -8,9 +8,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Login Page</title>
+<link rel="stylesheet" href="resources/css/style.css">
 <link rel="stylesheet" href="resources/css/login.css">
 </head>
-	
+<body>
 	<div id="header">
 		<div id="myNav" class="overlay">
 			
