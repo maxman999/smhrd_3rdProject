@@ -1,3 +1,4 @@
+<%@page import="smhrd.sbs.model.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core"%>
@@ -39,22 +40,34 @@
           </div>
           <div class="collapse navbar-collapse">
                <ul class="nav navbar-nav navbar-right">
-               <%--  <% if( info == null){ %> --%>
-                    <li class="active"><a href="main.do">홈</a></li>
+                
+               
+               <c:set var ="login" value ="${info}" />
+               <c:choose>
+               	<c:when test = "${not empty login}">
+            	 	로그인!!@!$!$!@!@
+            	 	   
+            	 <li class="active"><a href="main.do">홈</a></li>
+                    <li><a href="about.html">서비스 소개</a></li>
+                    <li><a href="community.do">커뮤니티</a></li>
+                    <li><a href="mypage.do">마이페이지</a></li>
+                    <li><a href="main.do">로그아웃</a></li>
+                    <li><a>
+            	</ul>
+            	</c:when>
+            	<c:otherwise>
+            	    XXXX로그인XXXX
+            	    <li class="active"><a href="main.do">홈</a></li>
                     <li><a href="about.html">서비스 소개</a></li>
                     <li><a href="blog.html">커뮤니티</a></li>
            				 <!-- login/Register-btn -->
                      	<a href="login.do" class="loginbu">로그인</a>
             			<a href="join.do">/ 회원가입</a>
             	</ul>
-            	 <%--  }else { --%>
-            	<%-- <li class="active"><a href="main.do">홈</a></li>
-                    <li><a href="about.html">서비스 소개</a></li>
-                    <li><a href="community.do">커뮤니티</a></li>
-                    <li><a href="mypage.do">마이페이지</a></li>
-                    <li><a href="main.do">로그아웃</a></li>
-            	</ul>  --%>
-            	<%-- <% } %>  --%>
+            	</c:otherwise>
+               </c:choose>               
+                  
+
             	</div>
 			</div>
 		</div>
