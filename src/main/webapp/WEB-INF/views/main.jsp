@@ -20,8 +20,8 @@
 
 <!-- Main css -->
 <link rel="stylesheet" href="resources/css/style.css">
-<link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,700" rel="stylesheet">
 
+<link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,700" rel="stylesheet">
 </head>
 <body>
 

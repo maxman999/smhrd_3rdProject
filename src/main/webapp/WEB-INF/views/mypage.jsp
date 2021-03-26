@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="header.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,28 +8,18 @@
 <title>My Page</title>
 </head>
 
-<%@ include file="header.jsp"%>
 <body>
-
 	<div class="mypage content">
 				<h3>마이페이지</h3>
 			</div>
 			<div>
-				<form id="mypage" action="../update_mypage.do" method="post">  <!-- form : 입력 양식 생성  action(입력 데이터 전달 위치)/method(입력 데이터의 전달 방식) -->
+				<form id="mypage" action="memberUpdate.do" method="post">
 						<label for="id">아이디</label> 
-						<input class="mypage" type="text" id="id" name="id" readonly value="${ member.id }"> 
+						<input class="mypage" type="text" id="id" name="id" readonly value="admin"> 
 						<br/>
 						<br/>
 						<label>비밀번호</label>
-						<input class="mypage" type="password" id="old_pw" name="old_pw" required/> 
-						<br/>
-						<br/>
-						<label>변경할 비밀번호</label> 
-						<input class="mypage" type="password" id="pw" name="pw" required/> 
-						<br/>
-						<br/>
-						<label>변경할 비밀번호 재입력</label>
-						<input class="mypage" type="password" id="pw2" type="password" required/> 
+						<input class="mypage" type="password" id="pw" name="password" required/> 
 						<br/>
 						<br/>
 						<label for="nickname">닉네임</label> 
@@ -41,6 +32,10 @@
 						<br/>
 						<label for="phone">전화번호</label> 
 						<input class="mypage" type="tel" id="phone" name="phone" value="${ member.phone }" required/>  
+						<br/>
+						<br/>
+						<label for="premium">회원권</label> 
+						<input class="mypage" type="text" id="premium" name="premium" readonly value="1" required/>  
 						<br/>
 						<br/>
 					<div class="mypage">

@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var = "ctx" value = "${pageContext.request.contextPath}"/> 
+   
+<%@ include file="header.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +11,6 @@
 <title>Join Page</title>
 <link rel="stylesheet" href="resources/css/join.css">
 </head>
-	<%@ include file="header.jsp"%>
 <body>
 	
 	<div id="header">
@@ -20,7 +23,7 @@
 				<div class="container">
 				<div id="content">
 				<!-- Content -->
-					<form>
+					<form action="${ctx}/memberInsert.do" method="post">
 						<div class="form-group">
 							<label for="id"> 아이디 *</label>  <!-- input 태그를 설명 -->
 							<input placeholder="아이디를 입력해주세요" type="text"
@@ -32,7 +35,7 @@
 						<div class="form-group">
 							<label for="pw"> 비밀번호 *</label>
 							<input placeholder="비밀번호를 입력해주세요" type="password"
-							required class="form-control" name="password" />
+							required class="form-control" name="password"/>
 						</div>
 						<br>
 						<br>
@@ -40,7 +43,7 @@
 						<div class="form-group">
 							<label for="pw"> 비밀번호 재입력 *</label>
 							<input placeholder="비밀번호를 재입력해주세요" type="password"
-							required class="form-control" name="password" />
+							required class="form-control" />
 						</div>
 						<br>
 						<br>
@@ -48,7 +51,7 @@
 						<div>
 							<label for="nick name"> 닉네임 *</label>
 							<input placeholder="닉네임을 입력해주세요" type="text"
-							required class="form-control" name="nickname" />
+							required class="form-control" name="nickname""/>
 						</div>
 						<br>
 						<br>
@@ -56,7 +59,7 @@
 						<div>
 							<label for="email"> 이메일 *</label>
 							<input placeholder="이메일을 입력해주세요" type="email"
-							required class="form-control" name="email" />
+							required class="form-control" name="email"/>
 						</div>
 						<br>
 						<br>
@@ -64,7 +67,7 @@
 						<div>
 							<label for="phone"> 전화번호 *</label>
 							<input placeholder="전화번호를 입력해주세요" type="tel"
-							required class="form-control" name="phone" />
+							required class="form-control" name="phone"/>
 						</div>
 						<br>
 						<br>
