@@ -13,10 +13,9 @@
 	    values(#{id},#{password},#{nickname},#{email},#{phone},0);
 	</insert>
 	
-	<select id="memberRead" resultType="MemberVO" parameterType="String">
+	<select id="memberCheck" resultType="MemberVO" parameterType="MemberVO">
 	    select * from member where id=#{id} and password=#{password}
 	</select>
-	
 	
 	<update id="memberUpdate" parameterType="MemberVO">
 	    update member

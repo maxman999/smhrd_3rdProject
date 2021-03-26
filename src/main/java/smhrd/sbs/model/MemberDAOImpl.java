@@ -31,12 +31,11 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public MemberVO memberRead(MemberVO loginVO) {
+	public MemberVO memberCheck(MemberVO vo) {
 		SqlSession session = sqlSessionFactory.openSession();
-		MemberVO vo = session.selectOne("memberRead",loginVO);
-		System.out.println("비밀번호:"+vo.getPassword());
+		MemberVO loginVO = session.selectOne("memberCheck", vo);
 		session.close();
-		return vo;
+		return loginVO;
 	}
 
 	@Override
@@ -50,6 +49,12 @@ public class MemberDAOImpl implements MemberDAO {
 	public int memberDelete(int num) {
 
 		return 0;
+	}
+
+	@Override
+	public MemberVO memberRead(MemberVO vo) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

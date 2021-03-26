@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-   <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set var = "ctx" value = "${pageContext.request.contextPath}"/> 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="header.jsp"%>
 <!DOCTYPE html>
 <html>
@@ -10,6 +9,7 @@
 <title>Login Page</title>
 <link rel="stylesheet" href="resources/css/style.css">
 <link rel="stylesheet" href="resources/css/login.css">
+<c:set var = "ctx" value = "${pageContext.request.contextPath}"/> 
 </head>
 <body>
 	<div id="header">
@@ -25,7 +25,7 @@
 					<div class="container">
 					<div id="content">
 					<!-- Content -->
-						<form action="${ctx}/memberRead.do" method="post">
+						<form action="${ctx}/loginCheck.do" method="post">
 						<div class="form-group">
 							<label for="id"> 아이디 *</label>  <!-- input 태그를 설명 -->
 							<input placeholder="아이디를 입력해주세요" type="text"

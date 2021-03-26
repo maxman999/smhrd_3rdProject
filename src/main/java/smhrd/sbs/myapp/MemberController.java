@@ -33,30 +33,25 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/logout.do")
-	public String logout(Model model) {
-		model.addAttribute("info", null);
+	public String logout(HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		session.removeAttribute("info");
 		return "main";
 	}
 
-	@RequestMapping("/memberRead.do")
-	public String memberRead(MemberVO loginVO, Model model) {
-		try {
-			MemberVO vo = dao.memberRead(loginVO);
-			
-			if (vo == null) {
+	@RequestMapping("/loginCheck.do")
+	public String loginCheck(MemberVO vo, HttpServletRequest req) {
+			MemberVO loginVO = dao.memberCheck(vo);
+			if (loginVO == null) {
 				System.out.println("로그인 실패");
 			} else {
 				System.out.println("로그인 성공");
+				HttpSession session = req.getSession();
+				session.setAttribute("info", loginVO);
 			}
-			model.addAttribute("info", vo);
-
-		} catch (NullPointerException e) {
-			System.out.println("아이디나 비번이 틀렸습니다");
-		}
-
 		return "main";
 	}
-
+	
 	@RequestMapping("/join.do")
 	public String join() {
 		return "join";
@@ -65,7 +60,13 @@ public class MemberController {
 	@RequestMapping("/memberInsert.do")
 	public String memberInsert(MemberVO vo) {
 		int cnt = dao.memberInsert(vo);
-		return "redirect:/login.do";
+		if (cnt>0) {
+			System.out.println("회원가입 성공");
+		}else {
+			System.out.println("회원가입 실패");
+		}
+			
+		return "redirect:/main.do";
 	}
 
 	@RequestMapping("/mypage.do")
