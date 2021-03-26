@@ -31,9 +31,10 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public MemberVO memberRead(String id) {
+	public MemberVO memberRead(MemberVO loginVO) {
 		SqlSession session = sqlSessionFactory.openSession();
-		MemberVO vo = session.selectOne("memberRead", id);
+		MemberVO vo = session.selectOne("memberRead",loginVO);
+		System.out.println("비밀번호:"+vo.getPassword());
 		session.close();
 		return vo;
 	}

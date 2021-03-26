@@ -10,8 +10,20 @@ public class MemberVO {
 
    public MemberVO() {
    }
+   
 
-   public String getId() {
+   public MemberVO(String id, String password, String nickname, String email, String phone, String premium) {
+	this.id = id;
+	this.password = password;
+	this.nickname = nickname;
+	this.email = email;
+	this.phone = phone;
+	this.premium = premium;
+}
+
+
+
+public String getId() {
       return id;
    }
 
