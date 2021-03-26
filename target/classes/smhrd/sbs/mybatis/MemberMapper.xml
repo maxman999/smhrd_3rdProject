@@ -8,6 +8,14 @@
 		select * from member
 	</select>
 	
+	<insert id="memberInsert" parameterType="MemberVO"> 
+	    insert into member(id,password,nickname,email,phone,premium)
+	    values(#{id},#{password},#{nickname},#{email},#{phone},0);
+	</insert>
+	
+	<select id="memberRead" resultType="MemberVO" parameterType="String">
+	    select * from member where id=#{id} and password=#{password}
+	</select>
 	
 	
 	<update id="memberUpdate" parameterType="MemberVO">

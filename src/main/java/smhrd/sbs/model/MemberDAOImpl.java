@@ -22,15 +22,20 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public int memberCreate(MemberVO vo) {
+	public int memberInsert(MemberVO vo) {
 		SqlSession session = sqlSessionFactory.openSession();
-		int cnt = session.insert("memberCreate", vo);
+		int cnt = session.insert("memberInsert", vo);
+		session.commit();
+		session.close();
 		return cnt;
 	}
 
 	@Override
-	public MemberVO memberRead(int num) {
-		return null;
+	public MemberVO memberRead(String id) {
+		SqlSession session = sqlSessionFactory.openSession();
+		MemberVO vo = session.selectOne("memberRead", id);
+		session.close();
+		return vo;
 	}
 
 	@Override
@@ -42,6 +47,7 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public int memberDelete(int num) {
+
 		return 0;
 	}
 
