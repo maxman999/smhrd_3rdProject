@@ -25,7 +25,7 @@
 
 <!-- Navigation section  -->
 
-<div class="navbar navbar-default navbar-static-top" role="navigation">
+<div class="navbar navbar-default navbar-fixed-top" role="navigation" > <!-- navbar-static-top는 상단에 고정 -->
      <div class="container">
 
           <div class="navbar-header">
@@ -42,8 +42,8 @@
                     <li><a href="about.html">서비스 소개</a></li>
                     <li><a href="blog.html">커뮤니티</a></li>
                	 <!-- login/Register-btn -->
-                     	<a href="#">로그인</a>
-            			<a href="#">/ 회원가입</a>
+                     	<a href="login.do">로그인</a>
+            			<a href="join.do">/ 회원가입</a>
             	</ul>
             	</div>
 

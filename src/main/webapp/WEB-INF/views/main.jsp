@@ -6,12 +6,12 @@
 <html>   
 <head>
 
-<meta charset="UTF-8">  <!-- meta : 웹 페이지에 추가 정보를 전달 -->
-<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-<meta name="description" content="">
-<meta name="keywords" content="">
-<meta name="author" content="">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta charset="UTF-8" />  <!-- meta : 웹 페이지에 추가 정보를 전달 -->
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<meta name="author" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 <title>Main Page</title>  <!-- title : 웹 페이지의 제목 -->
 
@@ -27,7 +27,7 @@
 
 <!-- Navigation section  -->
 <!-- 기본 공간 분할 태그 -> div : block 형식으로 공간을 분할(줄바꿈됨) / span : inline 형식으로 공간 분할(줄바꿈x) -->
-<div class="navbar navbar-default navbar-static-top" role="navigation">  
+<div class="navbar navbar-default navbar-fixed-top" role="navigation"> <!-- navbar-static-top는 상단에 고정 --> 
      <div class="container">
           <div class="navbar-header">
                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">

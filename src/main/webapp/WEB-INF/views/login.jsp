@@ -8,8 +8,6 @@
 <title>Login Page</title>
 <link rel="stylesheet" href="resources/css/login.css">
 </head>
-<body>
-	
 	
 	<div id="header">
 		<div id="myNav" class="overlay">

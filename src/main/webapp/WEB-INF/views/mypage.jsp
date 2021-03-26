@@ -7,8 +7,8 @@
 <meta charset="UTF-8">
 <title>My Page</title>
 </head>
+
 <body>
-	
 	<div class="mypage content">
 				<h3>마이페이지</h3>
 			</div>
