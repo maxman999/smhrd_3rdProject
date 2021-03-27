@@ -38,7 +38,7 @@ public class MemberController {
 		session.removeAttribute("info");
 		return "main";
 	}
-
+	
 	@RequestMapping("/loginCheck.do")
 	public String loginCheck(MemberVO vo, HttpServletRequest req) {
 			MemberVO loginVO = dao.memberCheck(vo);
@@ -75,17 +75,6 @@ public class MemberController {
 		return "mypage";
 	}
 
-	@RequestMapping("/upload.do")
-	public String upload() {
-
-		return "upload";
-	}
-
-	@RequestMapping("/img_register.do")
-	public String img_register() {
-
-		return "img_register";
-	}
 
 	@RequestMapping("/memberUpdate.do")
 	public String memberUpdate(MemberVO vo) {
