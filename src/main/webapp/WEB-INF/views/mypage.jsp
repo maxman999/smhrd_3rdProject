@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="header.jsp"%>
+<c:set var="ctx" value ="${pageContext.request.contextPath}"/>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +11,7 @@
 
 </head>
 <body>
+	<br><br><br><br><br><br><br><br><br><br><br>
 	<div class="mypage content">
 				<h3>마이페이지</h3>
 			</div>
@@ -41,6 +44,8 @@
 						<br/>
 					<div class="mypage">
 						<button type="submit" class="mypage-cbtn">회원정보 변경</button>
+						<button onclick = "location.href = '${ctx}/memberDelete.do?id=${info.id}'">탈퇴</button>
+				
 					</div>
 				</form>
 			</div>

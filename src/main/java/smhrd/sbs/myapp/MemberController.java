@@ -71,10 +71,8 @@ public class MemberController {
 
 	@RequestMapping("/mypage.do")
 	public String mypage() {
-
 		return "mypage";
 	}
-
 
 	@RequestMapping("/memberUpdate.do")
 	public String memberUpdate(MemberVO vo) {
@@ -86,4 +84,23 @@ public class MemberController {
 		}
 		return "redirect:/main.do";
 	}
+	
+	@RequestMapping("/memberDelete.do")
+	public String memberDelete(String id, HttpServletRequest req) {
+		System.out.println("받은 id: "+ id);
+		int cnt = dao.memberDelete(id);
+		if (cnt > 0) {
+			System.out.println("탈퇴 성공");
+			HttpSession session = req.getSession();
+			session.removeAttribute("info");
+		} else {
+			System.out.println("탈퇴 실패");
+		}
+		return "redirect:/main.do";
+	}
+	
+	
+	
+	
+	
 }
