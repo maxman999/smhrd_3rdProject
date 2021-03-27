@@ -8,6 +8,6 @@ public interface MemberDAO {
 	public int memberInsert(MemberVO vo);
 	public MemberVO memberRead(MemberVO vo);
 	public int memberUpdate(MemberVO vo);
-	public int memberDelete(int num);
+	public int memberDelete(String id);
 	MemberVO memberCheck(MemberVO loginVO);
 }

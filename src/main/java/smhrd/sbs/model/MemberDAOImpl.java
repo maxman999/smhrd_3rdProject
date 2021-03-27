@@ -46,7 +46,7 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public int memberDelete(int num) {
+	public int memberDelete(String id) {
 
 		return 0;
 	}
