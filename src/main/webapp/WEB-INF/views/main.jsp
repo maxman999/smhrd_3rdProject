@@ -28,30 +28,27 @@
 
 </head>
 <body>
-
-<br>
-<br>
-<br>
-<br>
 <!-- Home Section -->
 <section id="home">   <!-- section : 여러 중심 내용을 감싸는 공간 -->
-     <div class="container">
+     <div class="container" id="home_contents">
           <div class="row">
                <div class="col-md-12 col-sm-12" data-aos="flip-down" data-aos-duration="1500">
-                    <h2>그린벨트
+                    <h2 class="home_text">당신의 <b>화초</b>가 병들었나요?</h2>
                     <br>
-                    <br> 
-                       화초케어를 위한 딥러닝 기반 화초 질병진단 서비스 </h2>
-                    <hr>
+                    <h3>화초가 무슨 병에 걸렸는지 확인하세요.</h3>
                </div>
+   					<button id="picture_upload_btn"><a href="upload.do"> 사진 업로드 </a></button>
           </div>
      </div>
 </section>
-
+ <div class="container" id="home_contents2">
   <div class="row">
-   <button id="picture_upload_btn"><a href="upload.do"> 사진 업로드 </a></button>
+  	<div>
+    	<h2 class="main_introduce">딥러닝으로 케어하는 화초 질병진단 서비스!</h2>
+    	<p class="main_introduce">Green belt는 딥러닝을 사용해 고객의 화초의 질병을 분석하고 알맞는 치료법을 알려드립니다!</p>
+    </div>
   </div>
-  
+  </div>
 <%@ include file="footer.jsp"%>
 
 <!-- SCRIPTS -->
