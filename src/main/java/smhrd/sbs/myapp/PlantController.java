@@ -10,7 +10,6 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +22,6 @@ import smhrd.sbs.model.PlantDAO;
 
 @Controller
 public class PlantController {
-
    private static final String FILE_SERVER_PATH = "C:/test";
    
    @Autowired
@@ -38,16 +36,15 @@ public class PlantController {
    public String fileUpload(@RequestParam("uploadFile") MultipartFile file, ModelAndView mv, Model model)throws IllegalStateException, IOException {
       if(!file.getOriginalFilename().isEmpty()) {
          file.transferTo(new File(FILE_SERVER_PATH, file.getOriginalFilename()));
-         model.addAttribute("msg", "File uploaded successfully.");
+//         model.addAttribute("msg", "File uploaded successfully.");
       }else {
-         model.addAttribute("msg", "Please select a valid mediaFile..");
+//         model.addAttribute("msg", "Please select a valid mediaFile..");
       }
-      System.out.println("뭔가 됨");
       System.out.println(file.getOriginalFilename());
       String result = excutePost("http://127.0.0.1:5000/getImgName",file.getOriginalFilename());
-      
+      model.addAttribute("DeepResult", result);
       System.out.println(result);
-      return "img_register";
+      return "upload.do";
    }
    
    
