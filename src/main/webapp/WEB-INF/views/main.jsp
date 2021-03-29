@@ -37,7 +37,7 @@
                     <br>
                     <h3>화초가 무슨 병에 걸렸는지 확인하세요.</h3>
                </div>
-   					<button id="picture_upload_btn"><a href="upload.do"> 사진 업로드 </a></button>
+   					<button id="picture_upload_btn"><a href="${ctx}/upload.do"> 사진 업로드 </a></button>
           </div>
      </div>
 </section>
