@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="smhrd.kr.mybatis.PlantMapper">
+	<!-- <insert id="plantInsert" parameterType="PlantVO"> 
+	    insert into plant(id,plantname,regidate,picture,sick,plantnick)
+	    values(#{id},#{plantname},now(),#{picture},#{sick},#{plantnick});
+	</insert> -->
+
+</mapper>
