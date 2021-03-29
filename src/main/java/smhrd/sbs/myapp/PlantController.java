@@ -30,7 +30,7 @@ public class PlantController {
 	public String fileUpload(@RequestParam("uploadFile") MultipartFile file, ModelAndView mv, Model model)throws IllegalStateException, IOException {
 		if(!file.getOriginalFilename().isEmpty()) {
 			file.transferTo(new File(FILE_SERVER_PATH, file.getOriginalFilename()));
-			model.addAttribute("msg", "File uploaded successfully.");
+			model.addAttribute("msg", file.getOriginalFilename());
 		}else {
 			model.addAttribute("msg", "Please select a valid mediaFile..");
 		}
