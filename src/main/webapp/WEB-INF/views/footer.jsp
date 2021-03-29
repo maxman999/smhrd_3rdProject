@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Footer</title>
+
 </head>
 <body>
 <!-- Footer Section -->
@@ -45,6 +46,10 @@
                
           </div>
      </div>
-</footer>
+
+<script src="resources/js/jquery.js"></script>
+<script src="resources/js/bootstrap.min.js"></script>
+<script src="resources/js/custom.js"></script>
+
 </body>
 </html>
