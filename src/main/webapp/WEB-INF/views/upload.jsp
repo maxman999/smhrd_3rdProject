@@ -13,7 +13,8 @@
 	<div class="field" align="center">
 		<div class="image_box">
 		<!-- 첨부파일(이미지파일만 업로드가능) -->
-		<form action="${ctx}/fileUpload.do" method="post" enctype="multipart/form-data">
+		<!-- action="${ctx}/fileUpload.do" -->
+		<form method="post" enctype="multipart/form-data" id="uploadForm">
 		<input type="file" id="uploadFile" name="uploadFile" accept="image/*"> 
 		
 		<!-- 이미지 미리보기 영역 --> 
@@ -24,7 +25,7 @@
 		<br>
 		<span>
 			<label><input type="checkbox" name="use" value="use" >질병 진단 사용 여부 선택</label>
-			<input type="submit" value="업로드">
+			<input type="submit" id="btnUpload" value="업로드">
 		</span>
 		</form>
 		
@@ -117,6 +118,35 @@ function plantSearch() {
                     return 0;
 		    };
 		}
+</script>
+<script type="text/javascript">
+$('#btnUpload').on('click', function(event) {
+    event.preventDefault();
+    
+    var form = $('#uploadForm')[0]
+    var data = new FormData(form);
+    
+    $('#btnUpload').prop('disabled', true);
+	
+    $.ajax({
+        type: "POST",
+        enctype: 'multipart/form-data',
+        url: "/myapp/upload.do",
+        data: data,
+        processData: false,
+        contentType: false,
+        cache: false,
+        timeout: 600000,
+        success: function (data) {
+        	$('#btnUpload').prop('disabled', false);
+        	alert('success')
+        },
+        error: function (e) {
+            $('#btnUpload').prop('disabled', false);
+            alert('fail');
+        }
+    });
+})
 </script>
 	
 </body>
