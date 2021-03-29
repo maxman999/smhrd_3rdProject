@@ -12,8 +12,8 @@
 	<div class="field" align="center">
 		<div class="image_box">
 		<!-- 첨부파일(이미지파일만 업로드가능) --> 
-		<input type="file" id="u_file" name="u_file" accept="image/*"> 
-		
+		<!-- <input type="file" id="u_file" name="u_file" accept="image/*">  -->
+		<a><%= request.getAttribute("msg") %></a>
 		<!-- 이미지 미리보기 영역 --> 
 		<div id="imgViewArea" style="margin-top:10px;"> 
 			<img id="imgArea" style="width:400px; height:300px;" onerror="imgAreaError()"/> 
