@@ -27,15 +27,16 @@
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 </head>
+
 <body>
 <!-- Home Section -->
 <section id="home">   <!-- section : 여러 중심 내용을 감싸는 공간 -->
      <div class="container" id="home_contents">
           <div class="row">
                <div class="col-md-12 col-sm-12" data-aos="flip-down" data-aos-duration="1500">
-                    <h2 class="home_text">당신의 <b>화초</b>가 병들었나요?</h2>
+                    <h2 class="home_text">당신의 <b id="home_h">화초</b> 얼마나 건강한가요?</h2>
                     <br>
-                    <h3>화초가 무슨 병에 걸렸는지 확인하세요.</h3>
+                    <h3>AI로 화초의 건강을 체크하세요.</h3>
                </div>
    					<button id="picture_upload_btn"><a href="${ctx}/upload.do"> 사진 업로드 </a></button>
           </div>
@@ -44,8 +45,8 @@
  <div class="container" id="home_contents2">
   <div class="row">
   	<div>
-    	<h2 class="main_introduce">딥러닝으로 케어하는 화초 질병진단 서비스!</h2>
-    	<p class="main_introduce">Green belt는 딥러닝을 사용해 고객의 화초의 질병을 분석하고 알맞는 치료법을 알려드립니다!</p>
+    	<h2 class="main_introduce">AI로 케어하는 화초 질병진단 서비스!</h2>
+    	<p class="main_introduce">Green Belt는 딥러닝을 사용해 고객의 화초의 질병을 분석하고 알맞는 치료법을 알려드립니다!</p>
     </div>
   </div>
   </div>

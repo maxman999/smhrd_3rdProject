@@ -7,78 +7,93 @@
 <meta charset="UTF-8">
 <title>Join Page</title>
 <link rel="stylesheet" href="resources/css/join.css">
+<link rel="stylesheet" href="resources/css/bootstrap.min.css">   <!-- link : 웹 페이지에 다른 파일을 추가 -->
+<link rel="stylesheet" href="resources/css/font-awesome.min.css">
+<!-- Main css -->
+<link rel="stylesheet" href="resources/css/style.css">
+
 <c:set var = "ctx" value = "${pageContext.request.contextPath}"/> 
 </head>
 <body>
 	
 	<div id="header">
 		<div id="myNav" class="overlay">
-			
 			<div class="overlay-content">
-				<%-- 로그인 창 구성 --%>
-					
-				<h2>회원가입</h2>    
-				<div class="container">
-				<div id="content">
-				<!-- Content -->
-					<form action="${ctx}/memberInsert.do" method="post" >
-						<div class="form-group">
-							<label for="id"> 아이디 *</label>  <!-- input 태그를 설명 -->
-							<input placeholder="아이디를 입력해주세요" type="text"
-							required class="form-control" name="id" />
-						</div>
-						<br>
-						<br>
-						<br>
-						<div class="form-group">
-							<label for="pw"> 비밀번호 *</label>
-							<input placeholder="비밀번호를 입력해주세요" type="password"
-							required class="form-control" name="" />
-						</div>
-						<br>
-						<br>
-						<br>
-						<div class="form-group">
-							<label for="pw"> 비밀번호 재입력 *</label>
-							<input placeholder="비밀번호를 재입력해주세요" type="password"
-							required class="form-control" name="password" />
-						</div>
-						<br>
-						<br>
-						<br>
-						<div>
-							<label for="nick name"> 닉네임 *</label>
-							<input placeholder="닉네임을 입력해주세요" type="text"
-							required class="form-control" name="nickname" />
-						</div>
-						<br>
-						<br>
-						<br>
-						<div>
-							<label for="email"> 이메일 *</label>
-							<input placeholder="이메일을 입력해주세요" type="email"
-							required class="form-control" name="email" />
-						</div>
-						<br>
-						<br>
-						<br>
-						<div>
-							<label for="phone"> 전화번호 *</label>
-							<input placeholder="전화번호를 입력해주세요" type="tel"
-							required class="form-control" name="phone" />
-						</div>
-						<br>
-						<br>
-						<br>
-						<div>
-							<input id="login_submit" type="submit" value="확인"
-							class="btn btn-success btn-lg btn-block" />
-						</div>
-						</form>
-					  </div>
-					</div>
+            <h2 class="blind">회원가입</h2>
+            <div class="join_content">
+                <div class="row_group">
+                    <div class="join_row">
+                        <h3 class="join_title"><label for="id">아이디</label></h3>
+                        <span class="ps_box int_id">
+							<input type="text" id="id" name="id" maxlength="20" placeholder="아이디를 입력해주세요">
+                            <span class="step_url"></span></span>
+                        <span class="error_next_box" id="idMsg" style="display:none" aria-live="assertive"></span>
+                    </div>
+
+                    <div class="join_row">
+                        <h3 class="join_title"><label for="pswd1">비밀번호</label></h3>
+                        <span class="ps_box int_pass" id="pswd1Img">
+							<input type="password" id="password" name="password" maxlength="20" placeholder="비밀번호를 입력해주세요">
+                            <span class="lbl"><span id="pswd1Span" class="step_txt"></span></span>
+						</span>
+
+                        <h3 class="join_title"><label for="pswd2">비밀번호 확인</label></h3>
+                        <span class="ps_box int_pass_check" id="pswd2Img">
+							<input type="password" id="pswd2" name="pswd2" maxlength="20" placeholder="비밀번호를 재입력해주세요">
+						</span>
+                    </div>
+                </div>
+
+                <div class="row_group">
+                    <div class="join_row">
+                        <h3 class="join_title"><label for="name">닉네임</label></h3>
+                        <span class="ps_box box_right_space">
+							<input type="text" id="nickname" name="nickname" maxlength="40">
+						</span>
+                    </div>
+
+                    <div class="join_row join_phone">
+                        <h3 class="join_title"><label for="yy">전화번호</label></h3>
+                        <div class="bir_wrap">
+                            <div class="phone_num">
+								<span class="ps_box">
+									<select id="mm" class="sel" aria-label="휴대폰번호">
+										<option value="">선택</option>
+										  	 			<option value="01">
+                                                            010
+                                                        </option>
+										  	 			<option value="02">
+                                                            011
+                                                        </option>
+										  	 			<option value="03">
+                                                            070
+                                                        </option>
+										  	 			<option value="04">
+                                                            017
+                                                        </option>
+										  	 	
+									</select>
+									<input type="text" id="phone" name="phone" class="phone" maxlength="8">
+								</span>
+                            </div>
+                        </div>
+                        <span class="error_next_box" id="birthdayMsg" style="display:none" aria-live="assertive"></span>
+                    </div>
+
+                    <div class="join_row join_email">
+                        <h3 class="join_title"><label for="email">이메일</label></h3>
+                        <span class="ps_box int_email box_right_space">
+							<input type="text" id="email" name="email" placeholder="이메일을 입력해주세요" maxlength="100">
+						</span>
+                    </div>
+                </div>
+                <div class="btn_area">
+                   <input id="join_submit" type="submit" value="가입하기" class="btn_join" />
+                </div>
+            </div>
 				</div>
 			</div>
 		</div>
+<%@ include file="footer.jsp"%>		
 </body>
 </html>
