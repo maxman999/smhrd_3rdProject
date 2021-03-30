@@ -10,11 +10,14 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -32,8 +35,9 @@ public class PlantController {
       return "upload";
    }
    
+   @ResponseBody
    @RequestMapping("/fileUpload.do")
-   public String fileUpload(@RequestParam("uploadFile") MultipartFile file, ModelAndView mv, Model model)throws IllegalStateException, IOException {
+   public HashMap<String, String> fileUpload(@RequestParam("uploadFile") MultipartFile file, ModelAndView mv)throws IllegalStateException, IOException {
       if(!file.getOriginalFilename().isEmpty()) {
          file.transferTo(new File(FILE_SERVER_PATH, file.getOriginalFilename()));
 //         model.addAttribute("msg", "File uploaded successfully.");
@@ -42,9 +46,10 @@ public class PlantController {
       }
       System.out.println(file.getOriginalFilename());
       String result = excutePost("http://127.0.0.1:5000/getImgName",file.getOriginalFilename());
-      model.addAttribute("DeepResult", result);
+      HashMap<String, String> map = new HashMap<String, String>();
       System.out.println(result);
-      return "upload.do";
+      map.put("result", result);
+      return map;
    }
    
    
