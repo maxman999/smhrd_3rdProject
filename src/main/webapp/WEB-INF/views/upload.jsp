@@ -24,17 +24,14 @@
 		<br>
 		<span>
 			<label><input type="checkbox" name="use" value="use" >질병 진단 사용 여부 선택</label>
-			<input type="submit" id="btnUpload" value="업로드">
+			<input type="submit" id="btnUpload" value="식별">
 		</span>
 		</form>
 		
 		<br>
 		<br>
 		<div class="image_box2">
-		<input type="text" id="search">
-        <input type="button" onclick="plantSearch()" value="정보 조회">
 			<div> <h5>결과창</h5>
-			<p>19716:스킨답서스 , 13193:타라, 13186:금전수</p>
         <table border = 1>
             <tr>
             <td>정보1</td>
@@ -154,10 +151,6 @@ $('#btnUpload').on('click', function(event) {
     })
     
 })
-
-
-
-
 
 </script>
 	
