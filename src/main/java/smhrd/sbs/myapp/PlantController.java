@@ -12,6 +12,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.HashMap;
 
+import org.omg.CORBA.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,7 +26,7 @@ import smhrd.sbs.model.PlantDAO;
 
 @Controller
 public class PlantController {
-   private static final String FILE_SERVER_PATH = "C:/test";
+   private static final String FILE_SERVER_PATH = "C:/eGovFrame-3.9.0/project3/project_sbs/src/main/webapp/resources/images";
    
    @Autowired
    private PlantDAO dao;
@@ -37,12 +38,12 @@ public class PlantController {
    
    @ResponseBody
    @RequestMapping("/fileUpload.do")
-   public HashMap<String, String> fileUpload(@RequestParam("uploadFile") MultipartFile file, ModelAndView mv)throws IllegalStateException, IOException {
+   public HashMap<String, String> fileUpload(@RequestParam("uploadFile") MultipartFile file, ModelAndView mv, Model model)throws IllegalStateException, IOException {
       if(!file.getOriginalFilename().isEmpty()) {
          file.transferTo(new File(FILE_SERVER_PATH, file.getOriginalFilename()));
-//         model.addAttribute("msg", "File uploaded successfully.");
+         model.addAttribute("msg", FILE_SERVER_PATH); //null값 들어감..
       }else {
-//         model.addAttribute("msg", "Please select a valid mediaFile..");
+         model.addAttribute("msg", "Please select a valid mediaFile..");
       }
       System.out.println(file.getOriginalFilename());
       String result = excutePost("http://127.0.0.1:5000/getImgName",file.getOriginalFilename());
@@ -111,5 +112,10 @@ public class PlantController {
                connection.disconnect();
            }
        }
+   }
+   
+   @RequestMapping("/img_register.do")
+   public String img_register() {
+      return "img_register";
    }
 }
