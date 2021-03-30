@@ -51,6 +51,7 @@ public class MemberController {
 			}
 		return "main";
 	}
+<<<<<<< HEAD
 	
 	@RequestMapping("/join.do")
 	public String join() {
@@ -103,4 +104,12 @@ public class MemberController {
 	
 	
 	
+=======
+	@RequestMapping("/main.do")
+	public String memberList(Model model) {
+		List<MemberVO> memberList = dao.memberList();
+		model.addAttribute("memberList", memberList);
+		return "main";
+	}
+>>>>>>> 689664ea12e26e712c21f3550f13108fff485c4d
 }

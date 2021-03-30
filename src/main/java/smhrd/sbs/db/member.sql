@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 drop table member;
 drop table plant;
 
@@ -33,3 +34,8 @@ insert into plant(id,plantname,regidate,picture,sick,plantnick)
 values('admin','스킨답서스',now(),'src','깍지벌레','겸둥이');
 
 select * from plant;
+=======
+create member
+
+select * from member
+>>>>>>> 689664ea12e26e712c21f3550f13108fff485c4d
