@@ -8,43 +8,40 @@
 </head>
 <body>
 <!-- Footer Section -->
-<footer>
-     <div class="container">
-          <div class="row">
+<footer class="footer-container white-text-container">
+    <div class="container">
+        <div class="row">
+                <div class="col-md-4">
+                    <h4>About us</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sit amet consectetur dolor</p>
+                </div>
 
-               <div class="col-md-3">
-                    <i class="fa fa-magnet"></i>
-               </div>
+                <div class="col-md-4">
+          			<p>광주광역시 남구 송암로 60</p>
 
-               <div class="col-md-4 col-sm-4">
-                    <p>광주광역시 남구 송암로 60 CGI센터</p>
-               </div>
+                </div>
 
-               <div class="col-md-offset-1 col-md-4 col-sm-offset-1 col-sm-3">
-                    <p>greenbelt@gmail.com</p>
-                    <p>(+82) 0112345678 / 062 1234567</p>
-               </div>
-
-               <div class="clearfix col-md-12 col-sm-12">
-                    <hr>
-               </div>
-
-               <div class="col-md-6 col-sm-6">
-                    <div class="footer-copyright">
-                         <p>© 2021 green belt | All Rights Reserved.</p>
+                <div class="col-md-4">
+                            <h4>서비스에 만족하셨나요? 그렇다면 공유보세요!</h4>
+                    <div>
+                        <p>
+                            <a href="https://www.twitter.com" class="fa-icon" title="">
+                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                        </a>
+                            <a href="https://www.facebook.com" class="fa-icon" title="">
+                                <i class="fa fa-facebook" aria-hidden="true"></i>
+                            </a>
+                            <a href="https://www.youtube.com" class="fa-icon" title="">
+                                <i class="fa fab fa-youtube" aria-hidden="true"></i>
+                            </a>
+                        </p>
                     </div>
-               </div>
-
-               <div class="col-md-6 col-sm-6">
-                    <ul class="social-icon">
-                         <li><a href="https://m.facebook.com/" class="fa fa-facebook"></a></li>
-                         <li><a href="https://twitter.com/" class="fa fa-twitter"></a></li>
-                         <li><a href="#" class="fa fa-linkedin"></a></li>
-                    </ul>
-               </div>
-               
-          </div>
-     </div>
+                    <div>
+                        <p><small>© Untitled | Website created with</small></p>
+                    </div>
+                </div>
+        </div>
+    </div>
 </footer>
 </body>
 </html>

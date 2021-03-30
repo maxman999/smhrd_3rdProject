@@ -1,13 +1,6 @@
 
-.field {
-    position: relative;
-    top: 200px;
-    
-}
-
 .image_box {
 	background: gainsboro;
-	border: dotted;
     box-sizing: border-box;
     width: 410px;
     height: 350px;
