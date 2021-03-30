@@ -175,6 +175,46 @@ a:hover, a:active, a:focus {
     Main Navigation             
 -----------------------------------------*/
 
+/* 헤더 로그인 회원가입 */
+#inner {
+  height: 0;
+  left: 50%;
+  top: 300px;
+  width: 300px;
+  transform: translate(-50%, -50%);
+  transition: all .3s;
+}
+#inner.active {
+  background-color: #d5d5d5;
+  height: 600px;
+  left: 50%;
+  position: absolute;
+  top: 430px;
+  width: 600px;
+  transform: translate(-50%, -50%);
+  transition: all .3s;
+  display: block;
+}
+div#inner {
+    display: none;
+}
+input.form-control {
+    width: 300px;
+}
+h2#main_login_title {
+	margin: 50px 0 0 230px;
+}
+input#login_submit {
+    width: 80px;
+    margin: 80px 0 0 230px;
+}
+.login_input {
+    position: relative;
+    top: 80px;
+    left: 130px;
+}
+
+/* /헤더 로그인 회원가입 */
 .navbar-default {
     background: #ffffff;
     padding: 55px 0;
@@ -265,7 +305,6 @@ a:hover, a:active, a:focus {
 }
 
 div#home_contents {
-    border-bottom: groove;
     padding: 60px;
 }
 
@@ -298,8 +337,8 @@ button#picture_upload_btn:hover {
 }
 
 /* 메인 멘트 자간 */
-h2#home_text {
-	letter-spacing: 15px;
+h2.home_text {
+    letter-spacing: 10px;
 }
 
 /* 메인 서비스 소개 부분 */
@@ -314,6 +353,29 @@ p.main_introduce {
 div#home_contents2 {
     border-bottom: groove;
     padding: 60px;
+}
+
+.section-container {
+    padding: 0 0 80px 0;
+    transition-duration: 3s;
+}
+
+hr#main_hr {
+    width: 100px;
+}
+/* 아이콘 가운데 정렬 */
+.fa-container {
+    text-align-last: center;
+}
+
+/* 메인 서비스소개 높이 */
+.target-section.section1.aos-init.active.aos-animate {
+    height: 500px;
+}
+
+/* 메인 서비스소개 위치 */
+div#main_introduce {
+    padding: 90px 0;
 }
 
 /*---------------------------------------

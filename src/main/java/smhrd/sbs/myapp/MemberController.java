@@ -98,9 +98,7 @@ public class MemberController {
 		}
 		return "redirect:/main.do";
 	}
-	
-	
-	
+
 	
 	
 }

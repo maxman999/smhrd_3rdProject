@@ -6,10 +6,22 @@
 <head>
 <meta charset="UTF-8">
 <title>Picture Upload Page</title>
+<link rel="stylesheet" href="resources/css/bootstrap.min.css">   <!-- link : 웹 페이지에 다른 파일을 추가 -->
+<link rel="stylesheet" href="resources/css/font-awesome.min.css">
+
 <link rel="stylesheet" href="resources/css/upload.css">
+<!-- Main css -->
+<link rel="stylesheet" href="resources/css/style.css">
+
+<link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,700" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body onload="Confirming();">
 
+<section id="home" class="target-section section">   <!-- section : 여러 중심 내용을 감싸는 공간 -->
+     <div class="container" id="home_contents">
+          <div class="row">
+	
 	<div class="field" align="center">
 		<div class="image_box">
 		<!-- 첨부파일(이미지파일만 업로드가능) --> 
@@ -58,9 +70,12 @@
 			<button><a href="img_register.do"> 등록 </a></button>
 		</div>
 	</div>
+				</div>
+          </div>
+</section>
 
-<script>
-let getInfo = url => {
+  <script>
+	let getInfo = url => {
         return new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest();
             xhr.open('GET', url);
@@ -115,6 +130,9 @@ function plantSearch() {
 		    };
 		}
 </script>
+
+<%@ include file="footer.jsp"%>
+	
 	
 </body>
 </html>
