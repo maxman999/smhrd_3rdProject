@@ -11,6 +11,28 @@ public class PlantVO {
 
 	public PlantVO() {
 	};
+	
+	
+
+	public PlantVO(String plantid, String id, String plantname, String regidate, String picture, String sick,
+			String plantnick) {
+		this.plantid = plantid;
+		this.id = id;
+		this.plantname = plantname;
+		this.regidate = regidate;
+		this.picture = picture;
+		this.sick = sick;
+		this.plantnick = plantnick;
+	}
+
+
+
+	public PlantVO(String regidate, String picture) {
+		this.regidate = regidate;
+		this.picture = picture;
+	}
+
+
 
 	public String getPlantid() {
 		return plantid;

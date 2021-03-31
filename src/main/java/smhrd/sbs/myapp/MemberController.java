@@ -21,9 +21,7 @@ public class MemberController {
 	private MemberDAO dao;
 
 	@RequestMapping("/main.do")
-	public String memberList(Model model) {
-		List<MemberVO> list = dao.memberList();
-		model.addAttribute("list", list);
+	public String memberList() {
 		return "main";
 	}
 
