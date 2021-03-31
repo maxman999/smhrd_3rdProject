@@ -98,16 +98,11 @@ public class MemberController {
 		}
 		return "redirect:/main.do";
 	}
-<<<<<<< HEAD
-
-=======
-	
 	@RequestMapping("/logintest.do")
 	public String logintest() {
 		return "logintest";
 	}
-	
->>>>>>> e7e70dc5e3f698403b0a9eea0a2dbcc7eb25ef8a
+
 	
 	
 }

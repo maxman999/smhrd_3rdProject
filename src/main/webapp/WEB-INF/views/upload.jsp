@@ -74,6 +74,7 @@
           </div>
 </section>
 
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script type="text/javascript"> 
 	function readURL(input) { 
@@ -100,6 +101,7 @@
 		}
 </script>
 <script type="text/javascript">
+// 업로드 버튼 클릭 시 ajax통신으로 서버에 저장
 $('#btnUpload').on('click', function(event) {
     event.preventDefault();
     
@@ -108,33 +110,30 @@ $('#btnUpload').on('click', function(event) {
     
     $('#btnUpload').prop('disabled', true);
 	
-    
-    let getName = () => {
-    	return new Promise((resolve, reject) => {
     $.ajax({
         type: "POST",
         enctype: 'multipart/form-data',
-        url: "/myapp/fileUpload.do",
+        url: "/myapp/upload.do",
         data: data,
         processData: false,
         contentType: false,
         cache: false,
         timeout: 600000,
+        async: false, // 순차통신
         success: function (data) {
         	$('#btnUpload').prop('disabled', false);
-        	alert('success');
-        	console.log(data.result);
-        	resolve(data.result);
+        	alert('success')
         },
         error: function (e) {
             $('#btnUpload').prop('disabled', false);
             alert('fail');
         }
     });
-    });
-    }
-    
-    let getInfo = url => {
+})
+</script>
+<script>
+// 파이썬으로 값 넘겨주고 결과정보 받아오기
+let getInfo = url => {
         return new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest();
             xhr.open('GET', url);
@@ -153,20 +152,16 @@ $('#btnUpload').on('click', function(event) {
             };
         });
     }
-   
-    const targetNum = getName();
-    targetNum.then(pname => {
-    	const result = getInfo('http://api.nongsaro.go.kr/service/garden/gardenDtl?apiKey=20210325ZSIOCEZBQCK8HV5TOYGQUQ&cntntsNo='+pname);
-		result.then(pdata => {
-			document.getElementById("info1").innerText = pdata.getElementsByTagName('adviseInfo')[0].childNodes[0].nodeValue;
-	        document.getElementById("info2").innerText = pdata.getElementsByTagName('frtlzrInfo')[0].childNodes[0].nodeValue;
-	        document.getElementById("info3").innerText = pdata.getElementsByTagName('speclmanageInfo')[0].childNodes[0].nodeValue;
-	        document.getElementById("info4").innerText = pdata.getElementsByTagName('fncltyInfo')[0].childNodes[0].nodeValue;
-		})
+function plantSearch() {
+    var targetNum = document.getElementById("search").value;
+    const result = getInfo('http://api.nongsaro.go.kr/service/garden/gardenDtl?apiKey=20210325ZSIOCEZBQCK8HV5TOYGQUQ&cntntsNo='+targetNum);
+    result.then(data => {
+        document.getElementById("info1").innerText = data.getElementsByTagName('adviseInfo')[0].childNodes[0].nodeValue;
+        document.getElementById("info2").innerText = data.getElementsByTagName('frtlzrInfo')[0].childNodes[0].nodeValue;
+        document.getElementById("info3").innerText = data.getElementsByTagName('speclmanageInfo')[0].childNodes[0].nodeValue;
+        document.getElementById("info4").innerText = data.getElementsByTagName('fncltyInfo')[0].childNodes[0].nodeValue;
     })
-    
-})
-
+}
 </script>
 
 <%@ include file="footer.jsp"%>
