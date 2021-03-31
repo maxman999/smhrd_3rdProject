@@ -25,7 +25,7 @@ import smhrd.sbs.model.PlantDAO;
 
 @Controller
 public class PlantController {
-   private static final String FILE_SERVER_PATH = "C:/test";
+   private static final String FILE_SERVER_PATH = "C:/eGovFrame-3.9.0/sbs/project_sbs/src/main/webapp/resources/images";
    
    @Autowired
    private PlantDAO dao;
@@ -47,7 +47,7 @@ public class PlantController {
       System.out.println(file.getOriginalFilename());
       String result = excutePost("http://127.0.0.1:5000/getImgName",file.getOriginalFilename());
       HashMap<String, String> map = new HashMap<String, String>();
-      System.out.println(result);
+      System.out.println("받은 결과 : " + result);
       map.put("result", result);
       return map;
    }
@@ -112,4 +112,11 @@ public class PlantController {
            }
        }
    }
+   
+   @RequestMapping("/img_register.do")
+   public String img_register() {
+      return "img_register";
+   }
+   
+   
 }

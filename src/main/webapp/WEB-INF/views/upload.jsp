@@ -20,63 +20,91 @@
 
 <section id="home" class="target-section section">   <!-- section : 여러 중심 내용을 감싸는 공간 -->
      <div class="container" id="home_contents">
+	<h2 id="upload_title"><b>식별이랑 정보</b></h2>
           <div class="row">
-	
 	<div class="field" align="center">
 		<div class="image_box">
 		<!-- 첨부파일(이미지파일만 업로드가능) -->
 		<form id= "uploadForm" action="${ctx}/fileUpload.do" method="post" enctype="multipart/form-data">
-		<input type="file" id="uploadFile" name="uploadFile" accept="image/*"> 
+		
+		<input type="text" id="fileNm" readonly/>
+		<a id="" href="javascript:fnUpload();"><img src="./resources/images/upload.png" alt="찾아보기" id="upload_image"/></a>
+		<input type="file" id="fileUpload" style="display:none" name="uploadFile" accept="image/*" onchange="$('#fileNm').val(this.value)"/>
+		</form>
 		
 		<!-- 이미지 미리보기 영역 --> 
 		<div id="imgViewArea" style="margin-top:10px;"> 
 			<img id="imgArea" style="width:400px; height:300px;" onerror="imgAreaError()"/> 
 		</div>
 		</div>
-		<br>
-		<span>
-			<label><input type="checkbox" name="use" value="use" >질병 진단 사용 여부 선택</label>
-			<input type="submit" id="btnUpload" value="식별">
-		</span>
-		</form>
+		<div>
+		<input type="submit" id="btnUpload" value="식별">
+		</div>
 		
-		<br>
-		<br>
+		
+		<button class="btn01" onclick="fn_spread('hiddenContent02');"><b>정보 보기</b></button> 
+		<div id="hiddenContent02" class="example01" style="visibility: fix;">
 		<div class="image_box2">
-			<div> <h5>결과창</h5>
-        <table border = 1>
-            <tr>
-            <td>정보1</td>
-            <td id = "info1"></td>
-            </tr>	
-            <tr>
-            <td>정보2</td>
-            <td id = "info2"></td>
-            </tr>
-            <tr>
-            <td>정보3</td>
-            <td id = "info3"></td>
-            </tr>
-            <tr>
-            <td>정보4</td>
-            <td id = "info4"></td>
-            </tr>	
-        </table>
+			<div> 
+			<ul class="info_list">
+				<li id = "info1"></li>
+				<li id = "info2"></li>
+				<li id = "info3"></li>
+				<li id = "info4"></li>
+			</ul>
     </div>
 		</div>
-		<br>
-		<div>
-			<button><a href="main.do"> 홈으로 </a></button>
-			<button><a href="img_register.do"> 등록 </a></button>
+		</div>
+		<div class="upload_finalbtn">
+			<button class="upload_lastbtn"><a href="main.do"> <b>홈으로</b> </a></button>
+			<button class="upload_lastbtn"><a href="img_register.do"> <b>등록</b> </a></button>
 		</div>
 	</div>
 				</div>
           </div>
 </section>
+ 
+<%--이미지 미리보기 --%>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript"> 
+	function readURL(input) { 
+		if (input.files && input.files[0]) { 
+			var reader = new FileReader(); 
+			reader.onload = function(e) { 
+				$('#imgArea').attr('src', e.target.result); 
+				} 
+			reader.readAsDataURL(input.files[0]); } } 
+			$(":input[name='uploadFile']").change(function() { 
+				if( $(":input[name='uploadFile']").val() == '' ) { 
+					$('#imgArea').attr('src' , ''); } 
+				$('#imgViewArea').css({ 'display' : '' }); 
+				readURL(this); }); // 이미지 에러 시 미리보기영역 미노출 
+				function imgAreaError(){ 
+					$('#imgViewArea').css({ 'display' : 'none' }); } 
+</script>
+<%-- /이미지 미리보기 --%>
 
-<<<<<<< HEAD
-=======
-  <script>
+<%-- 업로드이미지 --%>
+<script>
+	function fnUpload(){
+	
+		$('#fileUpload').click();
+	
+	}
+</script>
+
+
+<script>
+<%-- onbeforeunload : 새로고침이나 브라우져를 닫았을 때, 실행되는 이벤트 --%>
+		function Confirming() {
+		    window.onbeforeunload = function (e) { 
+                    return 0;
+		    };
+		}
+</script>
+
+<%--식물 정보 받아오는 것 --%>
+<script>
 	let getInfo = url => {
         return new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest();
@@ -96,42 +124,7 @@
             };
         });
     }
-function plantSearch() {
-    var targetNum = document.getElementById("search").value;
-    const result = getInfo('http://api.nongsaro.go.kr/service/garden/gardenDtl?apiKey=20210325ZSIOCEZBQCK8HV5TOYGQUQ&cntntsNo='+targetNum);
-    result.then(data => {
-        document.getElementById("info1").innerText = data.getElementsByTagName('adviseInfo')[0].childNodes[0].nodeValue;
-        document.getElementById("info2").innerText = data.getElementsByTagName('frtlzrInfo')[0].childNodes[0].nodeValue;
-        document.getElementById("info3").innerText = data.getElementsByTagName('speclmanageInfo')[0].childNodes[0].nodeValue;
-        document.getElementById("info4").innerText = data.getElementsByTagName('fncltyInfo')[0].childNodes[0].nodeValue;
-    })
-}
-</script>
->>>>>>> kij
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script type="text/javascript"> 
-	function readURL(input) { 
-		if (input.files && input.files[0]) { 
-			var reader = new FileReader(); 
-			reader.onload = function(e) { 
-				$('#imgArea').attr('src', e.target.result); 
-				} 
-			reader.readAsDataURL(input.files[0]); } } 
-			$(":input[name='uploadFile']").change(function() { 
-				if( $(":input[name='uploadFile']").val() == '' ) { 
-					$('#imgArea').attr('src' , ''); } 
-				$('#imgViewArea').css({ 'display' : '' }); 
-				readURL(this); }); // 이미지 에러 시 미리보기영역 미노출 
-				function imgAreaError(){ 
-					$('#imgViewArea').css({ 'display' : 'none' }); } 
-</script>
-<script>
-<%-- onbeforeunload : 새로고침이나 브라우져를 닫았을 때, 실행되는 이벤트 --%>
-		function Confirming() {
-		    window.onbeforeunload = function (e) { 
-                    return 0;
-		    };
-		}
+	
 </script>
 <script type="text/javascript">
 $('#btnUpload').on('click', function(event) {
@@ -192,16 +185,20 @@ $('#btnUpload').on('click', function(event) {
     targetNum.then(pname => {
     	const result = getInfo('http://api.nongsaro.go.kr/service/garden/gardenDtl?apiKey=20210325ZSIOCEZBQCK8HV5TOYGQUQ&cntntsNo='+pname);
 		result.then(pdata => {
-			document.getElementById("info1").innerText = pdata.getElementsByTagName('adviseInfo')[0].childNodes[0].nodeValue;
-	        document.getElementById("info2").innerText = pdata.getElementsByTagName('frtlzrInfo')[0].childNodes[0].nodeValue;
-	        document.getElementById("info3").innerText = pdata.getElementsByTagName('speclmanageInfo')[0].childNodes[0].nodeValue;
-	        document.getElementById("info4").innerText = pdata.getElementsByTagName('fncltyInfo')[0].childNodes[0].nodeValue;
+			document.getElementById("info1").innerText = pdata.getElementsByTagName('adviseInfo')[0].innerHTML;
+            document.getElementById("info2").innerText = pdata.getElementsByTagName('frtlzrInfo')[0].innerHTML;
+            document.getElementById("info3").innerText = pdata.getElementsByTagName('speclmanageInfo')[0].innerHTML;
+            document.getElementById("info4").innerText = pdata.getElementsByTagName('fncltyInfo')[0].innerHTML;
 		})
     })
     
 })
 
 </script>
+<%-- /식물 정보 받아오는 것 --%>
+
+<script> function fn_spread(id){ var getID = document.getElementById(id); getID.style.display=(getID.style.display=='block') ? 'none' : 'block'; } </script>
+
 
 <%@ include file="footer.jsp"%>
 	
