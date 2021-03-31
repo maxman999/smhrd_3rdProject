@@ -60,9 +60,9 @@
 							<li class="active"><a href="main.do">홈</a></li>
 							<li><a href="about.html">서비스 소개</a></li>
 							<li><a href="blog.html">커뮤니티</a></li>
+							<li><a href="#" class="loginbu" id="right_link">로그인</a></li>
+                   			<li><a href="join.do">회원가입</a></li>
 							<!-- login/Register-btn -->
-							<a href="#" class="loginbu" id="right_link">로그인</a>
-							<a href="join.do">/ 회원가입</a>
 							<div id="inner">
 					<div class="container">
 					<div id="content">
