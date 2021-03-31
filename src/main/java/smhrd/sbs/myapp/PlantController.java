@@ -48,8 +48,8 @@ public class PlantController {
    public HashMap<String, String> fileUpload(@RequestParam("uploadFile") MultipartFile file, HttpServletRequest request)throws IllegalStateException, IOException, Exception {
       if(!file.getOriginalFilename().isEmpty()) {
          file.transferTo(new File(FILE_SERVER_PATH, file.getOriginalFilename()));
+
       }else {
-//         model.addAttribute("msg", "Please select a valid mediaFile..");
       }
       
       // 세션에 식물이름 저장
@@ -62,6 +62,9 @@ public class PlantController {
       
       // 플라스크 연동
       System.out.println(file.getOriginalFilename());
+      session = request.getSession();
+      session.setAttribute("imgName", file.getOriginalFilename());
+      
       String result = excutePost("http://127.0.0.1:5000/getImgName",file.getOriginalFilename());
       HashMap<String, String> map = new HashMap<String, String>();
       System.out.println(result);
@@ -135,7 +138,6 @@ public class PlantController {
    public String img_register() {
       return "img_register";
    }
-   
    
    @RequestMapping("/plantInsert.do")
 	public String plantInsert(PlantVO vo) {

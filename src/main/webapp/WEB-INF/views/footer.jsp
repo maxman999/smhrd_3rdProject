@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Footer</title>
+
 </head>
 <body>
 <!-- Footer Section -->
@@ -36,6 +37,7 @@
                             </a>
                         </p>
                     </div>
+<<<<<<< HEAD
                     <div>
                         <p><small>© Untitled | Website created with</small></p>
                     </div>
@@ -43,5 +45,24 @@
         </div>
     </div>
 </footer>
+=======
+               </div>
+
+               <div class="col-md-6 col-sm-6">
+                    <ul class="social-icon">
+                         <li><a href="https://m.facebook.com/" class="fa fa-facebook"></a></li>
+                         <li><a href="https://twitter.com/" class="fa fa-twitter"></a></li>
+                         <li><a href="#" class="fa fa-linkedin"></a></li>
+                    </ul>
+               </div>
+               
+          </div>
+     </div>
+
+<script src="resources/js/jquery.js"></script>
+<script src="resources/js/bootstrap.min.js"></script>
+<script src="resources/js/custom.js"></script>
+
+>>>>>>> e7e70dc5e3f698403b0a9eea0a2dbcc7eb25ef8a
 </body>
 </html>

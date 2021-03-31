@@ -18,7 +18,8 @@
 		<a>${imgName }</a>
 		<!-- 이미지 미리보기 영역 --> 
 		<div id="imgViewArea" style="margin-top:10px;"> 
-			<img src="./resources/images/${imgName }" id="imgArea" style="width:400px; height:300px;"/> 
+			<img src="./resources/images/chi.jpg" id="imgArea" style="width:400px; height:300px;" onerror="imgAreaError()"/>
+			<h3><%= (String)session.getAttribute("imgName") %></h3>
 		</div>
 		</div>
 		<br>

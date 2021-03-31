@@ -96,6 +96,10 @@ public class MemberController {
 		}
 		return "redirect:/main.do";
 	}
+	@RequestMapping("/logintest.do")
+	public String logintest() {
+		return "logintest";
+	}
 
 	
 	

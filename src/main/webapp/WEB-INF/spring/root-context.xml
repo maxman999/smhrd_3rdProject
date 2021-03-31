@@ -29,4 +29,5 @@
    
    <context:component-scan base-package="smhrd.sbs.model"/>
    
+   
 </beans>

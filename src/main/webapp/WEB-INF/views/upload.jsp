@@ -74,8 +74,68 @@
           </div>
 </section>
 
-  <script>
-	let getInfo = url => {
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript"> 
+	function readURL(input) { 
+		if (input.files && input.files[0]) { 
+			var reader = new FileReader(); 
+			reader.onload = function(e) { 
+				$('#imgArea').attr('src', e.target.result); 
+				} 
+			reader.readAsDataURL(input.files[0]); } } 
+			$(":input[name='uploadFile']").change(function() { 
+				if( $(":input[name='uploadFile']").val() == '' ) { 
+					$('#imgArea').attr('src' , ''); } 
+				$('#imgViewArea').css({ 'display' : '' }); 
+				readURL(this); }); // 이미지 에러 시 미리보기영역 미노출 
+				function imgAreaError(){ 
+					$('#imgViewArea').css({ 'display' : 'none' }); } 
+</script>
+<script>
+<%-- onbeforeunload : 새로고침이나 브라우져를 닫았을 때, 실행되는 이벤트 --%>
+		function Confirming() {
+		    window.onbeforeunload = function (e) { 
+                    return 0;
+		    };
+		}
+</script>
+<script type="text/javascript">
+// 업로드 버튼 클릭 시 ajax통신으로 서버에 저장
+$('#btnUpload').on('click', function(event) {
+    event.preventDefault();
+    
+    var form = $('#uploadForm')[0]
+    var data = new FormData(form);
+    
+    $('#btnUpload').prop('disabled', true);
+	
+    $.ajax({
+        type: "POST",
+        enctype: 'multipart/form-data',
+        url: "/myapp/upload.do",
+        data: data,
+        processData: false,
+        contentType: false,
+        cache: false,
+        timeout: 600000,
+        async: false, // 순차통신
+        success: function (data) {
+        	$('#btnUpload').prop('disabled', false);
+        	alert('success')
+        },
+        error: function (e) {
+            $('#btnUpload').prop('disabled', false);
+            alert('fail');
+        }
+    });
+})
+</script>
+<script>
+// 파이썬으로 값 넘겨주고 결과정보 받아오기
+let getInfo = url => {
         return new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest();
             xhr.open('GET', url);
@@ -104,100 +164,6 @@ function plantSearch() {
         document.getElementById("info4").innerText = data.getElementsByTagName('fncltyInfo')[0].childNodes[0].nodeValue;
     })
 }
-</script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script type="text/javascript"> 
-	function readURL(input) { 
-		if (input.files && input.files[0]) { 
-			var reader = new FileReader(); 
-			reader.onload = function(e) { 
-				$('#imgArea').attr('src', e.target.result); 
-				} 
-			reader.readAsDataURL(input.files[0]); } } 
-			$(":input[name='uploadFile']").change(function() { 
-				if( $(":input[name='uploadFile']").val() == '' ) { 
-					$('#imgArea').attr('src' , ''); } 
-				$('#imgViewArea').css({ 'display' : '' }); 
-				readURL(this); }); // 이미지 에러 시 미리보기영역 미노출 
-				function imgAreaError(){ 
-					$('#imgViewArea').css({ 'display' : 'none' }); } 
-</script>
-<script>
-<%-- onbeforeunload : 새로고침이나 브라우져를 닫았을 때, 실행되는 이벤트 --%>
-		function Confirming() {
-		    window.onbeforeunload = function (e) { 
-                    return 0;
-		    };
-		}
-</script>
-<script type="text/javascript">
-$('#btnUpload').on('click', function(event) {
-    event.preventDefault();
-    
-    var form = $('#uploadForm')[0]
-    var data = new FormData(form);
-    
-    $('#btnUpload').prop('disabled', true);
-	
-    
-    let getName = () => {
-    	return new Promise((resolve, reject) => {
-    $.ajax({
-        type: "POST",
-        enctype: 'multipart/form-data',
-        url: "/myapp/fileUpload.do",
-        data: data,
-        processData: false,
-        contentType: false,
-        cache: false,
-        timeout: 600000,
-        success: function (data) {
-        	$('#btnUpload').prop('disabled', false);
-        	alert('success');
-        	console.log(data.result);
-        	resolve(data.result);
-        },
-        error: function (e) {
-            $('#btnUpload').prop('disabled', false);
-            alert('fail');
-        }
-    });
-    });
-    }
-    
-    let getInfo = url => {
-        return new Promise((resolve, reject) => {
-            const xhr = new XMLHttpRequest();
-            xhr.open('GET', url);
-            xhr.setRequestHeader('Content-Type', 'application/xml');
-            xhr.getResponseHeader('Access-Control-Allow-Methods: POST, GET, OPTIONS');
-            xhr.send();
-            xhr.onload = () => {
-                if (xhr.status === 200) {
-                    let xstring = xhr.response;
-                    var parser = new DOMParser();
-                    var xmlDoc = parser.parseFromString(xstring, "text/xml");
-                    resolve(xmlDoc);
-                } else {
-                    console.error('Error', xhr.status, xhr.statusText);
-                }
-            };
-        });
-    }
-   
-    const targetNum = getName();
-    targetNum.then(pname => {
-    	const result = getInfo('http://api.nongsaro.go.kr/service/garden/gardenDtl?apiKey=20210325ZSIOCEZBQCK8HV5TOYGQUQ&cntntsNo='+pname);
-		result.then(pdata => {
-			document.getElementById("info1").innerText = pdata.getElementsByTagName('adviseInfo')[0].childNodes[0].nodeValue;
-	        document.getElementById("info2").innerText = pdata.getElementsByTagName('frtlzrInfo')[0].childNodes[0].nodeValue;
-	        document.getElementById("info3").innerText = pdata.getElementsByTagName('speclmanageInfo')[0].childNodes[0].nodeValue;
-	        document.getElementById("info4").innerText = pdata.getElementsByTagName('fncltyInfo')[0].childNodes[0].nodeValue;
-		})
-    })
-    
-})
-
 </script>
 
 <%@ include file="footer.jsp"%>
