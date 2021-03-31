@@ -42,12 +42,12 @@ public class PlantController {
    
    @ResponseBody
    @RequestMapping("/fileUpload.do")
-   public HashMap<String, String> fileUpload(@RequestParam("uploadFile") MultipartFile file, ModelAndView mv)throws IllegalStateException, IOException {
-	   if(!file.getOriginalFilename().isEmpty()) {
+   public HashMap<String, String> fileUpload(@RequestParam("uploadFile") MultipartFile file, ModelAndView mv, Model model)throws IllegalStateException, IOException {
+      if(!file.getOriginalFilename().isEmpty()) {
          file.transferTo(new File(FILE_SERVER_PATH, file.getOriginalFilename()));
-//         model.addAttribute("msg", "File uploaded successfully.");
+         model.addAttribute("msg", FILE_SERVER_PATH); //null값 들어감..
       }else {
-//         model.addAttribute("msg", "Please select a valid mediaFile..");
+         model.addAttribute("msg", "Please select a valid mediaFile..");
       }
       System.out.println(file.getOriginalFilename());
       session = request.getSession();
@@ -125,5 +125,5 @@ public class PlantController {
    public String img_register() {
       return "img_register";
    }
-   
+
 }

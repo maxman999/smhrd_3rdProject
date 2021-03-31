@@ -13,6 +13,11 @@
 		<div class="image_box">
 		<!-- 첨부파일(이미지파일만 업로드가능) --> 
 		<!-- <input type="file" id="u_file" name="u_file" accept="image/*">  -->
+<<<<<<< HEAD
+=======
+		<img src="./resources/images/chi.jpg"/>
+		<a><%= request.getAttribute("msg") %></a>
+>>>>>>> e7e70dc5e3f698403b0a9eea0a2dbcc7eb25ef8a
 		<!-- 이미지 미리보기 영역 --> 
 		<div id="imgViewArea" style="margin-top:10px;"> 
 			<img src="./resources/images/chi.jpg" id="imgArea" style="width:400px; height:300px;" onerror="imgAreaError()"/>

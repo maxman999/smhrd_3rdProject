@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 h2#join_title {
     position: relative;
     bottom: 30px;
@@ -28,3 +29,50 @@ input#join_submit {
     color: black;
 }
 
+=======
+/* 오버레이 창 */
+.overlay {
+  z-index: 1;
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  width: 900px;
+  padding: 90px 45px 60px 45px;
+  transform: translate(-50%, -50%);
+  background: rgb(255 255 255 / 20%);
+  border-radius: 5px;
+  border-style: solid;
+  border-color: darkseagreen;
+}
+
+
+.overlay-content {
+  position: relative;
+  top: 20%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+  height : 35vw;
+}
+
+input[type="text"] {
+    margin: 0 0 0 30em;												
+}
+
+input[type="password"] {
+	margin: 0 0 0 30em;
+}
+
+
+@media screen and (max-height: 450px) {
+
+  }
+}
+
+
+/*  가입하기 버튼 */
+input#join_submit {
+    position: relative;
+    left: 43%;
+}
+>>>>>>> e7e70dc5e3f698403b0a9eea0a2dbcc7eb25ef8a
