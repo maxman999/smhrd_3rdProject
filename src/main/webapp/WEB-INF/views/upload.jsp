@@ -74,40 +74,6 @@
           </div>
 </section>
 
-<<<<<<< HEAD
-=======
-  <script>
-	let getInfo = url => {
-        return new Promise((resolve, reject) => {
-            const xhr = new XMLHttpRequest();
-            xhr.open('GET', url);
-            xhr.setRequestHeader('Content-Type', 'application/xml');
-            xhr.getResponseHeader('Access-Control-Allow-Methods: POST, GET, OPTIONS');
-            xhr.send();
-            xhr.onload = () => {
-                if (xhr.status === 200) {
-                    let xstring = xhr.response;
-                    var parser = new DOMParser();
-                    var xmlDoc = parser.parseFromString(xstring, "text/xml");
-                    resolve(xmlDoc);
-                } else {
-                    console.error('Error', xhr.status, xhr.statusText);
-                }
-            };
-        });
-    }
-function plantSearch() {
-    var targetNum = document.getElementById("search").value;
-    const result = getInfo('http://api.nongsaro.go.kr/service/garden/gardenDtl?apiKey=20210325ZSIOCEZBQCK8HV5TOYGQUQ&cntntsNo='+targetNum);
-    result.then(data => {
-        document.getElementById("info1").innerText = data.getElementsByTagName('adviseInfo')[0].childNodes[0].nodeValue;
-        document.getElementById("info2").innerText = data.getElementsByTagName('frtlzrInfo')[0].childNodes[0].nodeValue;
-        document.getElementById("info3").innerText = data.getElementsByTagName('speclmanageInfo')[0].childNodes[0].nodeValue;
-        document.getElementById("info4").innerText = data.getElementsByTagName('fncltyInfo')[0].childNodes[0].nodeValue;
-    })
-}
-</script>
->>>>>>> kij
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script type="text/javascript"> 
 	function readURL(input) { 

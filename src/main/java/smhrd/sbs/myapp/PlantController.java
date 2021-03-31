@@ -12,6 +12,9 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.HashMap;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,10 +28,12 @@ import smhrd.sbs.model.PlantDAO;
 
 @Controller
 public class PlantController {
-   private static final String FILE_SERVER_PATH = "C:/test";
+   private static final String FILE_SERVER_PATH = "C:/eGovFrame-3.9.0/project3/project_sbs/src/main/webapp/resources/images";
    
    @Autowired
    private PlantDAO dao;
+   HttpServletRequest request;
+   HttpSession session;
    
    @RequestMapping("/upload.do")
    public String upload() {
@@ -38,13 +43,16 @@ public class PlantController {
    @ResponseBody
    @RequestMapping("/fileUpload.do")
    public HashMap<String, String> fileUpload(@RequestParam("uploadFile") MultipartFile file, ModelAndView mv)throws IllegalStateException, IOException {
-      if(!file.getOriginalFilename().isEmpty()) {
+	   if(!file.getOriginalFilename().isEmpty()) {
          file.transferTo(new File(FILE_SERVER_PATH, file.getOriginalFilename()));
 //         model.addAttribute("msg", "File uploaded successfully.");
       }else {
 //         model.addAttribute("msg", "Please select a valid mediaFile..");
       }
       System.out.println(file.getOriginalFilename());
+      session = request.getSession();
+      session.setAttribute("imgName", file.getOriginalFilename());
+      
       String result = excutePost("http://127.0.0.1:5000/getImgName",file.getOriginalFilename());
       HashMap<String, String> map = new HashMap<String, String>();
       System.out.println(result);
@@ -112,4 +120,10 @@ public class PlantController {
            }
        }
    }
+   
+   @RequestMapping("/img_register.do")
+   public String img_register() {
+      return "img_register";
+   }
+   
 }
