@@ -31,7 +31,7 @@ import smhrd.sbs.model.PlantVO;
 
 @Controller
 public class PlantController {
-   private static final String FILE_SERVER_PATH = "C:/eGovFrame-3.9.0/sbs/project_sbs/src/main/webapp/resources/images";
+   private static final String FILE_SERVER_PATH = "C:/eGovFrame-3.9.0/project3/project_sbs/src/main/webapp/resources/images";
    
    @Autowired
    private PlantDAO dao;
@@ -141,6 +141,8 @@ public class PlantController {
    
    @RequestMapping("/plantInsert.do")
 	public String plantInsert(PlantVO vo) {
+	   System.out.println("Insert.do 옴");
+	   System.out.println(vo.toString());
 		int cnt = dao.plantInsert(vo);
 		if (cnt>0) {
 			System.out.println("도감등록 성공");
