@@ -14,6 +14,12 @@ public class PlantVO {
 	
 	
 
+	public PlantVO(String id) {
+		this.id = id;
+	}
+
+
+
 	public PlantVO(String plantid, String id, String plantname, String regidate, String picture, String sick,
 			String plantnick) {
 		this.plantid = plantid;

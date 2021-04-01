@@ -34,6 +34,8 @@ public class MemberController {
 	public String logout(HttpServletRequest req) {
 		HttpSession session = req.getSession();
 		session.removeAttribute("info");
+		session.removeAttribute("imgName");
+		session.removeAttribute("plist");
 		return "main";
 	}
 	

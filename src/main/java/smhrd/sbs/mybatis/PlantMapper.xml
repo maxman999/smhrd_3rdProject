@@ -7,5 +7,9 @@
 	    insert into plant(id,plantname,regidate,picture,sick,plantnick)
 	    values(#{id},#{plantname},now(),#{picture},#{sick},#{plantnick});
 	</insert>
+	
+	<select id="plantImgGetId" resultType="PlantVO" parameterType="String">
+	    select * from plant where id=#{id}
+	</select>
 
 </mapper>

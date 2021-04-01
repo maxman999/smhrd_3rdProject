@@ -42,4 +42,12 @@ public class PlantDAOImpl implements PlantDAO {
 		return 0;
 	}
 
+	@Override
+	public List<PlantVO> plantImgGetId(String id) {
+		SqlSession session = sqlSessionFactory.openSession();
+		List<PlantVO> plist = session.selectList("plantImgGetId",id);
+		session.close();
+		return plist;
+	}
+
 }

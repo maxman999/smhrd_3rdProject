@@ -29,7 +29,7 @@
 <%-- 스크롤 등장 모션 --%>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
     <style>
-      .target-section {height: 700px; transition: background 0.5s;}
+      .target-section {height: 969px; transition: background 0.5s;}
       .section1.active {background: #64bcaa;}
       .section2.active {background: #68a0da;}
     </style>
@@ -86,7 +86,37 @@
     </div>
 </div>
   
-    <section class="target-section ready section2"></section>
+    <section class="target-section ready section2">
+    	<div class="container">
+		  <div class="row">
+			<div class="container_visual">
+			    <!-- Promotion -->
+			    <!-- 슬라이딩기능: 이미지 (type = 'th')를 순차적(javascript) 으로 노출 -->
+			    <ul class="visual_img">
+			    <h1>${info.id } 아가들</h1>
+					
+					<!-- 로그인한 아이디로 plantVO 리스트 가져옴 -->
+			    	<form action="plantImgGetId.do" method="post">
+			    		<input type="hidden" name="loginId" value="${info.id}">
+			    		<input type="submit" value="도감열람">
+			    	</form>
+			    	
+			    	<!-- vo가 담긴 plist를 반복문으로 인덱스 바꿔가며 사진이름 뽑아내기 -->
+			    	<c:set var="plist" value="${sessionScope.plist}"/>
+			    	
+			    	<c:forEach var="plist" items="${sessionScope.plist}" begin="0" varStatus="status">
+			    		<p>${plist.picture}</p>
+			    		<li><img src="./resources/images/${plist.picture}"></li>
+			    	</c:forEach>
+			    	
+			    	<%-- ${plist.get(0).getId()}확인완료 --%>
+			    	
+			    </ul>
+			  </div>
+			  <span class="nxt_fix" style="display:none;"></span>
+		  </div>
+		</div>
+    </section>
  
   
 <%@ include file="footer.jsp"%>
@@ -148,5 +178,37 @@ AOS.init();
       });
     </script>
 
+<script>
+	var image_ul = document.querySelector(".visual_img");
+	
+	window.onload = function() {
+		var imgCnt = 0;
+		/* Animation: sliding setting */
+		image_ul.querySelectorAll("li").forEach(()=> {
+			imgCnt ++;
+		});
+		image_ul.style.width = (image_ul.offsetWidth * imgCnt) + "px";
+		
+		console.log(imgCnt);
+		console.log(image_ul.style.width);
+		slideShow(imgCnt);
+	}
+
+/* Animation: sliding */
+	function slideShow(imgCnt) {
+		var curIndex = 0;
+		
+		setInterval( () => {
+			image_ul.style.transition = "transform 2s ease-out";
+			image_ul.style.transform = "translate3d(-" + 414*(curIndex+1)+"px, 0px, 0px)";
+			curIndex++;
+			
+			console.log(curIndex);
+			if( curIndex === imgCnt-1 ) {
+				curIndex = -1;
+			}
+		},2000);	
+	}
+</script>
 </body>
 </html>

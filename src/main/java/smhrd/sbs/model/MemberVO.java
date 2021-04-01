@@ -11,8 +11,15 @@ public class MemberVO {
    public MemberVO() {
    }
    
+   
 
-   public MemberVO(String id, String password, String nickname, String email, String phone, String premium) {
+   public MemberVO(String id) {
+	this.id = id;
+}
+
+
+
+public MemberVO(String id, String password, String nickname, String email, String phone, String premium) {
 	this.id = id;
 	this.password = password;
 	this.nickname = nickname;

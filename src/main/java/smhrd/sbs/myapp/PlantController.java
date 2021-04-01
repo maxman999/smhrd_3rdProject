@@ -11,6 +11,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -146,6 +147,27 @@ public class PlantController {
 			System.out.println("도감등록 성공");
 		}else {
 			System.out.println("도감등록 실패");
+		}
+			
+		return "redirect:/main.do";
+	}
+   
+   @RequestMapping("/plantImgGetId.do")
+	public String plantImgGetId(HttpServletRequest request) {
+	   HttpSession session = request.getSession();
+	   MemberVO vo = (MemberVO)session.getAttribute("info");
+	   String id = vo.getId();
+	    System.out.println("컨트롤러에서 아이디 : "+id);
+	    System.out.println(id);
+	    
+		List<PlantVO> plist = dao.plantImgGetId(id);
+		System.out.println(plist);
+		System.out.println(plist.get(0).getId());
+		session.setAttribute("plist", plist);
+		if (plist.get(0).getId() != null) {
+			System.out.println("로그인아이디 가져오기 성공");
+		}else {
+			System.out.println("로그인아이디 가져오기 성공");
 		}
 			
 		return "redirect:/main.do";

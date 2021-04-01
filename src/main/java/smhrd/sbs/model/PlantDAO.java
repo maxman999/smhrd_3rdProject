@@ -9,5 +9,6 @@ public interface PlantDAO {
 	public PlantVO plantRead(PlantVO vo);
 	public int plantDelete(int pid);
 	public int plantUpdate(PlantVO vo);
+	public List<PlantVO> plantImgGetId(String id);
 	
 }

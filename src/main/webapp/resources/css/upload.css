@@ -45,6 +45,10 @@ img#upload_image {
     z-index:1;
 }
 
+img#upload_image:visited {
+	visibility: hidden;
+}
+
 input#fileNm {
     visibility: hidden;
 }
