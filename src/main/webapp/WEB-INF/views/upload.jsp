@@ -18,6 +18,16 @@
 </head>
 <body onload="Confirming();">
 
+<!-- === 로그인 안했을 시 로그인 페이지로 이동 === -->
+<c:set var="info" value="${info }"/>
+<c:if test="${info eq null}">
+	<script type="text/javascript">
+		alert("로그인을 해야 이용할 수 있는 서비스입니다.");
+		location.href= "login.do";
+	</script>	
+</c:if>
+<!-- ============================ -->
+
 <section id="home" class="target-section section">   <!-- section : 여러 중심 내용을 감싸는 공간 -->
      <div class="container" id="home_contents">
 	<h2 id="upload_title"><b>식별이랑 정보</b></h2>
