@@ -45,8 +45,21 @@
 						<br/>
 						<br/>
 						<br/>
+						<!--  
 						<label for="premium">회원권</label> 
-						<input class="mypage" type="text" id="premium" name="premium" readonly value="${ info.premium }"  required/>  
+						<input class="mypage" type="text" id="premium" name="premium" readonly value="${ info.premium }"  required/>
+						-->
+						<p>회원권 : 
+							<c:set var="info" value="${info}"/>
+							<c:choose>
+							<c:when test="${info.premium eq 0}">
+								무료회원
+							</c:when>
+							<c:otherwise>
+								유료회원
+							</c:otherwise>
+							</c:choose>
+						</p>  
 						<br/>
 						<br/>
 						<br/>
