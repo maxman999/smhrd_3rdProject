@@ -355,6 +355,7 @@ div#home_contents2 {
     padding: 60px;
 }
 
+<<<<<<< HEAD
 .section-container {
     padding: 0 0 80px 0;
     transition-duration: 3s;
@@ -376,6 +377,10 @@ hr#main_hr {
 /* 메인 서비스소개 위치 */
 div#main_introduce {
     padding: 90px 0;
+=======
+b#home_h {
+    color: green;
+>>>>>>> e7e70dc5e3f698403b0a9eea0a2dbcc7eb25ef8a
 }
 
 /*---------------------------------------

@@ -63,9 +63,9 @@
 				</div>
           </div>
 </section>
- 
 <%--이미지 미리보기 --%>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
 <script type="text/javascript"> 
 	function readURL(input) { 
 		if (input.files && input.files[0]) { 
@@ -92,8 +92,6 @@
 	
 	}
 </script>
-
-
 <script>
 <%-- onbeforeunload : 새로고침이나 브라우져를 닫았을 때, 실행되는 이벤트 --%>
 		function Confirming() {
@@ -127,6 +125,7 @@
 	
 </script>
 <script type="text/javascript">
+// 업로드 버튼 클릭 시 ajax통신으로 서버에 저장
 $('#btnUpload').on('click', function(event) {
     event.preventDefault();
     
@@ -134,10 +133,10 @@ $('#btnUpload').on('click', function(event) {
     var data = new FormData(form);
     
     $('#btnUpload').prop('disabled', true);
-	
+   
     
     let getName = () => {
-    	return new Promise((resolve, reject) => {
+       return new Promise((resolve, reject) => {
     $.ajax({
         type: "POST",
         enctype: 'multipart/form-data',
@@ -148,10 +147,10 @@ $('#btnUpload').on('click', function(event) {
         cache: false,
         timeout: 600000,
         success: function (data) {
-        	$('#btnUpload').prop('disabled', false);
-        	alert('success');
-        	console.log(data.result);
-        	resolve(data.result);
+           $('#btnUpload').prop('disabled', false);
+           alert('success');
+           console.log(data.result);
+           resolve(data.result);
         },
         error: function (e) {
             $('#btnUpload').prop('disabled', false);
@@ -183,17 +182,16 @@ $('#btnUpload').on('click', function(event) {
    
     const targetNum = getName();
     targetNum.then(pname => {
-    	const result = getInfo('http://api.nongsaro.go.kr/service/garden/gardenDtl?apiKey=20210325ZSIOCEZBQCK8HV5TOYGQUQ&cntntsNo='+pname);
-		result.then(pdata => {
-			document.getElementById("info1").innerText = pdata.getElementsByTagName('adviseInfo')[0].innerHTML;
+       const result = getInfo('http://api.nongsaro.go.kr/service/garden/gardenDtl?apiKey=20210325ZSIOCEZBQCK8HV5TOYGQUQ&cntntsNo='+pname);
+      result.then(pdata => {
+         document.getElementById("info1").innerText = pdata.getElementsByTagName('adviseInfo')[0].innerHTML;
             document.getElementById("info2").innerText = pdata.getElementsByTagName('frtlzrInfo')[0].innerHTML;
             document.getElementById("info3").innerText = pdata.getElementsByTagName('speclmanageInfo')[0].innerHTML;
             document.getElementById("info4").innerText = pdata.getElementsByTagName('fncltyInfo')[0].innerHTML;
-		})
+      })
     })
     
 })
-
 </script>
 <%-- /식물 정보 받아오는 것 --%>
 

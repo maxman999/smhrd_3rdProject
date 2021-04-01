@@ -12,16 +12,22 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.HashMap;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import smhrd.sbs.model.MemberVO;
 import smhrd.sbs.model.PlantDAO;
+import smhrd.sbs.model.PlantVO;
 
 @Controller
 public class PlantController {
@@ -29,6 +35,8 @@ public class PlantController {
    
    @Autowired
    private PlantDAO dao;
+   HttpServletRequest request;
+   HttpSession session;
    
    @RequestMapping("/upload.do")
    public String upload() {
@@ -37,20 +45,33 @@ public class PlantController {
    
    @ResponseBody
    @RequestMapping("/fileUpload.do")
-   public HashMap<String, String> fileUpload(@RequestParam("uploadFile") MultipartFile file, ModelAndView mv)throws IllegalStateException, IOException {
+   public HashMap<String, String> fileUpload(@RequestParam("uploadFile") MultipartFile file, HttpServletRequest request)throws IllegalStateException, IOException, Exception {
       if(!file.getOriginalFilename().isEmpty()) {
          file.transferTo(new File(FILE_SERVER_PATH, file.getOriginalFilename()));
-//         model.addAttribute("msg", "File uploaded successfully.");
+
       }else {
-//         model.addAttribute("msg", "Please select a valid mediaFile..");
       }
+      
+      // 세션에 식물이름 저장
+      HttpSession session = request.getSession();
+      String name = file.getOriginalFilename();
+      session.setAttribute("imgName", name);
+   
+      ModelAndView mv = new ModelAndView();
+      mv.setViewName("/upload");
+      
+      // 플라스크 연동
       System.out.println(file.getOriginalFilename());
+      session = request.getSession();
+      session.setAttribute("imgName", file.getOriginalFilename());
+      
       String result = excutePost("http://127.0.0.1:5000/getImgName",file.getOriginalFilename());
       HashMap<String, String> map = new HashMap<String, String>();
       System.out.println("받은 결과 : " + result);
       map.put("result", result);
       return map;
    }
+
    
    
    public static String excutePost(String targetURL, String urlParameters) {
@@ -118,5 +139,16 @@ public class PlantController {
       return "img_register";
    }
    
+   @RequestMapping("/plantInsert.do")
+	public String plantInsert(PlantVO vo) {
+		int cnt = dao.plantInsert(vo);
+		if (cnt>0) {
+			System.out.println("도감등록 성공");
+		}else {
+			System.out.println("도감등록 실패");
+		}
+			
+		return "redirect:/main.do";
+	}
    
 }

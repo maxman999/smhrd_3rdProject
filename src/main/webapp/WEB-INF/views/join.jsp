@@ -11,7 +11,6 @@
 
 <link rel="stylesheet" href="resources/css/join.css">
 <!-- Main css -->
-<link rel="stylesheet" href="resources/css/style.css">
 
 <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,700" rel="stylesheet">
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -72,10 +71,7 @@
 				</div>
           </div>
 </section>
-
   
 <%@ include file="footer.jsp"%>
-	
-	
 </body>
 </html>

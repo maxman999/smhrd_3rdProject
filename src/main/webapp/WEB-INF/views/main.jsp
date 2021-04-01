@@ -35,21 +35,21 @@
     </style>
 
 </head>
+
 <body>
 <!-- Home Section -->
 <section id="home" class="target-section section">   <!-- section : 여러 중심 내용을 감싸는 공간 -->
      <div class="container" id="home_contents">
           <div class="row">
                <div class="col-md-12 col-sm-12" data-aos="flip-down" data-aos-duration="1500">
-                    <h2 class="home_text">당신의 <b>화초</b>가 병들었나요?</h2>
+                    <h2 class="home_text">당신의 <b id="home_h">화초</b> 얼마나 건강한가요?</h2>
                     <br>
-                    <h3>화초가 무슨 병에 걸렸는지 확인하세요.</h3>
+                    <h3>AI로 화초의 건강을 체크하세요.</h3>
                </div>
    					<button id="picture_upload_btn"><a href="${ctx}/upload.do"> 사진 업로드 </a></button>
           </div>
      </div>
 </section>
-
 <div class="target-section ready section1" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
     <div class="container" id="main_introduce">
         <div class="row">

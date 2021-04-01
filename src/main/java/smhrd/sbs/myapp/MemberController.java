@@ -21,9 +21,7 @@ public class MemberController {
 	private MemberDAO dao;
 
 	@RequestMapping("/main.do")
-	public String memberList(Model model) {
-		List<MemberVO> list = dao.memberList();
-		model.addAttribute("list", list);
+	public String memberList() {
 		return "main";
 	}
 
@@ -97,6 +95,10 @@ public class MemberController {
 			System.out.println("탈퇴 실패");
 		}
 		return "redirect:/main.do";
+	}
+	@RequestMapping("/logintest.do")
+	public String logintest() {
+		return "logintest";
 	}
 
 	
