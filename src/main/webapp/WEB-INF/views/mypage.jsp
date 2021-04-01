@@ -52,12 +52,12 @@
 						<p>회원권 : 
 							<c:set var="info" value="${info}"/>
 							<c:choose>
-							<c:when test="${info.premium eq 0}">
-								무료회원
-							</c:when>
-							<c:otherwise>
-								유료회원
-							</c:otherwise>
+								<c:when test="${info.premium eq 0}">
+									무료회원
+								</c:when>
+								<c:otherwise>
+									유료회원
+								</c:otherwise>
 							</c:choose>
 						</p>  
 						<br/>
