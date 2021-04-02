@@ -300,12 +300,13 @@ input#login_submit {
     align-items: center;
     position: relative;
     text-align: center;
-    padding-top: 200px;
     padding-bottom: 40px;
 }
 
 div#home_contents {
     padding: 60px;
+    position: relative;
+    bottom: 60px;
 }
 
 /* 사진 업로드 버튼 */
@@ -371,12 +372,13 @@ hr#main_hr {
 
 /* 메인 서비스소개 높이 */
 .target-section.section1.aos-init.active.aos-animate {
-    height: 500px;
+    height: 590px;
 }
 
 /* 메인 서비스소개 위치 */
 div#main_introduce {
-    padding: 90px 0;
+    padding: 120px 0;
+    
 }
 
 b#home_h {
@@ -411,6 +413,7 @@ h1#main_plant_title {
 input#main_plant_imageopen {
     position: relative;
     top: 100px;
+    left: 100px;
     background: none;
     border-style: solid;
     border-color: yellowgreen;
@@ -420,27 +423,39 @@ input#main_plant_imageopen {
 
 span#main_image_span1 {
     display: inline-block;
-    width: 500px;
-    height: 500px;
-    background-color: antiquewhite;
+    width: 630px;
+    height: 970px;
+    background-color: white;
+    position: relative;
+    left: 150px;
 }
 span#main_image_span2 {
     display: inline-block;
-    width: 900px;
+    width: 1500px;
     height: 970px;
-    background-color: #ddd7fa;
+    background-color: whitesmoke;
     position: relative;
-    left: 610px;
-    bottom: 500px;
+    left: 400px;
+    bottom: 970px;
 }
 
 img.main_plant_image_list {
     width: 400px;
+    position: relative;
+    top: 180px;
+    left: 100px;
     
 }
 
 li.main_plant_li {
     list-style-type: none;
+}
+
+h2#main_plant_title {
+    width: 500px;
+    position: relative;
+    top: 50px;
+    left: 200px;
 }
 
 /*---------------------------------------

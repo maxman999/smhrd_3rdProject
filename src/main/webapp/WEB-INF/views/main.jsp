@@ -30,7 +30,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
     <style>
       .target-section {height: 969px; transition: background 0.5s;}
-      .section1.active {background: #64bcaa;}
+      .section1.active {background: #bcf9c361;;}
       .section2.active {background: #f5f5f5;}
     </style>
 
@@ -93,12 +93,19 @@
 			    <!-- 슬라이딩기능: 이미지 (type = 'th')를 순차적(javascript) 으로 노출 -->
 			    <span id="main_image_span1">
 			    <ul class="visual_img">
-			    <h1 id="main_plant_title">${info.id } 아가들</h1>
-					
+			    <c:set var="info" value="${info}"/>
+			    <c:choose>
+			    <c:when test="${info eq null}">
+			    <h2 id="main_plant_title">도감을 보려면 로그인 해주세요</h2>
+			    </c:when>
+			    <c:otherwise>
+			    <h2 id="main_plant_title">${info.id }님의 도감</h2>
+			    </c:otherwise>
+				</c:choose>
 					<!-- 로그인한 아이디로 plantVO 리스트 가져옴 -->
 			    	<form action="plantImgGetId.do" method="post">
 			    		<input type="hidden" name="loginId" value="${info.id}">
-			    		<input type="submit" value="도감열람" id="main_plant_imageopen">
+			    		<input type="submit" value="나의 초록이 보기" id="main_plant_imageopen">
 			    	</form>
 			    	</span>
 			    	
