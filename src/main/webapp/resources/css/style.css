@@ -356,7 +356,6 @@ div#home_contents2 {
     padding: 60px;
 }
 
-<<<<<<< HEAD
 .section-container {
     padding: 0 0 80px 0;
     transition-duration: 3s;
@@ -387,16 +386,62 @@ b#home_h {
 /*---------------------------------------
  	 이미지 슬라이드        
 -----------------------------------------*/
+
+.container_visual {
+    position: relative;
+    right: 365px;
+}
+
 .visual_img li {
 	position: relative;
 	display: inline;
+	left: 400px;
 }
 
 .visual_img img {
-	width: 414px;
-	height: 318px;	
+	width: 200px;
+	height: 100px;	
 }
- 
+ /* 메인 식물도감 타이틀 위치 */
+h1#main_plant_title {
+    position: relative;
+    top: 100px;
+}
+/* 도감열람 버튼*/
+input#main_plant_imageopen {
+    position: relative;
+    top: 100px;
+    background: none;
+    border-style: solid;
+    border-color: yellowgreen;
+    width: 380px;
+    height: 300px;
+}
+
+span#main_image_span1 {
+    display: inline-block;
+    width: 500px;
+    height: 500px;
+    background-color: antiquewhite;
+}
+span#main_image_span2 {
+    display: inline-block;
+    width: 900px;
+    height: 970px;
+    background-color: #ddd7fa;
+    position: relative;
+    left: 610px;
+    bottom: 500px;
+}
+
+img.main_plant_image_list {
+    width: 400px;
+    
+}
+
+li.main_plant_li {
+    list-style-type: none;
+}
 
 /*---------------------------------------
    Footer section              

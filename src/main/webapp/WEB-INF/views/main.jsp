@@ -31,7 +31,7 @@
     <style>
       .target-section {height: 969px; transition: background 0.5s;}
       .section1.active {background: #64bcaa;}
-      .section2.active {background: #68a0da;}
+      .section2.active {background: #f5f5f5;}
     </style>
 
 </head>
@@ -90,29 +90,31 @@
     	<div class="container">
 		  <div class="row">
 			<div class="container_visual">
-			    <!-- Promotion -->
 			    <!-- 슬라이딩기능: 이미지 (type = 'th')를 순차적(javascript) 으로 노출 -->
+			    <span id="main_image_span1">
 			    <ul class="visual_img">
-			    <h1>${info.id } 아가들</h1>
+			    <h1 id="main_plant_title">${info.id } 아가들</h1>
 					
 					<!-- 로그인한 아이디로 plantVO 리스트 가져옴 -->
 			    	<form action="plantImgGetId.do" method="post">
 			    		<input type="hidden" name="loginId" value="${info.id}">
-			    		<input type="submit" value="도감열람">
+			    		<input type="submit" value="도감열람" id="main_plant_imageopen">
 			    	</form>
+			    	</span>
 			    	
+			    </ul>
+			    </span>
+			  </div>
+			    	<span id="main_image_span2">
 			    	<!-- vo가 담긴 plist를 반복문으로 인덱스 바꿔가며 사진이름 뽑아내기 -->
 			    	<c:set var="plist" value="${sessionScope.plist}"/>
 			    	
 			    	<c:forEach var="plist" items="${sessionScope.plist}" begin="0" varStatus="status">
-			    		<p>${plist.picture}</p>
-			    		<li><img src="./resources/images/${plist.picture}"></li>
+			    		<%-- <p>${plist.picture}</p> --%>
+			    		<li class="main_plant_li"><img src="./resources/images/${plist.picture}" class="main_plant_image_list"></li>
 			    	</c:forEach>
 			    	
 			    	<%-- ${plist.get(0).getId()}확인완료 --%>
-			    	
-			    </ul>
-			  </div>
 			  <span class="nxt_fix" style="display:none;"></span>
 		  </div>
 		</div>
@@ -178,7 +180,7 @@ AOS.init();
       });
     </script>
 
-<script>
+<script>  <%-- 메인 이미지 슬라이드 --%>
 	var image_ul = document.querySelector(".visual_img");
 	
 	window.onload = function() {
@@ -195,7 +197,7 @@ AOS.init();
 	}
 
 /* Animation: sliding */
-	function slideShow(imgCnt) {
+/* 	function slideShow(imgCnt) {
 		var curIndex = 0;
 		
 		setInterval( () => {
@@ -208,7 +210,7 @@ AOS.init();
 				curIndex = -1;
 			}
 		},2000);	
-	}
+	} */
 </script>
 </body>
 </html>
