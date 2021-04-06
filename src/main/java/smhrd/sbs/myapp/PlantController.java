@@ -12,10 +12,12 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,7 +34,10 @@ import smhrd.sbs.model.PlantVO;
 
 @Controller
 public class PlantController {
-   private static final String FILE_SERVER_PATH = "C:/eGovFrame-3.9.0/project3/project_sbs/src/main/webapp/resources/images";
+	// 컴퓨터마다 경로가 다름
+	// 경로 1(혜선). "C:/eGovFrame-3.9.0/project3/project_sbs/src/main/webapp/resources/images"
+	// 경로 2(익주, 지용). "C:/eGovFrame-3.9.0/sbs/project_sbs/src/main/webapp/resources/images"
+   private static final String FILE_SERVER_PATH = "C:/eGovFrame-3.9.0/sbs/project_sbs/src/main/webapp/resources/images";
    
    @Autowired
    private PlantDAO dao;
@@ -52,15 +57,12 @@ public class PlantController {
 
       }else {
       }
-      
       // 세션에 식물이름 저장
       HttpSession session = request.getSession();
       String name = file.getOriginalFilename();
       session.setAttribute("imgName", name);
-   
       ModelAndView mv = new ModelAndView();
       mv.setViewName("/upload");
-      
       // 플라스크 연동
       System.out.println(file.getOriginalFilename());
       session = request.getSession();
@@ -69,7 +71,11 @@ public class PlantController {
       String result = excutePost("http://127.0.0.1:5000/getImgName",file.getOriginalFilename());
       HashMap<String, String> map = new HashMap<String, String>();
       System.out.println("받은 결과 : " + result);
-      map.put("result", result);
+      String[] resultArr = result.split("/");
+      session.setAttribute("idntfName", resultArr[0]);
+      session.setAttribute("idntfNum", resultArr[1]);
+      map.put("plantName", resultArr[0]);
+      map.put("plantNum", resultArr[1]);
       return map;
    }
 
@@ -172,7 +178,38 @@ public class PlantController {
 			System.out.println("로그인아이디 가져오기 성공");
 		}
 			
-		return "redirect:/main.do";
+		return "redirect:/main.do#plantDic";
 	}
+   
+   @RequestMapping("/disease_upload.do")
+   public String diseaseUpload() {
+      return "disease_upload";
+   }
+   
+   @ResponseBody
+   @RequestMapping("/diseaseCheck.do")
+   public HashMap<String, String> diseaseCheck(@RequestParam("uploadFile") MultipartFile file, HttpServletRequest request)throws IllegalStateException, IOException, Exception {
+      if(!file.getOriginalFilename().isEmpty()) {
+         file.transferTo(new File(FILE_SERVER_PATH, file.getOriginalFilename()));
+         
+      }else {
+      }
+
+      ModelAndView mv = new ModelAndView();
+      mv.setViewName("/disease_upload");
+   
+      // 플라스크 연동
+      System.out.println(file.getOriginalFilename());
+      HashMap<String, String> diseaseMap = new HashMap<String, String>();
+      ObjectMapper mapper = new ObjectMapper();
+      String result = excutePost("http://127.0.0.1:5000/getDiseaseName",file.getOriginalFilename());
+      System.out.println("받은 결과2 : " + result);
+      try {
+    	  diseaseMap = (HashMap<String, String>) mapper.readValue(result, Map.class); 
+      }catch(IOException e) {
+    	  e.printStackTrace();
+      }
+      return diseaseMap;
+   }
    
 }

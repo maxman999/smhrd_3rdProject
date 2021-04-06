@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="resources/css/font-awesome.min.css">
 
 <link rel="stylesheet" href="resources/css/join.css">
+<link rel="stylesheet" href="resources/css/style.css">
 <!-- Main css -->
 
 <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,700" rel="stylesheet">
@@ -25,11 +26,11 @@
 				<div class="container">
 				<div id="content">
 				<!-- Content -->
-					<form action="${ctx}/memberInsert.do" method="post" >
+					<form action="${ctx}/memberInsert.do" method="post" id="join_form">
 						<div class="form-group">
 							<label for="id" class="join_label"> 아이디 </label>  <!-- input 태그를 설명 -->
 							<input placeholder="아이디를 입력해주세요" type="text"
-							required class="form-control" name="id" />
+							required class="form-control" class="join_input" name="id" />
 						</div>
 						<br>
 						<div class="form-group">
@@ -52,13 +53,13 @@
 						<div class="form-group">
 							<label for="email" class="join_label"> 이메일 </label>
 							<input placeholder="이메일을 입력해주세요" type="email"
-							required class="form-control" name="email" />
+							required class="form-control" id="join_input1" name="email" />
 						</div>
 						<br>
 						<div class="form-group">
 							<label for="phone" class="join_label"> 전화번호 </label>
 							<input placeholder="전화번호를 입력해주세요" type="tel"
-							required class="form-control" name="phone" />
+							required class="form-control" id="join_input2" name="phone" />
 						</div>
 						<br>
 						<div>

@@ -25,7 +25,7 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,700"
 	rel="stylesheet">
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
 </head>
 <body>
 
@@ -49,8 +49,8 @@
 						<c:when test="${not empty login}">
 							<%-- 로그인o --%>
 							<li class="active"><a href="main.do">홈</a></li>
-							<li><a href="about.html">서비스 소개</a></li>
-							<li><a href="community.do">커뮤니티</a></li>
+							<li><a href="#target1" class="scroll">서비스 소개</a></li>
+							<li><a href="#target2">마이 도감</a></li>
 							<li><a href="mypage.do">마이페이지</a></li>
 							<li><a href="logout.do">로그아웃</a></li>
 							<li>
@@ -58,8 +58,8 @@
 						<c:otherwise>
 							<%--로그인x --%>
 							<li class="active"><a href="main.do">홈</a></li>
-							<li><a href="about.html">서비스 소개</a></li>
-							<li><a href="blog.html">커뮤니티</a></li>
+							<li><a href="#target1" class="scroll">서비스 소개</a></li>
+							<li><a href="#target2">마이 도감</a></li>
 							<li><a href="#" class="loginbu" id="right_link">로그인</a></li>
                    			<li><a href="join.do">회원가입</a></li>
 							<!-- login/Register-btn -->
@@ -96,19 +96,37 @@
 			</div>
 			</div>
 		</div>
-			
-	<script>
-var right_link = document.getElementById('right_link');
-var inn = document.getElementById('inner');
-var link = document.getElementById('link');
-function makeVisible() {
-  if (inn.classList.contains('active')) {
-    inn.classList.remove('active');
-  } else {
-    inn.classList.add('active');
-  }
-}
-right_link.addEventListener('click', makeVisible)
+		
+<script>
+
+	$(document).ready(function($) {
+	
+	$(".target-section ready section2").click(function(event){            
+	
+	event.preventDefault();
+	
+	$('html,body').animate({scrollTop:$(this.hash).offset().top}, 500);
+	
+	});
+	
+	});
+
+</script>
+
+
+
+<script>
+	var right_link = document.getElementById('right_link');
+	var inn = document.getElementById('inner');
+	var link = document.getElementById('link');
+	function makeVisible() {
+	  if (inn.classList.contains('active')) {
+	    inn.classList.remove('active');
+	  } else {
+	    inn.classList.add('active');
+	  }
+	}
+	right_link.addEventListener('click', makeVisible)
 </script>
 </body>
 </html>

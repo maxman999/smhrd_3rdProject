@@ -29,11 +29,39 @@
 <%-- 스크롤 등장 모션 --%>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
     <style>
-      .target-section {height: 969px; transition: background 0.5s;}
+      .target-section {height: 884px; transition: background 0.5s;}
       .section1.active {background: #bcf9c361;;}
-      .section2.active {background: #f5f5f5;}
+      .section2.active {background: #ffffff;}
+      /* 도감열람 이미지 나열 */
+      span#main_image_span2 {
+    	width: 1500px;
+    	height: 602px;
+    	background-color: #ffffff;
+    	position: absolute;
+    	left: 0px;
+    	bottom: 0px;
+    	white-space: nowrap;
+    	overflow-x: scroll;
+	}
+	
+	::-webkit-scrollbar{width: 16px;}
+	::-webkit-scrollbar-track {background-color:#f1f1f1;}
+	::-webkit-scrollbar-thumb {background-color:#e6ffe6;}
+	::-webkit-scrollbar-thumb:hover {background: #ccffcc;}
+	::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment {
+		width:16px;height:16px;background:#e6ffe6;} 
+	
+	
+	/* 도감열람 이미지 크기조정 */
+	img.main_plant_image_list {
+    	width: 500px;
+    	position: relative;
+    	left: 100px;
+    	height: 400px;
+    	object-fit: fill;
+	}
+      
     </style>
-
 </head>
 
 <body>
@@ -46,16 +74,18 @@
                     <br>
                     <h3>AI로 화초의 건강을 체크하세요.</h3>
                </div>
-   					<button id="picture_upload_btn"><a href="${ctx}/upload.do"> 사진 업로드 </a></button>
+   					<button id="picture_upload_btn"><a href="${ctx}/upload.do"> 식물 식별 </a></button>
+   					<button id="picture_sick_upload_btn"><a href="${ctx}/disease_upload.do"> 질병 진단 </a></button>
           </div>
      </div>
 </section>
 <div class="target-section ready section1" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
+<div id="target1"></div>  <!-- 메뉴클릭시 스크롤 이동 -->
     <div class="container" id="main_introduce">
         <div class="row">
             <div class="col-xs-12 col-md-12 section-container-spacer">
-                <h2 class="text-center">딥러닝으로 케어하는 화초 질병진단 서비스!</h2>
-                <p class="main_introduce">Green belt는 딥러닝을 사용해 고객의 화초의 질병을 분석하고 알맞는 치료법을 알려드립니다</p>
+                <h2 class="text-center"><b>딥러닝으로 케어하는 화초 질병진단 서비스!</b></h2>
+                <p class="main_introduce">Green belt는 딥러닝을 사용해 고객의 화초의 질병을 분석하고 알맞는 치료법을 알려드립니다.</p>
                 <hr id="main_hr">
             </div>
         </div>
@@ -64,7 +94,7 @@
                 <div class="fa-container">
                    <i class="fa far fa-leaf fa-3x"></i>
                 </div>
-                <h3 class="text-center">화초식별서비스</h3>
+                <h3 class="text-center"><b>화초식별서비스</b></h3>
                 <p >화초사진을 찍어올리면 어떤 식물인지 판별해줍니다.</p>
             </div>
 
@@ -72,23 +102,25 @@
                 <div class="fa-container">
                     <i class="fa fa-search-plus fa-3x" aria-hidden="true"></i>
                 </div>
-                <h3 class="text-center">화초질병서비스</h3>
+                <h3 class="text-center"><b>화초질병서비스</b></h3>
                 <p style="text-align: center;">아픈 화초를 사진 찍어 올리면 어떤 질병인지 알려주고 방법을 알려줍니다.</p>
             </div>
             <div class="col-xs-12 col-md-4">
                 <div class="fa-container">
                     <i class="fa fa-heart-o fa-3x" aria-hidden="true"></i>
                 </div>
-                <h3 class="text-center">화초관리서비스</h3>
+                <h3 class="text-center"><b>화초관리서비스</b></h3>
                 <p style="text-align: center;"> 화초관리정보를 제공해줍니다.</p>
             </div>
         </div>
     </div>
 </div>
   
-    <section class="target-section ready section2">
-    	<div class="container">
+    <section class="target-section ready section2" data-aos="fade-right" data-aos-easing="linear" data-aos-duration="1500">
+    <div id="target2"></div>
+    	<div class="container" id="plantDic">
 		  <div class="row">
+		  <div class="col-md-12 col-sm-12">
 			<div class="container_visual">
 			    <!-- 슬라이딩기능: 이미지 (type = 'th')를 순차적(javascript) 으로 노출 -->
 			    <span id="main_image_span1">
@@ -96,33 +128,41 @@
 			    <c:set var="info" value="${info}"/>
 			    <c:choose>
 			    <c:when test="${info eq null}">
-			    <h2 id="main_plant_title">도감을 보려면 로그인 해주세요</h2>
+			    	<h2 id="main_plant_title1">도감을 보려면 로그인 해주세요</h2>
+			    	<!-- 로그인한 아이디로 plantVO 리스트 가져옴 -->
+			    	<form action="plantImgGetId.do" method="post">
+			    		<input type="hidden" name="loginId" value="${info.id}">
+			    		<input type="submit" value="나의 초록이 보기" id="main_plant_imageopen" disabled="">
+			    	</form>
 			    </c:when>
 			    <c:otherwise>
-			    <h2 id="main_plant_title">${info.id }님의 도감</h2>
-			    </c:otherwise>
-				</c:choose>
-					<!-- 로그인한 아이디로 plantVO 리스트 가져옴 -->
+			    	<h2 id="main_plant_title2"><b>${info.id }</b>님의 도감</h2>
+			    	<!-- 로그인한 아이디로 plantVO 리스트 가져옴 -->
 			    	<form action="plantImgGetId.do" method="post">
 			    		<input type="hidden" name="loginId" value="${info.id}">
 			    		<input type="submit" value="나의 초록이 보기" id="main_plant_imageopen">
 			    	</form>
-			    	</span>
-			    	
+			    </c:otherwise>
+				</c:choose>
 			    </ul>
 			    </span>
 			  </div>
-			    	<span id="main_image_span2">
+			    	<span id="main_image_span2" >
+			    	
 			    	<!-- vo가 담긴 plist를 반복문으로 인덱스 바꿔가며 사진이름 뽑아내기 -->
 			    	<c:set var="plist" value="${sessionScope.plist}"/>
-			    	
+			 		<table>
 			    	<c:forEach var="plist" items="${sessionScope.plist}" begin="0" varStatus="status">
 			    		<%-- <p>${plist.picture}</p> --%>
-			    		<li class="main_plant_li"><img src="./resources/images/${plist.picture}" class="main_plant_image_list"></li>
+			    		<td><tr class="main_plant_li">
+			    		<img src="./resources/images/${plist.picture}" class="main_plant_image_list">
+			    		</tr></td>
 			    	</c:forEach>
-			    	
+			    	</table>
+			    		<%-- <li class="main_plant_li"><img src="./resources/images/${plist.picture}" class="main_plant_image_list"></li> --%>
 			    	<%-- ${plist.get(0).getId()}확인완료 --%>
 			  <span class="nxt_fix" style="display:none;"></span>
+			  </span>
 		  </div>
 		</div>
     </section>
@@ -141,7 +181,7 @@
 AOS.init();
 </script>
  <script> <%-- 스크롤 등장 모션 --%>
-      jQuery(document).ready(function($) {
+      $(document).ready(function($) {
         $window = $(window);
  
         // 다음 섹션이 브라우저 하단으로부터 200px 만큼 보여질때
@@ -188,7 +228,7 @@ AOS.init();
     </script>
 
 <script>  <%-- 메인 이미지 슬라이드 --%>
-	var image_ul = document.querySelector(".visual_img");
+	var image_ul = document.querySelector(".main_plant_image_list");
 	
 	window.onload = function() {
 		var imgCnt = 0;
@@ -204,7 +244,7 @@ AOS.init();
 	}
 
 /* Animation: sliding */
-/* 	function slideShow(imgCnt) {
+	function slideShow(imgCnt) {
 		var curIndex = 0;
 		
 		setInterval( () => {
@@ -217,7 +257,7 @@ AOS.init();
 				curIndex = -1;
 			}
 		},2000);	
-	} */
+	}
 </script>
 </body>
 </html>

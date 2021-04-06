@@ -23,7 +23,7 @@
 <c:if test="${info eq null}">
 	<script type="text/javascript">
 		alert("로그인을 해야 이용할 수 있는 서비스입니다.");
-		location.href= "login.do";
+		location.href= "main.do";
 	</script>	
 </c:if>
 <!-- ============================ -->
@@ -44,35 +44,82 @@
 		
 		<!-- 이미지 미리보기 영역 --> 
 		<div id="imgViewArea" style="margin-top:10px;"> 
-			<img id="imgArea" style="width:400px; height:300px;" onerror="imgAreaError()"/> 
+			<img id="imgArea" style="width:400px; height:320px;" onerror="imgAreaError()"/> 
 		</div>
 		</div>
 		<div>
 		<input type="submit" id="btnUpload" value="식별">
 		</div>
 		
+		<div id="loading" style="margin-left: 0px; display: block">
+   		 <img src="./resources/images/lodingimg.gif">
+   		 <p>변환중입니다..잠시기다려주세요.</p>
+		</div>
 		
-		<button class="btn01" onclick="fn_spread('hiddenContent02');"><b>정보 보기</b></button> 
-		<div id="hiddenContent02" class="example01" style="visibility: fix;">
+		<div>
+			<img src="" id="ex_img">
+		<div class="info-box">
+			<ul id="upload_ul">
+			<p id="plant_name">'식물 명'</p>
+			 <c:forEach var="i" begin="0" end="1">
+			 	 <p id = "info_title${i}" style="display:none"></p>
+           		 <li id = "info${i}"></li>
+			</c:forEach>
+			</ul>
+		</div>
+		<button class="btn01" onclick="fn_spread('hiddenContent02');"><b>상세 보기</b></button> 
+		<!--style="visibility: hidden;"-->
+		<div id="hiddenContent02" class="example01" >
 		<div class="image_box2">
 			<div> 
-			<ul class="info_list">
-				<li id = "info1"></li>
-				<li id = "info2"></li>
-				<li id = "info3"></li>
-				<li id = "info4"></li>
-			</ul>
-    </div>
-		</div>
-		</div>
+			<table style="border-style: solid; position: relative; bottom: 3px; left: 5px;">
+       			 <c:forEach var="i" begin="2" end="11">
+        	   		 <tr>
+           			 <td id = "info_title${i}"  style="border-style: solid; text-align: center; height: 50px; font-weight: 900"></td>
+           			 <td id = "info${i}"  style="border-style: solid; height: 50px"></td>
+           		 	 </tr>
+				</c:forEach>
+			</table>
+  		</div>
+			</div>
+				</div>
+				<div id="autoKeyword">
+
+		<div id="noneDiv" style="background-color: #dff3d6;" ><p id="upload_eyes">&#128064;</p></div>
+
+</div>
+			</div>
 		<div class="upload_finalbtn">
-			<button class="upload_lastbtn"><a href="main.do"> <b>홈으로</b> </a></button>
+			<button class="upload_lastbtn" id="home_lastbtn"><a href="main.do"> <b>홈으로</b> </a></button>
 			<button class="upload_lastbtn"><a href="img_register.do"> <b>등록</b> </a></button>
 		</div>
 	</div>
 				</div>
           </div>
 </section>
+
+<!-- 식별 클릭시 div 숨기기 -->
+<script src="jquery-3.6.0.min.js"></script>
+<script>
+<!--
+
+$("#btnUpload").click(function(e) { 
+
+     if($("#autoKeyword").css("display") == "block") {
+
+          if(!$('#autoKeyword, #btnUpload').has(e.target).length) { 
+
+               $("#autoKeyword").hide();
+
+          } 
+
+     }
+
+});
+
+
+</script>
+
 <%--이미지 미리보기 --%>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
@@ -92,7 +139,6 @@
 				function imgAreaError(){ 
 					$('#imgViewArea').css({ 'display' : 'none' }); } 
 </script>
-<%-- /이미지 미리보기 --%>
 
 <%-- 업로드이미지 --%>
 <script>
@@ -101,14 +147,6 @@
 		$('#fileUpload').click();
 	
 	}
-</script>
-
-<script>
-	$(function(){
-		$("#upload_image").click(function(){
-			$("#upload_image").hide() 
-		});
-	});
 </script>
 
 <script>
@@ -140,7 +178,7 @@
                 }
             };
         });
-    }
+    });
 	
 </script>
 <script type="text/javascript">
@@ -167,9 +205,17 @@ $('#btnUpload').on('click', function(event) {
         timeout: 600000,
         success: function (data) {
            $('#btnUpload').prop('disabled', false);
-           alert('success');
-           console.log(data.result);
-           resolve(data.result);
+           console.log('success');
+           $(function(){
+       		$('#btnUpload').click(function(){
+       			if($("#noneDiv").css("display")!="none"){
+       				$('#noneDiv').hide();
+       			}
+       		});
+       	});
+           console.log(data.plantName);
+           console.log(data.plantNum);
+           resolve(data);
         },
         error: function (e) {
             $('#btnUpload').prop('disabled', false);
@@ -201,24 +247,42 @@ $('#btnUpload').on('click', function(event) {
    
     const targetNum = getName();
     targetNum.then(pname => {
-       const result = getInfo('http://api.nongsaro.go.kr/service/garden/gardenDtl?apiKey=20210325ZSIOCEZBQCK8HV5TOYGQUQ&cntntsNo='+pname);
-      result.then(pdata => {
-         document.getElementById("info1").innerText = pdata.getElementsByTagName('adviseInfo')[0].innerHTML;
-            document.getElementById("info2").innerText = pdata.getElementsByTagName('frtlzrInfo')[0].innerHTML;
-            document.getElementById("info3").innerText = pdata.getElementsByTagName('speclmanageInfo')[0].innerHTML;
-            document.getElementById("info4").innerText = pdata.getElementsByTagName('fncltyInfo')[0].innerHTML;
-      })
-    })
-    
+        const infoarr = ["plntbneNm","distbNm","grwhTpCodeNm","winterLwetTpCodeNm","frtlzrInfo","watercycleSprngCodeNm","lighttdemanddoCodeNm","postngplaceCodeNm","speclmanageInfo","fncltyInfo","adviseInfo"];
+        const infoarrk = ["유통명" , "식물학명" , "생육온도", "겨울 최저 온도", "비료정보", "물주기", "광요구도", "배치장소", "특별관리 정보", "기능성 정보", "조언 정보"];
+        document.getElementById("plant_name").innerText = pname.plantName;	
+        const result = getInfo('http://api.nongsaro.go.kr/service/garden/gardenDtl?apiKey=20210325ZSIOCEZBQCK8HV5TOYGQUQ&cntntsNo='+pname.plantNum);
+        result.then(pdata => {
+           for (var i = 0; i < infoarr.length ; i++ ){
+               plantInfo = pdata.getElementsByTagName(infoarr[i])[0].innerHTML;
+               plantInfo = plantInfo.replace("<![CDATA[", "").replace("]]>","");
+               document.getElementById("info"+i).innerText = plantInfo;
+               document.getElementById("info_title"+i).innerText = infoarrk[i];
+          }
+           document.getElementById("ex_img").src = "./resources/images/img_samples/"+pname.plantNum+"/"+pname.plantNum+" (1).jpg";
+       })
+     })
 })
 </script>
 <%-- /식물 정보 받아오는 것 --%>
 
-<script> function fn_spread(id){ var getID = document.getElementById(id); getID.style.display=(getID.style.display=='block') ? 'none' : 'block'; } </script>
+<script> 
+	function fn_spread(id){ 
+		var getID = document.getElementById(id); getID.style.display=(getID.style.display=='block') ? 'none' : 'block'; } 
+</script>
 
+<!-- <!-- 로딩 -->
+ <script>
+$(document).ready(function() {
+
+$('#loading').hide();
+$('#btnUpload').submit(function(){
+    $('#loading').show();
+    return true;
+    });
+});
+</script> -->
 
 <%@ include file="footer.jsp"%>
-	
 	
 </body>
 </html>

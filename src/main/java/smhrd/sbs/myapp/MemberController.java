@@ -1,8 +1,11 @@
 package smhrd.sbs.myapp;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.omg.CORBA.Request;
@@ -27,6 +30,7 @@ public class MemberController {
 
 	@RequestMapping("/login.do")
 	public String login() {
+		
 		return "login";
 	}
 	
@@ -40,10 +44,22 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/loginCheck.do")
-	public String loginCheck(MemberVO vo, HttpServletRequest req) {
+	public String loginCheck(MemberVO vo, HttpServletRequest req, HttpServletResponse response) {
 			MemberVO loginVO = dao.memberCheck(vo);
+			
 			if (loginVO == null) {
 				System.out.println("로그인 실패");
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out;
+				try {
+					out = response.getWriter();
+					out.println("<script>alert('다시 로그인해주세요'); location.href='main.do';</script>");
+					out.flush();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
 			} else {
 				System.out.println("로그인 성공");
 				HttpSession session = req.getSession();

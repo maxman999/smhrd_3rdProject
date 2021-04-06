@@ -1,7 +1,7 @@
 button.mypage_submit {
     background-color: white;
     color: black;
-    border-color: forestgreen;
+    border-color: yellowgreen;
     border-style: solid;
     padding: 8px 10px;
     border-radius: 7%;
@@ -58,5 +58,5 @@ input#premium {
 
 .mypage.content {
     position: relative;
-    bottom: 50px;
+    bottom: 25px;
 }

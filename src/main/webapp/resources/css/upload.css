@@ -1,3 +1,9 @@
+@font-face {
+    font-family: 'DOSMyungjo';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/DOSMyungjo.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
 .image_box {
     box-sizing: border-box;
@@ -6,31 +12,33 @@
 }
 button.btn01 {
     position: relative;
-    bottom: 200px;
+    bottom: 140px;
     background-color: white;
     border-radius: 7px;
     width: 800px;
     height: 40px;
     font-size: x-large;
-    left: 300px;
-    
+    left: 279px;
+    font-family: 'DOSMyungjo';
 }
+
 .upload_finalbtn {
     position: relative;
-    top: 50px;
+    bottom: -50px;
 }
 
 input#btnUpload {
     width: 400px;
     background: white;
-    border-style: inset;
+    border-style: ridge;
     border-color: yellowgreen;
     text-shadow: 0 0 black;
     height: 40px;
     font-size: x-large;
     position: relative;
     right: 400px;
-	top: 49px;    
+	top: 120px; 
+	font-family: 'DOSMyungjo';
 }
 
 input[type="file"] {
@@ -40,7 +48,7 @@ input[type="file"] {
 img#upload_image {
     width: 100px;
     position: relative;
-    top: 90px;
+    top: 180px;
     right: 485px;
     z-index:1;
 }
@@ -56,7 +64,7 @@ input#fileNm {
 img#imgArea {
     position: relative;
     right: 400px;
-    bottom: 100px;
+    bottom: 50px;
 }
 
 td#info1 {
@@ -69,11 +77,10 @@ ul.info_list{
     border: 1px solid #efefef;
     font-size: 12px;
     cursor: pointer;
-    width: 800px;
+    width: 1000px;
     list-style-type: none;
     font-size: large;
     position: relative;
-    bottom: 200px;
     left: 300px;
 }
 
@@ -101,10 +108,113 @@ button.upload_lastbtn {
     border-style: solid;
     border-radius: 5px;
     padding: 7px 10px;
+    border-color: yellowgreen;
 }
 
 h2#upload_title {
     position: relative;
-    bottom: 60px;
+    bottom: 40px;
+    font-family: 'DOSMyungjo';
 }
 
+.info-box {
+	border:2px solid; 
+	padding: 10px;
+	width: 800px;
+	height: 100px;
+	position: relative;
+	bottom: 168px;
+    left: 280px;
+}
+
+.info_list::-webkit-scrollbar{
+    width: 10px;
+    background: transparent;
+}
+
+.image_box2 {
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 800px;
+    height: 200px;
+    position: relative;
+    bottom: 140px;
+    left: 278px;
+}
+
+div#hiddenContent02 {
+    display: none;
+}
+/* 식물명 css*/
+p#plant_name {
+    font-size: x-large;
+    font-weight: 900;
+}
+
+img#ex_img {
+    width: 200px;
+    position: relative;
+    bottom: 200px;
+}
+
+ul#upload_ul {
+    list-style: none;
+    font-size: large;
+    font-weight: 900;
+}
+
+td#info_title2 {
+    width: 120px;
+}
+
+div#noneDiv {
+    position: absolute;
+    left: 270px;
+    height: 390px;
+    width: 817px;
+    bottom: 34px;
+    z-index: 1;
+}
+
+div#autoKeyword {
+	position: relative;
+}
+
+p#upload_eyes {
+    font-size: -webkit-xxx-large;
+    position: relative;
+    top: 160px;
+    left: 30px;
+}
+
+button#home_lastbtn {
+    position: relative;
+    right: 10px;
+}
+
+/* page-loading */
+  #loading {
+  	width: 100%;
+  	height: 100%;
+  	top: 0;
+  	left: 0;
+  	position: fixed;
+  	opacity: 0.6;
+  	background: #e4e4e4;
+  	z-index: 99;
+  	text-align: center;
+  }
+
+  #loading > img {
+  	position: absolute;
+  	top: 50%;
+  	left: 50%;
+  	z-index: 100;
+  }
+   #loading > p {
+    	position: absolute;
+    	top: 57%;
+    	left: 43%;
+    	z-index: 101;
+    }
