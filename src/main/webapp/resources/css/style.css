@@ -458,7 +458,7 @@ h1#main_plant_title {
 input#main_plant_imageopen {
     position: relative;
     top: 230px;
-    right: 150px;
+    left: 260px;
     background: none;
     border-style: solid;
     border-color: yellowgreen;
@@ -502,7 +502,7 @@ h2#main_plant_title1 {
     width: 500px;
     position: relative;
     top: 180px;
-    left: 30px;
+    left: 200px;
     font-size: revert;
 }
 
@@ -510,7 +510,7 @@ h2#main_plant_title2 {
     width: 500px;
     position: relative;
     top: 180px;
-    right: 150px;
+    left:320px;
 }
 
 section.target-section.section2.aos-init.aos-animate.active {

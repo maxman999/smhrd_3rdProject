@@ -26,14 +26,28 @@
 <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,700" rel="stylesheet">
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
+<link rel="stylesheet" href="resources/css/global.css">
+
+
 <%-- 스크롤 등장 모션 --%>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
     <style>
       .target-section {height: 884px; transition: background 0.5s;}
       .section1.active {background: #bcf9c361;;}
       .section2.active {background: #ffffff;}
+      
+      div#container_test {
+    	width: 1500px;
+    	height: 602px;
+    	background-color: #ffffff;
+    	position: absolute;
+    	left: 300px;
+    	bottom: 0px;
+    	z-index: 0;
+	}
+      
       /* 도감열람 이미지 나열 */
-      span#main_image_span2 {
+      /* span#main_image_span2 {
     	width: 1500px;
     	height: 602px;
     	background-color: #ffffff;
@@ -50,16 +64,20 @@
 	::-webkit-scrollbar-thumb:hover {background: #ccffcc;}
 	::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment {
 		width:16px;height:16px;background:#e6ffe6;} 
-	
-	
-	/* 도감열람 이미지 크기조정 */
-	img.main_plant_image_list {
+		
+		/* 도감열람 이미지 크기조정 */
+	/*img.main_plant_image_list {
     	width: 500px;
     	position: relative;
     	left: 100px;
     	height: 400px;
     	object-fit: fill;
 	}
+	 */
+	
+	
+	
+	
       
     </style>
 </head>
@@ -147,10 +165,43 @@
 			    </ul>
 			    </span>
 			  </div>
-			    	<span id="main_image_span2" >
+	
+	<!-- ============================================================ -->
+	<div id="container_test">
+		<div id="example">
+			<div id="slides">
+				<div class="slides_container">
+				
+					<c:set var="plist" value="${sessionScope.plist}"/>
+			    	<c:forEach var="plist" items="${sessionScope.plist}" begin="0" varStatus="status">
+			    		<%-- <p>${plist.picture}</p> --%>
+			    		<div class="slide">
+			    			<img src="./resources/images/${plist.picture}" width="500" height="350">
+			    			<!-- class="main_plant_image_list"  -->
+			    			<div class="caption" style="bottom:0">
+								<p>
+									식물명 : ${plist.plantname} / 등록일자 : ${plist.regidate}
+								</p>
+							</div>
+			    		</div>
+			    	</c:forEach>
+			    	<span class="nxt_fix" style="display:none;"></span>
+				</div>
+				<a href="#" class="prev"><img src="./resources/images/prepre.png" width="60" height="50" alt="Arrow Prev"></a>
+				<a href="#" class="next"><img src="./resources/images/nextnext.png" width="60" height="50" alt="Arrow Next"></a>
+				<!-- ./resources/img/arrow-next.png -->
+			</div>
+			<!-- <img src="./resources/img/example-frame.png" width="739" height="341" alt="Example Frame" id="frame"> -->
+		</div>
+	</div>
+	<!-- ============================================================== -->
+			    	
+			    	
+			    	<!-- 
+			    	<span id="main_image_span2" >-->
 			    	
 			    	<!-- vo가 담긴 plist를 반복문으로 인덱스 바꿔가며 사진이름 뽑아내기 -->
-			    	<c:set var="plist" value="${sessionScope.plist}"/>
+			    	<!--<c:set var="plist" value="${sessionScope.plist}"/>
 			 		<table>
 			    	<c:forEach var="plist" items="${sessionScope.plist}" begin="0" varStatus="status">
 			    		<%-- <p>${plist.picture}</p> --%>
@@ -159,12 +210,17 @@
 			    		</tr></td>
 			    	</c:forEach>
 			    	</table>
+			    	<span class="nxt_fix" style="display:none;"></span>
+			  </span>
+			    	 -->
+			    	
+			    	
+			    	
 			    		<%-- <li class="main_plant_li"><img src="./resources/images/${plist.picture}" class="main_plant_image_list"></li> --%>
 			    	<%-- ${plist.get(0).getId()}확인완료 --%>
-			  <span class="nxt_fix" style="display:none;"></span>
-			  </span>
+			  
 		  </div>
-		</div>
+		<!-- </div> -->
     </section>
  
   
@@ -180,6 +236,45 @@
 <script>
 AOS.init();
 </script>
+<!-- ================== 도감열람 UI 변경 ======================= -->
+<script src="resources/js/slides.min.jquery.js"></script>
+<script>
+
+		$(function(){
+			$('#slides').slides({
+				preload: true,
+				preloadImage: './resources/img/loading.gif',
+				play: 5000,
+				pause: 2500,
+				hoverPause: true,
+				animationStart: function(current){
+					$('.caption').animate({
+						bottom:-35
+					},100);
+					if (window.console && console.log) {
+						// example return of current slide number
+						console.log('animationStart on slide: ', current);
+					};
+				},
+				animationComplete: function(current){
+					$('.caption').animate({
+						bottom:0
+					},200);
+					if (window.console && console.log) {
+						// example return of current slide number
+						console.log('animationComplete on slide: ', current);
+					};
+				},
+				slidesLoaded: function() {
+					$('.caption').animate({
+						bottom:0
+					},200);
+				}
+			});
+		});
+	</script>
+<!-- ===================================================================== -->
+
  <script> <%-- 스크롤 등장 모션 --%>
       $(document).ready(function($) {
         $window = $(window);
