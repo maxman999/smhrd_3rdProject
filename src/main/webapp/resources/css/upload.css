@@ -9,10 +9,12 @@
     box-sizing: border-box;
     width: 410px;
     height: 260px;
+    position: relative;
+    top: 30px;
 }
 button.btn01 {
     position: relative;
-    bottom: 140px;
+    bottom: 185px;
     background-color: white;
     border-radius: 7px;
     width: 800px;
@@ -22,10 +24,6 @@ button.btn01 {
     font-family: 'DOSMyungjo';
 }
 
-.upload_finalbtn {
-    position: relative;
-    bottom: -50px;
-}
 
 input#btnUpload {
     width: 400px;
@@ -37,7 +35,7 @@ input#btnUpload {
     font-size: x-large;
     position: relative;
     right: 400px;
-	top: 120px; 
+	top: 188px; 
 	font-family: 'DOSMyungjo';
 }
 
@@ -48,7 +46,7 @@ input[type="file"] {
 img#upload_image {
     width: 100px;
     position: relative;
-    top: 180px;
+    top: 208px;
     right: 485px;
     z-index:1;
 }
@@ -65,6 +63,8 @@ img#imgArea {
     position: relative;
     right: 400px;
     bottom: 50px;
+    border: 2px ridge;
+    border-color: yellowgreen;
 }
 
 td#info1 {
@@ -120,11 +120,12 @@ h2#upload_title {
 .info-box {
 	border:2px solid; 
 	padding: 10px;
-	width: 800px;
-	height: 100px;
-	position: relative;
-	bottom: 168px;
+    width: 800px;
+    height: 310px;
+    position: relative;
+    bottom: 203px;
     left: 280px;
+    border-radius: 7px;
 }
 
 .info_list::-webkit-scrollbar{
@@ -138,8 +139,8 @@ h2#upload_title {
     overflow-y: auto;
     width: 800px;
     height: 200px;
-    position: relative;
-    bottom: 140px;
+    position: absolute;
+    bottom: -14px;
     left: 278px;
 }
 
@@ -150,18 +151,27 @@ div#hiddenContent02 {
 p#plant_name {
     font-size: x-large;
     font-weight: 900;
+    color: #353a35;
 }
 
 img#ex_img {
     width: 200px;
+    position: absolute;
+    bottom: 254px;
+    left: 400px;
+}
+
+.upload_img_ex {
     position: relative;
-    bottom: 200px;
 }
 
 ul#upload_ul {
     list-style: none;
     font-size: large;
     font-weight: 900;
+    position: relative;
+    top: 111px;
+    right: -63px;
 }
 
 td#info_title2 {
@@ -173,7 +183,7 @@ div#noneDiv {
     left: 270px;
     height: 390px;
     width: 817px;
-    bottom: 34px;
+    bottom: 167px;
     z-index: 1;
 }
 
@@ -185,7 +195,6 @@ p#upload_eyes {
     font-size: -webkit-xxx-large;
     position: relative;
     top: 160px;
-    left: 30px;
 }
 
 button#home_lastbtn {
@@ -193,28 +202,13 @@ button#home_lastbtn {
     right: 10px;
 }
 
-/* page-loading */
-  #loading {
-  	width: 100%;
-  	height: 100%;
-  	top: 0;
-  	left: 0;
-  	position: fixed;
-  	opacity: 0.6;
-  	background: #e4e4e4;
-  	z-index: 99;
-  	text-align: center;
-  }
+.upload_finalbtn {
+    position: relative;
+    bottom: -32px;
+    right: 10px;
+}
 
-  #loading > img {
-  	position: absolute;
-  	top: 50%;
-  	left: 50%;
-  	z-index: 100;
-  }
-   #loading > p {
-    	position: absolute;
-    	top: 57%;
-    	left: 43%;
-    	z-index: 101;
-    }
+p#upload_take {
+    position: relative;
+    top: 200px;
+}

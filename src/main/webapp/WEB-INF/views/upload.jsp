@@ -44,7 +44,7 @@
 		
 		<!-- 이미지 미리보기 영역 --> 
 		<div id="imgViewArea" style="margin-top:10px;"> 
-			<img id="imgArea" style="width:400px; height:320px;" onerror="imgAreaError()"/> 
+			<img id="imgArea" style="width:400px; height:390px;" onerror="imgAreaError()"/> 
 		</div>
 		</div>
 		<div>
@@ -56,7 +56,7 @@
    		 <p>변환중입니다..잠시기다려주세요.</p>
 		</div>
 		
-		<div>
+		<div class="upload_img_ex">
 			<img src="" id="ex_img">
 		<div class="info-box">
 			<ul id="upload_ul">
@@ -85,7 +85,7 @@
 				</div>
 				<div id="autoKeyword">
 
-		<div id="noneDiv" style="background-color: #dff3d6;" ><p id="upload_eyes">&#128064;</p></div>
+		<div id="noneDiv" style="background-color: #dff3d6;" ><p id="upload_eyes">&#128064; <p id="upload_take">잎이 보이도록 가까이 찍어주세요</p></p></div>
 
 </div>
 			</div>
