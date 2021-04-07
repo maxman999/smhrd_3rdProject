@@ -120,13 +120,6 @@
 	}
 </script>
 
-<!-- <script>
-	$(function(){
-		$("#upload_image").click(function(){
-			$("#upload_image").hide() 
-		});
-	});
-</script> -->
 
 <script>
 <%-- onbeforeunload : 새로고침이나 브라우져를 닫았을 때, 실행되는 이벤트 --%>

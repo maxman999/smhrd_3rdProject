@@ -51,10 +51,6 @@
 		<input type="submit" id="btnUpload" value="식별">
 		</div>
 		
-		<div id="loading" style="margin-left: 0px; display: block">
-   		 <img src="./resources/images/lodingimg.gif">
-   		 <p>변환중입니다..잠시기다려주세요.</p>
-		</div>
 		
 		<div class="upload_img_ex">
 			<img src="" id="ex_img">
@@ -84,9 +80,7 @@
 			</div>
 				</div>
 				<div id="autoKeyword">
-
 		<div id="noneDiv" style="background-color: #dff3d6;" ><p id="upload_eyes">&#128064; <p id="upload_take">잎이 보이도록 가까이 찍어주세요</p></p></div>
-
 </div>
 			</div>
 		<div class="upload_finalbtn">
@@ -98,27 +92,6 @@
           </div>
 </section>
 
-<!-- 식별 클릭시 div 숨기기 -->
-<script src="jquery-3.6.0.min.js"></script>
-<script>
-<!--
-
-$("#btnUpload").click(function(e) { 
-
-     if($("#autoKeyword").css("display") == "block") {
-
-          if(!$('#autoKeyword, #btnUpload').has(e.target).length) { 
-
-               $("#autoKeyword").hide();
-
-          } 
-
-     }
-
-});
-
-
-</script>
 
 <%--이미지 미리보기 --%>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -181,9 +154,11 @@ $("#btnUpload").click(function(e) {
     });
 	
 </script>
+
 <script type="text/javascript">
 // 업로드 버튼 클릭 시 ajax통신으로 서버에 저장
 $('#btnUpload').on('click', function(event) {
+	loadingStart();
     event.preventDefault();
     
     var form = $('#uploadForm')[0]
@@ -206,13 +181,6 @@ $('#btnUpload').on('click', function(event) {
         success: function (data) {
            $('#btnUpload').prop('disabled', false);
            console.log('success');
-           $(function(){
-       		$('#btnUpload').click(function(){
-       			if($("#noneDiv").css("display")!="none"){
-       				$('#noneDiv').hide();
-       			}
-       		});
-       	});
            console.log(data.plantName);
            console.log(data.plantNum);
            resolve(data);
@@ -259,29 +227,51 @@ $('#btnUpload').on('click', function(event) {
                document.getElementById("info_title"+i).innerText = infoarrk[i];
           }
            document.getElementById("ex_img").src = "./resources/images/img_samples/"+pname.plantNum+"/"+pname.plantNum+" (1).jpg";
+           document.getElementById("autoKeyword").style.display = "none";
        })
      })
 })
 </script>
-<%-- /식물 정보 받아오는 것 --%>
+<!-- /식물 정보 받아오는 것 -->
 
 <script> 
 	function fn_spread(id){ 
 		var getID = document.getElementById(id); getID.style.display=(getID.style.display=='block') ? 'none' : 'block'; } 
 </script>
 
-<!-- <!-- 로딩 -->
- <script>
-$(document).ready(function() {
-
-$('#loading').hide();
-$('#btnUpload').submit(function(){
-    $('#loading').show();
-    return true;
-    });
-});
-</script> -->
-
+<!-- 로딩  -->
+<script>
+    function LoadingWithMask() {
+    var maskHeight = $(document).height();
+    var maskWidth  = window.document.body.clientWidth;
+    var mask = "<div id='mask' style='position:absolute; z-index:9000; background-color:#000000; display:none; left:0; top:0;'></div>";
+    var loadingImg = '';
+    loadingImg +="<div id='loadingImg'>";
+    loadingImg +="<img src='./resources/images/Spinner.gif' style='position: fixed; display: block; z-index:1031; top: calc(50% - (50px/2)); right:calc(50% - (50px/2));'/>";
+    loadingImg +="</div>";   
+    $('body')
+        .append(mask)
+        .append(loadingImg)        
+    $('#mask').css({
+            'width' : maskWidth
+            ,'height': maskHeight
+            ,'opacity' :'0.3'
+    });  
+    $('#mask').show();    
+    $('#loadingImg').show();
+}
+function closeLoadingWithMask() {
+    $('#mask, #loadingImg').hide();
+    $('#mask, #loadingImg').remove(); 
+}
+</script>   
+<script>
+    function loadingStart() {
+    LoadingWithMask();
+    setTimeout("closeLoadingWithMask()", 500);
+    }
+</script>
+<!-- /로딩  -->
 <%@ include file="footer.jsp"%>
 	
 </body>

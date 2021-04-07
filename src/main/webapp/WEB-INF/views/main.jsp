@@ -119,7 +119,6 @@
     <section class="target-section ready section2" data-aos="fade-right" data-aos-easing="linear" data-aos-duration="1500">
     <div id="target2"></div>
     	<div class="container" id="plantDic">
-		  <div class="row">
 		  <div class="col-md-12 col-sm-12">
 			<div class="container_visual">
 			    <!-- 슬라이딩기능: 이미지 (type = 'th')를 순차적(javascript) 으로 노출 -->
@@ -128,7 +127,9 @@
 			    <c:set var="info" value="${info}"/>
 			    <c:choose>
 			    <c:when test="${info eq null}">
+			    	<div>
 			    	<h2 id="main_plant_title1">도감을 보려면 로그인 해주세요</h2>
+			    	</div>
 			    	<!-- 로그인한 아이디로 plantVO 리스트 가져옴 -->
 			    	<form action="plantImgGetId.do" method="post">
 			    		<input type="hidden" name="loginId" value="${info.id}">
@@ -163,7 +164,6 @@
 			    	<%-- ${plist.get(0).getId()}확인완료 --%>
 			  <span class="nxt_fix" style="display:none;"></span>
 			  </span>
-		  </div>
 		</div>
     </section>
  
