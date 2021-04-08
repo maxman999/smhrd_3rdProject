@@ -212,4 +212,9 @@ public class PlantController {
       return diseaseMap;
    }
    
+   @RequestMapping("/imgDicTest.do")
+   public String imgDicTest() {
+      return "imgDicTest";
+   }
+   
 }
