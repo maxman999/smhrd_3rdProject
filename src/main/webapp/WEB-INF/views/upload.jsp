@@ -206,13 +206,6 @@ $('#btnUpload').on('click', function(event) {
         success: function (data) {
            $('#btnUpload').prop('disabled', false);
            console.log('success');
-           $(function(){
-       		$('#btnUpload').click(function(){
-       			if($("#noneDiv").css("display")!="none"){
-       				$('#noneDiv').hide();
-       			}
-       		});
-       	});
            console.log(data.plantName);
            console.log(data.plantNum);
            resolve(data);
@@ -261,10 +254,22 @@ $('#btnUpload').on('click', function(event) {
            document.getElementById("ex_img").src = "./resources/images/img_samples/"+pname.plantNum+"/"+pname.plantNum+" (1).jpg";
        })
      })
+     setTimeout(function() {
+    	 
+    	 console.log("타임아웃")
+	 }, 3000);
 })
 </script>
 <%-- /식물 정보 받아오는 것 --%>
-
+<script>
+$(function(){
+		$('#btnUpload').click(function(){
+			if($("#noneDiv").css("display")!="none"){
+				$('#noneDiv').hide();
+			}
+		});
+	});
+</script>
 <script> 
 	function fn_spread(id){ 
 		var getID = document.getElementById(id); getID.style.display=(getID.style.display=='block') ? 'none' : 'block'; } 

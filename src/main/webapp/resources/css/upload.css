@@ -28,7 +28,7 @@ button.btn01 {
 input#btnUpload {
     width: 400px;
     background: white;
-    border-style: ridge;
+    border-style: inset;
     border-color: yellowgreen;
     text-shadow: 0 0 black;
     height: 40px;
@@ -44,7 +44,7 @@ input[type="file"] {
 }
 
 img#upload_image {
-    width: 100px;
+    width: 82px;
     position: relative;
     top: 208px;
     right: 485px;
@@ -63,8 +63,8 @@ img#imgArea {
     position: relative;
     right: 400px;
     bottom: 50px;
-    border: 2px ridge;
-    border-color: yellowgreen;
+    border: 0.5px ridge;
+    border-color: #191918;
 }
 
 td#info1 {

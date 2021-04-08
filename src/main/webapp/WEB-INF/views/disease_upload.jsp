@@ -13,8 +13,17 @@
 <!-- Main css -->
 <link rel="stylesheet" href="resources/css/style.css">
 
+<link rel="stylesheet" href="resources/css/disease_upload.css">
+
 <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,700" rel="stylesheet">
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+ <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+ <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+ <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+ <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+
+
 </head>
 <body onload="Confirming();">
 
@@ -53,18 +62,27 @@
 		<!-- <div id="noneDiv" style="background-color: #dff3d6;" ><p id="upload_eyes">&#128064;</p></div> -->
 		<div>
 			<img src="" id="ex_img" >
-		<div class="info-box">
-		<div><span class = disease-span ></span><span class = disease-span id = dinfo_0></span></div>
-		<div>
+		<div class="info-box" id="info_box_css">
+		<table style=" position: relative; bottom: 30px;">
+		<tr>
+		<td class="disease_td1">
+		<div><span class = disease-span ></span><span class = disease-span id = dinfo_0><p id="ment">내 식물의 질병은?</p></span></div>
+		</td>
+		<td class="disease_td2">
+		<!-- 차트 -->
+		<div id="graph"></div>
+		
 			<span class = disease-span >점무늬병</span><span class = disease-span id = dinfo_1></span>
 			<span class = disease-span >흰가루병</span><span class = disease-span id = dinfo_2></span>
 			<span class = disease-span >정상</span><span class = disease-span id = dinfo_3></span>
+		</td>
+		</tr>
+		</table>
 		</div>
-		</div>
-		<button class="btn01" onclick="fn_spread('hiddenContent02');"><b>상세 보기</b></button> 
+		<button class="btn01" onclick="fn_spread('hiddenContent02');" id="btn_dtail"><b>상세 보기</b></button> 
 		<!--style="visibility: hidden;"-->
 		<div id="hiddenContent02" class="example01" >
-		<div class="image_box2">
+		<div class="image_box2" id="image_box2_1">
 			<div> 
 			<table style="border-style: solid; position: relative; bottom: 3px; left: 5px;">
        			 <c:forEach var="i" begin="2" end="11">
@@ -85,14 +103,9 @@
 				</div>
           </div>
 </section>
-
-<!-- 식별 클릭시 div 숨기기 -->
-<script>
-	
-</script>
-
 <%--이미지 미리보기 --%>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
 
 <script type="text/javascript"> 
 	function readURL(input) { 
@@ -170,6 +183,7 @@ $('#btnUpload').on('click', function(event) {
        		});
        	});
            resolve(data);
+           
         },
         error: function (e) {
             $('#btnUpload').prop('disabled', false);
@@ -186,15 +200,31 @@ $('#btnUpload').on('click', function(event) {
     	document.getElementById("dinfo_2").innerText = dname.powderyMildew;
     	document.getElementById("dinfo_3").innerText = dname.nomal;
      })
+     // 데이터 받아오고 도넛차트 생성
+           	Morris.Donut({
+		  		element: 'graph',
+		  		data: [
+		    		{value: 75, label: '흰가루병', formatted: '0.9996%', color:'#2e8700' },
+		    		{value: 15, label: '점무늬병', formatted: '0.0003%', color:'#75d45b' },
+		    		{value: 10, label: '정상', formatted: '0.0002%', color:'#cdffb3' },
+		  		],
+		  		formatter: function (x, data) { return data.formatted; }
+			});
+    
+           ///////////////
 })
 </script>
+
+<script type="text/javascript">
+var x = 
+ </script>
+
 <%-- /식물 정보 받아오는 것 --%>
 
 <script> 
 	function fn_spread(id){ 
 		var getID = document.getElementById(id); getID.style.display=(getID.style.display=='block') ? 'none' : 'block'; } 
 </script>
-
 
 <%@ include file="footer.jsp"%>
 	
