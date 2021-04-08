@@ -9,5 +9,6 @@ public interface MemberDAO {
 	public MemberVO memberRead(MemberVO vo);
 	public int memberUpdate(MemberVO vo);
 	public int memberDelete(String id);
+	public int plantDeleteAll(String id);
 	MemberVO memberCheck(MemberVO loginVO);
 }

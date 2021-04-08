@@ -65,6 +65,7 @@ img#imgArea {
     bottom: 50px;
     border: 2px ridge;
     border-color: yellowgreen;
+    object-fit: cover;
 }
 
 td#info1 {
@@ -155,10 +156,12 @@ p#plant_name {
 }
 
 img#ex_img {
-    width: 200px;
+    width: 280px;
+    height: 280px;
     position: absolute;
-    bottom: 254px;
-    left: 400px;
+    bottom: 257px;
+    left: 310px;
+    object-fit: cover;
 }
 
 .upload_img_ex {
@@ -171,7 +174,7 @@ ul#upload_ul {
     font-weight: 900;
     position: relative;
     top: 111px;
-    right: -63px;
+    right: -120px;
 }
 
 td#info_title2 {

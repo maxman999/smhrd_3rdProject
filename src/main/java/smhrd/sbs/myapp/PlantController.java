@@ -175,7 +175,7 @@ public class PlantController {
 		if (plist.get(0).getId() != null) {
 			System.out.println("로그인아이디 가져오기 성공");
 		}else {
-			System.out.println("로그인아이디 가져오기 성공");
+			System.out.println("로그인아이디 가져오기 실패");
 		}
 			
 		return "redirect:/main.do#plantDic";
@@ -210,11 +210,6 @@ public class PlantController {
     	  e.printStackTrace();
       }
       return diseaseMap;
-   }
-   
-   @RequestMapping("/imgDicTest.do")
-   public String imgDicTest() {
-      return "imgDicTest";
    }
    
 }

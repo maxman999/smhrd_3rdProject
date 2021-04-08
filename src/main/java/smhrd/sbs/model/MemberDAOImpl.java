@@ -58,4 +58,13 @@ public class MemberDAOImpl implements MemberDAO {
 		return null;
 	}
 
+	@Override
+	public int plantDeleteAll(String id) {
+		SqlSession session = sqlSessionFactory.openSession();
+		int cnt = session.delete("plantDeleteAll", id);
+		session.commit();
+		session.close();
+		return cnt;
+	}
+
 }

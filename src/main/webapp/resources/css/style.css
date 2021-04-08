@@ -454,22 +454,6 @@ h1#main_plant_title {
     position: relative;
     top: 100px;
 }
-/* 도감열람 버튼*/
-input#main_plant_imageopen {
-    position: relative;
-    top: 230px;
-    left: 260px;
-    background: none;
-    border-style: solid;
-    border-color: yellowgreen;
-    width: 200px;
-    height: 200px;
-  	-moz-border-radius: 100px 0px;
-  	-webkit-border-radius: 100px 0px;
-  	border-radius: 100px 0px;
-  	font-weight: 600;
-
-}
 
 span#main_image_span1 {
     display: inline-block;

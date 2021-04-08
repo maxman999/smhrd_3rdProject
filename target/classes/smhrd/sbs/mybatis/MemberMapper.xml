@@ -22,9 +22,16 @@
 	    set password = #{password}, nickname = #{nickname}, email = #{email}, phone = #{phone}
 	    where id = #{id}	    
 	</update>
-	<update id="memberDelete" parameterType="String">
+	<delete id="memberDelete" parameterType="String">
 	    delete from member
 	    where id = #{id}	    
-	</update>
+	</delete>
+	
+	<delete id="plantDeleteAll" parameterType="String">
+	    delete from plant
+	    where id = #{id}	
+	</delete>
+	
+	
 	
 </mapper>

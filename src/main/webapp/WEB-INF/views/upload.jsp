@@ -30,7 +30,7 @@
 
 <section id="home" class="target-section section">   <!-- section : 여러 중심 내용을 감싸는 공간 -->
      <div class="container" id="home_contents">
-	<h2 id="upload_title"><b>식별이랑 정보</b></h2>
+	<h2 id="upload_title"><b>궁금한 화초를 올려주세요</b></h2>
           <div class="row">
 	<div class="field" align="center">
 		<div class="image_box">
@@ -63,16 +63,16 @@
 			</c:forEach>
 			</ul>
 		</div>
-		<button class="btn01" onclick="fn_spread('hiddenContent02');"><b>상세 보기</b></button> 
+		<button class="btn01" onclick="fn_spread('hiddenContent02');"><b>가드닝 TIP!</b></button> 
 		<!--style="visibility: hidden;"-->
 		<div id="hiddenContent02" class="example01" >
 		<div class="image_box2">
 			<div> 
-			<table style="border-style: solid; position: relative; bottom: 3px; left: 5px;">
+			<table style="position: relative; bottom: 1px; left: 1px;">
        			 <c:forEach var="i" begin="2" end="11">
         	   		 <tr>
-           			 <td id = "info_title${i}"  style="border-style: solid; text-align: center; height: 50px; font-weight: 900"></td>
-           			 <td id = "info${i}"  style="border-style: solid; height: 50px"></td>
+           			 <td id = "info_title${i}"  style="border-style: solid; text-align: center; height: 50px; font-weight: 900; padding: 10px;"></td>
+           			 <td id = "info${i}"  style="border-style: solid; height: 50px; padding: 10px;"></td>
            		 	 </tr>
 				</c:forEach>
 			</table>
@@ -80,7 +80,7 @@
 			</div>
 				</div>
 				<div id="autoKeyword">
-		<div id="noneDiv" style="background-color: #dff3d6;" ><p id="upload_eyes">&#128064; <p id="upload_take">잎이 보이도록 가까이 찍어주세요</p></p></div>
+		<div id="noneDiv" style="background-color: #dff3d6;" ><p id="upload_eyes">&#128064; <p id="upload_take">식물 전체가 나올 수 있도록 찍어주세요</p></p></div>
 </div>
 			</div>
 		<div class="upload_finalbtn">

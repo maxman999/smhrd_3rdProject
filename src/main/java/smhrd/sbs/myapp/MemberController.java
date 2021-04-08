@@ -22,7 +22,7 @@ public class MemberController {
 
 	@Autowired
 	private MemberDAO dao;
-
+	
 	@RequestMapping("/main.do")
 	public String memberList() {
 		return "main";
@@ -104,8 +104,9 @@ public class MemberController {
 	@RequestMapping("/memberDelete.do")
 	public String memberDelete(String id, HttpServletRequest req) {
 		System.out.println("받은 id: "+ id);
-		int cnt = dao.memberDelete(id);
-		if (cnt > 0) {
+		int cnt1 = dao.plantDeleteAll(id); 
+		int cnt2 = dao.memberDelete(id);
+		if (cnt1 > 0 && cnt2 > 0) {
 			System.out.println("탈퇴 성공");
 			HttpSession session = req.getSession();
 			session.removeAttribute("info");

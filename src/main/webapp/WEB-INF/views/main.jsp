@@ -30,7 +30,6 @@
 
 
 <%-- 스크롤 등장 모션 --%>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
     <style>
       .target-section {height: 884px; transition: background 0.5s;}
       .section1.active {background: #bcf9c361;;}
@@ -45,7 +44,6 @@
     	bottom: 0px;
     	z-index: 0;
 	}	
-      
     </style>
 </head>
 
@@ -101,8 +99,8 @@
     </div>
 </div>
   
-    <section class="target-section ready section2" data-aos="fade-right" data-aos-easing="linear" data-aos-duration="1500">
     <div id="target2"></div>
+    <section class="target-section ready section2">
     	<div class="container" id="plantDic">
 		  <div class="col-md-12 col-sm-12">
 			<div class="container_visual">
@@ -111,18 +109,20 @@
 			    <ul class="visual_img">
 			    <c:set var="info" value="${info}"/>
 			    <c:choose>
-			    <c:when test="${info eq null}">
+			    <c:when test="${info eq null}">	
 			    	<div>
-			    	<h2 id="main_plant_title1">도감을 보려면 로그인 해주세요</h2>
+			    	<!-- <h2 id="main_plant_title1">도감을 보려면 로그인 해주세요</h2> -->
 			    	</div>
 			    	<!-- 로그인한 아이디로 plantVO 리스트 가져옴 -->
+			    	<div>
 			    	<form action="plantImgGetId.do" method="post">
 			    		<input type="hidden" name="loginId" value="${info.id}">
 			    		<input type="submit" value="나의 초록이 보기" id="main_plant_imageopen" disabled="">
 			    	</form>
+			    	</div>
 			    </c:when>
 			    <c:otherwise>
-			    	<h2 id="main_plant_title2"><b>${info.id }</b>님의 도감</h2>
+			    	<%-- <h2 id="main_plant_title2"><b>${info.id }</b>님의 도감</h2> --%>
 			    	<!-- 로그인한 아이디로 plantVO 리스트 가져옴 -->
 			    	<form action="plantImgGetId.do" method="post">
 			    		<input type="hidden" name="loginId" value="${info.id}">
@@ -144,7 +144,8 @@
 			    	<c:forEach var="plist" items="${sessionScope.plist}" begin="0" varStatus="status">
 			    		<%-- <p>${plist.picture}</p> --%>
 			    		<div class="slide">
-			    			<img src="./resources/images/${plist.picture}" width="500" height="350">
+							<img id="frame" src="./resources/img/example-frame.png" alt="Example Frame" >
+			    			<img class = "dictPicture" src="./resources/images/${plist.picture}">
 			    			<!-- class="main_plant_image_list"  -->
 			    			<div class="caption" style="bottom:0">
 								<p>
@@ -155,11 +156,10 @@
 			    	</c:forEach>
 			    	<span class="nxt_fix" style="display:none;"></span>
 				</div>
-				<a href="#" class="prev"><img src="./resources/images/prepre.png" width="60" height="50" alt="Arrow Prev"></a>
-				<a href="#" class="next"><img src="./resources/images/nextnext.png" width="60" height="50" alt="Arrow Next"></a>
+				<a href="#" class="prev"><img id = "prevImg" src="./resources/images/prepre.png" alt="Arrow Prev"></a>
+				<a href="#" class="next"><img id = "nextImg" src="./resources/images/nextnext.png" alt="Arrow Next"></a>
 				<!-- ./resources/img/arrow-next.png -->
 			</div>
-			<!-- <img src="./resources/img/example-frame.png" width="739" height="341" alt="Example Frame" id="frame"> -->
 		</div>
 	</div>
 	<!-- ============================================================== -->
@@ -186,11 +186,10 @@ AOS.init();
 <!-- ================== 도감열람 UI 변경 ======================= -->
 <script src="resources/js/slides.min.jquery.js"></script>
 <script>
-
 		$(function(){
 			$('#slides').slides({
 				preload: true,
-				preloadImage: 'resources/img/loading.gif',
+				preloadImage: './resources/img/loading.gif',
 				play: 5000,
 				pause: 2500,
 				hoverPause: true,
@@ -269,37 +268,5 @@ AOS.init();
       });
     </script>
 
-<script>  <%-- 메인 이미지 슬라이드 --%>
-	var image_ul = document.querySelector(".main_plant_image_list");
-	
-	window.onload = function() {
-		var imgCnt = 0;
-		/* Animation: sliding setting */
-		image_ul.querySelectorAll("li").forEach(()=> {
-			imgCnt ++;
-		});
-		image_ul.style.width = (image_ul.offsetWidth * imgCnt) + "px";
-		
-		console.log(imgCnt);
-		console.log(image_ul.style.width);
-		slideShow(imgCnt);
-	}
-
-/* Animation: sliding */
-	function slideShow(imgCnt) {
-		var curIndex = 0;
-		
-		setInterval( () => {
-			image_ul.style.transition = "transform 2s ease-out";
-			image_ul.style.transform = "translate3d(-" + 414*(curIndex+1)+"px, 0px, 0px)";
-			curIndex++;
-			
-			console.log(curIndex);
-			if( curIndex === imgCnt-1 ) {
-				curIndex = -1;
-			}
-		},2000);	
-	}
-</script>
 </body>
 </html>
