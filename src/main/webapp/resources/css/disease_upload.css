@@ -1,0 +1,115 @@
+td.disease_td1 {
+    width: 300px;
+}
+
+td.disease_td2 {
+    width: 400px;
+    height: 350px;
+    position: relative;
+	left: 300px;
+}
+
+div#info_box_css {
+    border-style: none;
+    text-align: center;
+}
+
+button#btn_dtail {
+    width: 700px;
+    position: relative;
+    left: 260px;
+}
+
+div#image_box2_1 {
+    position: absolute;
+    bottom: 228px;
+    left: 439px;
+}
+
+
+p.ment {
+    color: black;
+    font-size: xx-large;
+    font-weight: bolder;
+}
+
+span#dinfo_0 {
+	color: black;
+    font-size: xx-large;
+    font-weight: bolder;
+}
+
+td#info1 {
+    width: 360px;
+}
+
+ul.info_list{
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 1px solid #efefef;
+    font-size: 12px;
+    cursor: pointer;
+    width: 1000px;
+    list-style-type: none;
+    font-size: large;
+    position: relative;
+    left: 300px;
+}
+
+
+.info-box {
+	border:2px solid; 
+	padding: 10px;
+    width: 800px;
+    height: 310px;
+    position: relative;
+    bottom: 203px;
+    left: 280px;
+    border-radius: 7px;
+}
+
+.info_list::-webkit-scrollbar{
+    width: 10px;
+    background: transparent;
+}
+
+.image_box2 {
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 800px;
+    height: 200px;
+    position: absolute;
+    bottom: -14px;
+    left: 278px;
+}
+
+img#ex_img {
+ 	width: 271px;
+    height: 258px;
+    position: absolute;
+    bottom: 40px;
+    left: 20px;
+    object-fit: cover;
+}
+
+button.btn01-d {
+    position: relative;
+    bottom: 170px;
+    background-color: white;
+    border-radius: 7px;
+    width: 800px;
+    height: 40px;
+    font-size: x-large;
+    left: 279px;
+    font-family: 'DOSMyungjo';
+}
+
+table#dtable {
+    border-style: solid;
+    position: relative;
+    bottom: 3px;
+    left: 365px;
+    text-align: center;
+    width: 700px;
+}

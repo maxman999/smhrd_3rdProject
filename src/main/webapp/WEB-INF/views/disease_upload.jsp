@@ -13,121 +13,137 @@
 <!-- Main css -->
 <link rel="stylesheet" href="resources/css/style.css">
 
+<link rel="stylesheet" href="resources/css/disease_upload.css">
+
 <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,700" rel="stylesheet">
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+ <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+ <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+ <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+ <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+
+
 </head>
 <body onload="Confirming();">
 
 <!-- === 로그인 안했을 시 로그인 페이지로 이동 === -->
 <c:set var="info" value="${info }"/>
 <c:if test="${info eq null}">
-	<script type="text/javascript">
-		alert("로그인을 해야 이용할 수 있는 서비스입니다.");
-		location.href= "main.do";
-	</script>	
+   <script type="text/javascript">
+      alert("로그인을 해야 이용할 수 있는 서비스입니다.");
+      location.href= "main.do";
+   </script>   
 </c:if>
 <!-- ============================ -->
 
 <section id="home" class="target-section section">   <!-- section : 여러 중심 내용을 감싸는 공간 -->
      <div class="container" id="home_contents">
-	<h2 id="upload_title"><b>질병 진단</b></h2>
+   <h2 id="upload_title"><b>질병 진단</b></h2>
           <div class="row">
-	<div class="field" align="center">
-		<div class="image_box">
-		<!-- 첨부파일(이미지파일만 업로드가능) -->
-		<form id= "uploadForm" action="${ctx}/diseaseUpload.do" method="post" enctype="multipart/form-data">
-		
-		<input type="text" id="fileNm" readonly/>
-		<a id="" href="javascript:fnUpload();"><img src="./resources/images/upload.png" alt="찾아보기" id="upload_image"/></a>
-		<input type="file" id="fileUpload" style="display:none" name="uploadFile" accept="image/*" onchange="$('#fileNm').val(this.value)"/>
-		</form>
-		
-		<!-- 이미지 미리보기 영역 --> 
-		<div id="imgViewArea" style="margin-top:10px;"> 
-			<img id="imgArea" style="width:400px; height:390px;" onerror="imgAreaError()"/> 
-		</div>
-		</div>
-		<div>
-		<input type="submit" id="btnUpload" value="진단">
-		</div>
-		<!-- <div id="noneDiv" style="background-color: #dff3d6;" ><p id="upload_eyes">&#128064;</p></div> -->
-		<div>
-			<img src="" id="ex_img" >
-		<div class="info-box">
-		<div><span class = disease-span ></span><span class = disease-span id = dinfo_0></span></div>
-		<div>
-			<span class = disease-span >점무늬병</span><span class = disease-span id = dinfo_1></span>
-			<span class = disease-span >흰가루병</span><span class = disease-span id = dinfo_2></span>
-			<span class = disease-span >정상</span><span class = disease-span id = dinfo_3></span>
-		</div>
-		</div>
-		<button class="btn01" onclick="fn_spread('hiddenContent02');"><b>상세 보기</b></button> 
-		<!--style="visibility: hidden;"-->
-		<div id="hiddenContent02" class="example01" >
-		<div class="image_box2">
-			<div> 
-			<table style="border-style: solid; position: relative; bottom: 3px; left: 5px;">
-       			 <c:forEach var="i" begin="2" end="11">
-        	   		 <tr>
-           			 <td id = "info_title${i}"  style="border-style: solid; text-align: center; height: 50px; font-weight: 900"></td>
-           			 <td id = "info${i}"  style="border-style: solid; height: 50px"></td>
-           		 	 </tr>
-				</c:forEach>
-			</table>
-  		</div>
+   <div class="field" align="center">
+      <div class="image_box">
+      <!-- 첨부파일(이미지파일만 업로드가능) -->
+      <form id= "uploadForm" action="${ctx}/diseaseUpload.do" method="post" enctype="multipart/form-data">
+      
+      <input type="text" id="fileNm" readonly/>
+      <a id="" href="javascript:fnUpload();"><img src="./resources/images/upload.png" alt="찾아보기" id="upload_image"/></a>
+      <input type="file" id="fileUpload" style="display:none" name="uploadFile" accept="image/*" onchange="$('#fileNm').val(this.value)"/>
+      </form>
+      
+      <!-- 이미지 미리보기 영역 --> 
+      <div id="imgViewArea" style="margin-top:10px;"> 
+         <img id="imgArea" style="width:400px; height:390px;" onerror="imgAreaError()"/> 
+      </div>
+      </div>
+      <div>
+      <input type="submit" id="btnUpload" value="진단">
+      </div>
+      <!-- <div id="noneDiv" style="background-color: #dff3d6;" ><p id="upload_eyes">&#128064;</p></div> -->
+      <div>
+      <div class="info-box" id="info_box_css">
+      <table style=" position: relative; bottom: 30px;">
+      <tr>
+		<td><img src="" id="ex_img" ></td>
+      <td class="disease_td2">
+      <!-- 차트 -->
+      <div id="graph"></div>
+      </td>
+      </tr>
+      </table>
+      </div>
+      <button class="btn01-d" onclick="fn_spread('hiddenContent02');" id="btn_dtail"><b>상세 보기</b></button> 
+      <!--style="visibility: hidden;"-->
+      <div id="hiddenContent02" class="example01" >
+      <div class="image_box2" id="image_box2_1">
+         <div> 
+         <table style="border-style: solid;position: absolute;bottom: 50px;left: 425px;text-align : center;">
+                 <c:forEach var="i" begin="0" end="2">
+                     <tr>
+                     <td id = "info_title${i}"  style="border-style: solid; text-align: center; height: 50px; font-weight: 900"></td>
+                     <td id = "info${i}"  style="border-style: solid; height: 50px"></td>
+                      </tr>
+            </c:forEach>
+         </table>
+        </div>
+         </div>
+            </div>
+           	<div id="autoKeyword">
+		<div id="noneDiv" style="background-color: #dff3d6;" ><p id="upload_eyes">&#128064; <p id="upload_take">식물 전체가 나올 수 있도록 찍어주세요</p></p></div>
 			</div>
-				</div>
-			</div>
-		<div class="upload_finalbtn">
-			<button class="upload_lastbtn" id="home_lastbtn"><a href="main.do"> <b>홈으로</b> </a></button>
-		</div>
-	</div>
-				</div>
+         </div>
+      <div class="upload_finalbtn">
+         <button class="upload_lastbtn" id="home_lastbtn"><a href="main.do"> <b>홈으로</b> </a></button>
+      </div>
+   </div>
+            </div>
           </div>
 </section>
-
-<!-- 식별 클릭시 div 숨기기 -->
-<script>
-	
-</script>
-
 <%--이미지 미리보기 --%>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
+
 <script type="text/javascript"> 
-	function readURL(input) { 
-		if (input.files && input.files[0]) { 
-			var reader = new FileReader(); 
-			reader.onload = function(e) { 
-				$('#imgArea').attr('src', e.target.result); 
-				} 
-			reader.readAsDataURL(input.files[0]); } } 
-			$(":input[name='uploadFile']").change(function() { 
-				if( $(":input[name='uploadFile']").val() == '' ) { 
-					$('#imgArea').attr('src' , ''); } 
-				$('#imgViewArea').css({ 'display' : '' }); 
-				readURL(this); }); // 이미지 에러 시 미리보기영역 미노출 
-				function imgAreaError(){ 
-					$('#imgViewArea').css({ 'display' : 'none' }); } 
+   function readURL(input) { 
+      if (input.files && input.files[0]) { 
+         var reader = new FileReader(); 
+         reader.onload = function(e) { 
+            $('#imgArea').attr('src', e.target.result); 
+            } 
+         reader.readAsDataURL(input.files[0]); } } 
+         $(":input[name='uploadFile']").change(function() { 
+            if( $(":input[name='uploadFile']").val() == '' ) { 
+               $('#imgArea').attr('src' , ''); } 
+            $('#imgViewArea').css({ 'display' : '' }); 
+            readURL(this); }); // 이미지 에러 시 미리보기영역 미노출 
+            function imgAreaError(){ 
+               $('#imgViewArea').css({ 'display' : 'none' }); } 
 </script>
 
 <%-- 업로드이미지 --%>
 <script>
-	function fnUpload(){
-	
-		$('#fileUpload').click();
-	
-	}
+   function fnUpload(){
+   
+      $('#fileUpload').click();
+      $('.ment').hide();
+   }
 </script>
 
+<script>
+   if($("").css("display") == "none"){
+       $("#dis").show();
+   } else {
+       $("#dis").hide();
+   }
+</script> 
 
 <script>
 <%-- onbeforeunload : 새로고침이나 브라우져를 닫았을 때, 실행되는 이벤트 --%>
-		function Confirming() {
-		    window.onbeforeunload = function (e) { 
+      function Confirming() {
+          window.onbeforeunload = function (e) { 
                     return 0;
-		    };
-		}
+          };
+      }
 </script>
 
 
@@ -135,7 +151,7 @@
 // 업로드 버튼 클릭 시 ajax통신으로 서버에 저장
 $('#btnUpload').on('click', function(event) {
     event.preventDefault();
-    
+    loadingStart();
     var form = $('#uploadForm')[0]
     var data = new FormData(form);
     
@@ -156,13 +172,14 @@ $('#btnUpload').on('click', function(event) {
            $('#btnUpload').prop('disabled', false);
            console.log('success');
            $(function(){
-       		$('#btnUpload').click(function(){
-       			if($("#noneDiv").css("display")!="none"){
-       				$('#noneDiv').hide();
-       			}
-       		});
-       	});
+             $('#btnUpload').click(function(){
+                if($("#noneDiv").css("display")!="none"){
+                   $('#noneDiv').hide();
+                }
+             });
+          });
            resolve(data);
+
         },
         error: function (e) {
             $('#btnUpload').prop('disabled', false);
@@ -174,23 +191,77 @@ $('#btnUpload').on('click', function(event) {
     
     const targetDisease = getDisease();
     targetDisease.then(dname => {
-    	document.getElementById("dinfo_0").innerText = dname.diagnosis;
-    	document.getElementById("dinfo_1").innerText = dname.leafSpot;
-    	document.getElementById("dinfo_2").innerText = dname.powderyMildew;
-    	document.getElementById("dinfo_3").innerText = dname.nomal;
+       
+    	// 데이터 받아오고 도넛차트 생성
+        Morris.Donut({
+        element: 'graph',
+        data: [
+          {value: Number(dname.leafSpot), label: "점무늬병", formatted: dname.leafSpot, color:'#2e8700' },
+          {value: Number(dname.powderyMildew), label: "흰가루병", formatted: dname.powderyMildew, color:'#75d45b' },
+          {value: Number(dname.nomal), label: "정상", formatted: dname.nomal, color:'#cdffb3' },
+        ],
+        formatter: function (x, data) { return data.formatted; }
+   		});
+		document.getElementById("autoKeyword").style.display = "none";
+    	 ///////////////
+		
+		
+    	document.getElementById("info_title0").innerText = "원인";
+    	document.getElementById("info0").innerText = "이러이러한 원인";
+    	document.getElementById("info_title1").innerText = "증상";
+    	document.getElementById("info1").innerText = "이러이러한 증상.";
+       
      })
+   
 })
 </script>
+
+<script type="text/javascript">
+var x = 
+ </script>
+
 <%-- /식물 정보 받아오는 것 --%>
 
 <script> 
-	function fn_spread(id){ 
-		var getID = document.getElementById(id); getID.style.display=(getID.style.display=='block') ? 'none' : 'block'; } 
+   function fn_spread(id){ 
+      var getID = document.getElementById(id); getID.style.display=(getID.style.display=='block') ? 'none' : 'block'; } 
+</script>
+<script>
+    function LoadingWithMask() {
+    var maskHeight = $(document).height();
+    var maskWidth  = window.document.body.clientWidth;
+    var mask = "<div id='mask' style='position:absolute; z-index:9000; background-color:#000000; display:none; left:0; top:0;'></div>";
+    var loadingImg = '';
+    loadingImg +="<div id='loadingImg'>";
+    loadingImg +="<img src='./resources/images/Spinner.gif' style='position: fixed; display: block; z-index:1031; top: calc(50% - (50px/2)); right:calc(50% - (50px/2));'/>";
+    loadingImg +="</div>";   
+    $('body')
+        .append(mask)
+        .append(loadingImg)        
+    $('#mask').css({
+            'width' : maskWidth
+            ,'height': maskHeight
+            ,'opacity' :'0.3'
+    });  
+    $('#mask').show();    
+    $('#loadingImg').show();
+}
+function closeLoadingWithMask() {
+    $('#mask, #loadingImg').hide();
+    $('#mask, #loadingImg').remove(); 
+}
+</script>   
+<script>
+    function loadingStart() {
+    LoadingWithMask();
+    setTimeout("closeLoadingWithMask()", 500);
+    }
 </script>
 
 
+
 <%@ include file="footer.jsp"%>
-	
-	
+   
+   
 </body>
 </html>
