@@ -108,7 +108,11 @@ blockquote,q { quotes:"" ""; }
 #slides .next {
 	left:500px;
 }
-
+/* 버튼위치 */
+.pagination {
+    position: relative;
+    left: 50px;
+}
 /*
 	Pagination
 */
