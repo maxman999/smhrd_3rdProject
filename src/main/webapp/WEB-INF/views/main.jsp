@@ -84,8 +84,8 @@
     <div class="container" id="main_introduce">
         <div class="row">
             <div class="col-xs-12 col-md-12 section-container-spacer">
-                <h2 class="text-center"><b>딥러닝으로 케어하는 화초 질병진단 서비스!</b></h2>
-                <p class="main_introduce">Green belt는 딥러닝을 사용해 고객의 화초의 질병을 분석하고 알맞는 치료법을 알려드립니다.</p>
+                <h2 class="text-center"><b>AI로 진단하는 반려식물 케어 서비스!</b></h2>
+                <p class="main_introduce">SeekSick는 딥러닝을 사용해 반려식물의 질병을 분석하고 알맞은 치료법을 알려드립니다.</p>
                 <hr id="main_hr">
             </div>
         </div>
@@ -94,22 +94,22 @@
                 <div class="fa-container">
                    <i class="fa far fa-leaf fa-3x"></i>
                 </div>
-                <h3 class="text-center"><b>화초식별서비스</b></h3>
-                <p >화초사진을 찍어올리면 어떤 식물인지 판별해줍니다.</p>
+                <h3 class="text-center"><b>식물식별서비스</b></h3>
+                <p >화초사진을 업로드하면 어떤 식물인지 판별해줍니다.</p>
             </div>
 
             <div class="col-xs-12 col-md-4">
                 <div class="fa-container">
                     <i class="fa fa-search-plus fa-3x" aria-hidden="true"></i>
                 </div>
-                <h3 class="text-center"><b>화초질병서비스</b></h3>
-                <p style="text-align: center;">아픈 화초를 사진 찍어 올리면 어떤 질병인지 알려주고 방법을 알려줍니다.</p>
+                <h3 class="text-center"><b>질병진단서비스</b></h3>
+                <p style="text-align: center;">아픈 화초를 사진을 업로드하면 어떤 질병인지 알려주고 방법을 알려줍니다.</p>
             </div>
             <div class="col-xs-12 col-md-4">
                 <div class="fa-container">
                     <i class="fa fa-heart-o fa-3x" aria-hidden="true"></i>
                 </div>
-                <h3 class="text-center"><b>화초관리서비스</b></h3>
+                <h3 class="text-center"><b>식물관리서비스</b></h3>
                 <p style="text-align: center;"> 화초관리정보를 제공해줍니다.</p>
             </div>
         </div>
