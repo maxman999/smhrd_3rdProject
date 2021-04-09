@@ -20,12 +20,12 @@ button#btn_dtail {
 
 div#image_box2_1 {
     position: absolute;
-    bottom: 243px;
-    left: 252px;
+    bottom: -13px;
+    left: 130px;
 }
 
 
-p#ment {
+p.ment {
     color: black;
     font-size: xx-large;
     font-weight: bolder;

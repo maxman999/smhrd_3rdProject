@@ -66,15 +66,14 @@
 		<table style=" position: relative; bottom: 30px;">
 		<tr>
 		<td class="disease_td1">
-		<div><span class = disease-span ></span><span class = disease-span id = dinfo_0><p id="ment">내 식물의 질병은?</p></span></div>
+		<img src="./resources/images/hoho.jpg" id="disease_imagesick" style="width: 300px;">
+		<div><span class = disease-span ></span><span class = disease-span id = dinfo_0><p class="ment">결과</p></span></div>
 		</td>
 		<td class="disease_td2">
 		<!-- 차트 -->
 		<div id="graph"></div>
 		
-			<span class = disease-span >점무늬병</span><span class = disease-span id = dinfo_1></span>
-			<span class = disease-span >흰가루병</span><span class = disease-span id = dinfo_2></span>
-			<span class = disease-span >정상</span><span class = disease-span id = dinfo_3></span>
+			<p class="ment">&#10067;</p>
 		</td>
 		</tr>
 		</table>
@@ -129,17 +128,17 @@
 	function fnUpload(){
 	
 		$('#fileUpload').click();
-	
+		$('.ment').hide();
 	}
 </script>
 
-<!-- <script>
-	$(function(){
-		$("#upload_image").click(function(){
-			$("#upload_image").hide() 
-		});
-	});
-</script> -->
+<script>
+	if($("").css("display") == "none"){
+	    $("#dis").show();
+	} else {
+	    $("#dis").hide();
+	}
+</script> 
 
 <script>
 <%-- onbeforeunload : 새로고침이나 브라우져를 닫았을 때, 실행되는 이벤트 --%>
