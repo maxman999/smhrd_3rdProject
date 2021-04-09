@@ -39,9 +39,9 @@
     	width: 1500px;
     	height: 602px;
     	background-color: #ffffff;
-    	position: absolute;
+    	position: relative;
     	left: 300px;
-    	bottom: 0px;
+    	top: 150px;
     	z-index: 0;
 	}	
     </style>
@@ -103,40 +103,36 @@
     <section class="target-section ready section2">
     	<div class="container" id="plantDic">
 		  <div class="col-md-12 col-sm-12">
-			<div class="container_visual">
-			    <!-- 슬라이딩기능: 이미지 (type = 'th')를 순차적(javascript) 으로 노출 -->
-			    <span id="main_image_span1">
-			    <ul class="visual_img">
-			    <c:set var="info" value="${info}"/>
-			    <c:choose>
-			    <c:when test="${info eq null}">	
-			    	<div>
-			    	<!-- <h2 id="main_plant_title1">도감을 보려면 로그인 해주세요</h2> -->
-			    	</div>
-			    	<!-- 로그인한 아이디로 plantVO 리스트 가져옴 -->
-			    	<div>
-			    	<form action="plantImgGetId.do" method="post">
-			    		<input type="hidden" name="loginId" value="${info.id}">
-			    		<input type="submit" value="나의 초록이 보기" id="main_plant_imageopen" disabled="">
-			    	</form>
-			    	</div>
-			    </c:when>
-			    <c:otherwise>
-			    	<%-- <h2 id="main_plant_title2"><b>${info.id }</b>님의 도감</h2> --%>
-			    	<!-- 로그인한 아이디로 plantVO 리스트 가져옴 -->
-			    	<form action="plantImgGetId.do" method="post">
-			    		<input type="hidden" name="loginId" value="${info.id}">
-			    		<input type="submit" value="나의 초록이 보기" id="main_plant_imageopen">
-			    	</form>
-			    </c:otherwise>
-				</c:choose>
-			    </ul>
-			    </span>
-			  </div>
-	
-	<!-- ============================================================ -->
+			
 	<div id="container_test">
 		<div id="example">
+
+		 <!-- 슬라이딩기능: 이미지 (type = 'th')를 순차적(javascript) 으로 노출 -->
+		 <div>
+			    <span id="main_image_span1">
+			    <ul class="visual_img">
+			    <c:set var="ck" value="${ck}"/>
+			    <c:set var="info" value="${info}"/>
+			    <c:if test="${info eq null}">	
+			    	<!-- <div> -->
+			    	 <h2 id="main_plant_title1">도감을 보려면 로그인 해주세요</h2> 
+			    	<!-- </div> -->
+			    	<!-- 로그인한 아이디로 plantVO 리스트 가져옴 -->
+			    	<div>
+			    </c:if>
+			    <c:if test="${info ne null}">
+			    	<form action="plantImgGetId.do" method="post" id="green_hide">
+			    		<input type="hidden" name="loginId" value="${info.id}">
+			    		<c:if test="${imgCheck eq null}">
+			    			<input type="submit" value="나의 초록이 보기" id="main_plant_imageopen" >
+			    		</c:if>
+			    	</form>
+			    </c:if>
+			    </ul>
+			    </span>
+		</div>
+		
+		
 			<div id="slides">
 				<div class="slides_container">
 				
@@ -162,7 +158,6 @@
 			</div>
 		</div>
 	</div>
-	<!-- ============================================================== -->
 			    	
 			  <span class="nxt_fix" style="display:none;"></span>
 			  </span>
@@ -183,6 +178,14 @@
 <script>
 AOS.init();
 </script>
+
+ <script>
+	$("#main_plant_imageopen").click(function(){
+		alert("클릭이벤트");
+		; // h1태그 전부 제거
+	});
+</script> 
+
 <!-- ================== 도감열람 UI 변경 ======================= -->
 <script src="resources/js/slides.min.jquery.js"></script>
 <script>
@@ -267,6 +270,17 @@ AOS.init();
         })();
       });
     </script>
-
+	<script type="text/javascript">
+	
+    function hide() {
+	  alert("실행됨");
+      document.getElementById("green_hide").style.display="none";
+    }
+    </script>
+    <script type="text/javascript">
+    $(window).ready(function(){
+        if
+    });
+    </script>
 </body>
 </html>

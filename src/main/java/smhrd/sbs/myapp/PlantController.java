@@ -177,8 +177,8 @@ public class PlantController {
 		}else {
 			System.out.println("로그인아이디 가져오기 실패");
 		}
-			
-		return "redirect:/main.do#plantDic";
+		session.setAttribute("imgCheck", "1");
+		return "redirect:/main.do#plantDic	";
 	}
    
    @RequestMapping("/disease_upload.do")

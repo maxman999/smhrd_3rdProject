@@ -67,6 +67,7 @@ img.dictPicture{
 #slides {
 	position:absolute;
 	z-index:100;
+	top: 100px;
 }
 
 /*

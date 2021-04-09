@@ -44,7 +44,7 @@
 		
 		<!-- 이미지 미리보기 영역 --> 
 		<div id="imgViewArea" style="margin-top:10px;"> 
-			<img id="imgArea" style="width:400px; height:390px;" onerror="imgAreaError()"/> 
+			<img id="imgArea" style="width:400px; height:390px; object-fit: cover;" onerror="imgAreaError()"/> 
 		</div>
 		</div>
 		<div>
@@ -236,7 +236,10 @@ $('#btnUpload').on('click', function(event) {
 
 <script> 
 	function fn_spread(id){ 
-		var getID = document.getElementById(id); getID.style.display=(getID.style.display=='block') ? 'none' : 'block'; } 
+		var getID = document.getElementById(id); getID.style.display=(getID.style.display=='block') ? 'none' : 'block';
+		var offset = $("#info_title2").offset();
+		var winH = $(window).height(); $('html, body').animate({scrollTop : (offset.top - winH/2)}, 400);
+	} 
 </script>
 
 <!-- 로딩  -->

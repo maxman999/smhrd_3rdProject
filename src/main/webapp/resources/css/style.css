@@ -117,7 +117,7 @@ a:hover, a:active, a:focus {
     Preloader section              
 -----------------------------------------*/
 
-.preloader {
+/* .preloader {
   position: fixed;
   top: 0;
   left: 0;
@@ -129,7 +129,7 @@ a:hover, a:active, a:focus {
   justify-content: center;
   align-items: center;
   background: none repeat scroll 0 0 #ffffff;
-}
+} */
 
 .sk-spinner-wordpress.sk-spinner {
   background-color: #bdc3c7;
