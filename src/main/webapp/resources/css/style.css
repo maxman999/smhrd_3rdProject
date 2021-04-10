@@ -545,6 +545,13 @@ footer .footer-copyright {
   padding-top: 16px;
 }
 
+p#footer_ment {
+    width: 400px;
+}
+
+div#footer_logo {
+    width: 200px;
+}
 
 /*---------------------------------------
    Social icon             
