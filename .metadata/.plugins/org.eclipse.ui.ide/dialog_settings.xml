@@ -8,8 +8,8 @@
 		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
 		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
-			<item value="C:\eGovFrame-3.9.0\sbs"/>
 			<item value="C:\eGovFrame-3.9.0\sbs\project_sbs"/>
+			<item value="C:\eGovFrame-3.9.0\sbs"/>
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
 			<item value=""/>

@@ -28,7 +28,7 @@ button.btn01 {
 input#btnUpload {
     width: 400px;
     background: white;
-    border-style: ridge;
+    border-style: inset;
     border-color: yellowgreen;
     text-shadow: 0 0 black;
     height: 40px;
@@ -44,7 +44,7 @@ input[type="file"] {
 }
 
 img#upload_image {
-    width: 100px;
+    width: 82px;
     position: relative;
     top: 208px;
     right: 485px;

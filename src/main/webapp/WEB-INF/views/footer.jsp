@@ -23,6 +23,7 @@
                     <p>About us</p>
                     <p id="footer_ment">주소 : 광주광역시 광산구 송암로 60</p>
                     <p id="footer_ment">대표전화 : 062)123-4567</p>
+
                     <p><small>Copyright © GreenBelt. All rights reserved.</small></p>
 
                 </div>

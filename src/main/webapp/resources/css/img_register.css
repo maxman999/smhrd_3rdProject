@@ -15,9 +15,9 @@ table#register_table {
     width: 514px;
     height: 300px;
     position: relative;
-    bottom: 50px;
+    bottom: 15px;
     font-family: 'DOSMyungjo';
-    left: 80px;
+    left: 110px;
 }
 
 input#register_btn {

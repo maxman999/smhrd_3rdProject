@@ -133,6 +133,7 @@
    } else {
        $("#dis").hide();
    }
+
 </script> 
 
 <script>
@@ -177,7 +178,6 @@ $('#btnUpload').on('click', function(event) {
              });
           });
            resolve(data);
-
         },
         error: function (e) {
             $('#btnUpload').prop('disabled', false);
@@ -211,7 +211,6 @@ $('#btnUpload').on('click', function(event) {
     	document.getElementById("info_title2").innerText = "대처방법";
     	document.getElementById("info2").innerText = "병든 잎은 바로 제거해주세요. 넓은 곳에서 키우는 것이 좋고, 통풍이 잘되게 해주세요. 발병 초기에 식물에 적절한 약을 사용하여 초기에 균이 전파되는 것을 방지해주세요.";
      })
-   
 })
 </script>
 
@@ -256,8 +255,6 @@ function closeLoadingWithMask() {
     setTimeout("closeLoadingWithMask()", 500);
     }
 </script>
-
-
 
 <%@ include file="footer.jsp"%>
    

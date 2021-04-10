@@ -427,7 +427,7 @@ b#home_h {
 }
 
 h2.text-center {
-    letter-spacing: 3px;
+    letter-spacing: 7px;
 }
 
 p#main_info_ment2 {
@@ -568,10 +568,20 @@ footer .footer-copyright {
   padding-top: 16px;
 }
 
+<<<<<<< HEAD
 div#footer_logo {
     width: 200px;
 }
 
+=======
+p#footer_ment {
+    width: 400px;
+}
+
+div#footer_logo {
+    width: 200px;
+}
+>>>>>>> 05b637a70d1112fb520f7e66d07e803904f1a24f
 
 p#footer_icon {
     font-size: xx-large;

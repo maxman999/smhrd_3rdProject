@@ -230,10 +230,26 @@ $('#btnUpload').on('click', function(event) {
            document.getElementById("autoKeyword").style.display = "none";
        })
      })
+     setTimeout(function() {
+    	 
+    	 console.log("타임아웃")
+	 }, 3000);
 })
 </script>
 <!-- /식물 정보 받아오는 것 -->
 
+<%-- =======
+/식물 정보 받아오는 것
+<script>
+$(function(){
+		$('#btnUpload').click(function(){
+			if($("#noneDiv").css("display")!="none"){
+				$('#noneDiv').hide();
+			}
+		});
+	});
+</script>
+>>>>>>> 05b637a70d1112fb520f7e66d07e803904f1a24f --%>
 <script> 
 	function fn_spread(id){ 
 		var getID = document.getElementById(id); getID.style.display=(getID.style.display=='block') ? 'none' : 'block';
