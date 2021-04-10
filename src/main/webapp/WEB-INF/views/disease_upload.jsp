@@ -39,7 +39,7 @@
 
 <section id="home" class="target-section section">   <!-- section : 여러 중심 내용을 감싸는 공간 -->
      <div class="container" id="home_contents">
-   <h2 id="upload_title"><b>질병 진단</b></h2>
+   <h2 id="upload_title"><b>반려식물의 상태를 확인해보세요</b></h2>
           <div class="row">
    <div class="field" align="center">
       <div class="image_box">

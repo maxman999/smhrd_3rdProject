@@ -123,7 +123,7 @@
 			    	<form action="plantImgGetId.do" method="post" id="green_hide">
 			    		<input type="hidden" name="loginId" value="${info.id}">
 			    		<c:if test="${imgCheck eq null}">
-			    			<input type="submit" value="나의 초록이 보기" id="main_plant_imageopen" >
+			    			<input type="submit" value="등록한 식물 보기" id="main_plant_imageopen" >
 			    		</c:if>
 			    	</form>
 			    </c:if>
