@@ -40,8 +40,8 @@
     	height: 602px;
     	background-color: #ffffff;
     	position: relative;
-    	left: 300px;
-    	top: 150px;
+    	left: 220px;
+    	top: 120px;
     	z-index: 0;
 	}	
     </style>
@@ -67,33 +67,33 @@
     <div class="container" id="main_introduce">
         <div class="row">
             <div class="col-xs-12 col-md-12 section-container-spacer">
-                <h2 class="text-center"><b>딥러닝으로 케어하는 화초 질병진단 서비스!</b></h2>
-                <p class="main_introduce">Green belt는 딥러닝을 사용해 고객의 화초의 질병을 분석하고 알맞는 치료법을 알려드립니다.</p>
+                <h2 class="text-center"><b>AI로 케어하는 식물 질병진단 서비스!</b></h2>
+                <p class="main_introduce">SeekSick은 딥러닝을 사용해 식물의 질병을 분석하고 알맞은 대처법을 알려드립니다.</p>
                 <hr id="main_hr">
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-12 col-md-4">
+            <div class="col-xs-12 col-md-4" id="main_info_box1">
                 <div class="fa-container">
                    <i class="fa far fa-leaf fa-3x"></i>
                 </div>
-                <h3 class="text-center"><b>화초식별서비스</b></h3>
-                <p >화초사진을 찍어올리면 어떤 식물인지 판별해줍니다.</p>
+                <h3 class="text-center"><b>식물식별서비스</b></h3>
+                <p >화초사진을 업로드하면 어떤 식물인지 판별해줍니다.</p>
             </div>
 
             <div class="col-xs-12 col-md-4">
                 <div class="fa-container">
                     <i class="fa fa-search-plus fa-3x" aria-hidden="true"></i>
                 </div>
-                <h3 class="text-center"><b>화초질병서비스</b></h3>
-                <p style="text-align: center;">아픈 화초를 사진 찍어 올리면 어떤 질병인지 알려주고 방법을 알려줍니다.</p>
+                <h3 class="text-center"><b>질병진단서비스</b></h3>
+                <p style="text-align: center;" id="main_info_ment2">식물을 사진 찍어 업로드하면 질병명과 대처 방법을 알려줍니다.</p>
             </div>
             <div class="col-xs-12 col-md-4">
                 <div class="fa-container">
                     <i class="fa fa-heart-o fa-3x" aria-hidden="true"></i>
                 </div>
-                <h3 class="text-center"><b>화초관리서비스</b></h3>
-                <p style="text-align: center;"> 화초관리정보를 제공해줍니다.</p>
+                <h3 class="text-center"><b>식물관리서비스</b></h3>
+                <p style="text-align: center;"> 식물관리정보를 제공해줍니다.</p>
             </div>
         </div>
     </div>
@@ -109,13 +109,11 @@
 
 		 <!-- 슬라이딩기능: 이미지 (type = 'th')를 순차적(javascript) 으로 노출 -->
 		 <div>
-			    <span id="main_image_span1">
 			    <ul class="visual_img">
-			    <c:set var="ck" value="${ck}"/>
 			    <c:set var="info" value="${info}"/>
 			    <c:if test="${info eq null}">	
 			    	<!-- <div> -->
-			    	 <h2 id="main_plant_title1">도감을 보려면 로그인 해주세요</h2> 
+			    	 <h2 id="main_plant_title1"><b id="home_h">도감</b>을 보려면 로그인 해주세요</h2> 
 			    	<!-- </div> -->
 			    	<!-- 로그인한 아이디로 plantVO 리스트 가져옴 -->
 			    	<div>
@@ -129,15 +127,13 @@
 			    	</form>
 			    </c:if>
 			    </ul>
-			    </span>
 		</div>
-		
-		
 			<div id="slides">
+			
 				<div class="slides_container">
-				
 					<c:set var="plist" value="${sessionScope.plist}"/>
 			    	<c:forEach var="plist" items="${sessionScope.plist}" begin="0" varStatus="status">
+			    	
 			    		<%-- <p>${plist.picture}</p> --%>
 			    		<div class="slide">
 							<img id="frame" src="./resources/img/example-frame.png" alt="Example Frame" >
@@ -145,17 +141,19 @@
 			    			<!-- class="main_plant_image_list"  -->
 			    			<div class="caption" style="bottom:0">
 								<p>
-									식물명 : ${plist.plantname} / 등록일자 : ${plist.regidate}
+									${plist.plantnick}  ${plist.regidate}
 								</p>
 							</div>
 			    		</div>
-			    	</c:forEach>
+			    	</c:forEach> 	
 			    	<span class="nxt_fix" style="display:none;"></span>
 				</div>
 				<a href="#" class="prev"><img id = "prevImg" src="./resources/images/prepre.png" alt="Arrow Prev"></a>
 				<a href="#" class="next"><img id = "nextImg" src="./resources/images/nextnext.png" alt="Arrow Next"></a>
 				<!-- ./resources/img/arrow-next.png -->
 			</div>
+			
+			
 		</div>
 	</div>
 			    	
@@ -179,12 +177,13 @@
 AOS.init();
 </script>
 
- <script>
+<!--  <script>
 	$("#main_plant_imageopen").click(function(){
 		alert("클릭이벤트");
 		; // h1태그 전부 제거
 	});
-</script> 
+</script>  -->
+
 
 <!-- ================== 도감열람 UI 변경 ======================= -->
 <script src="resources/js/slides.min.jquery.js"></script>
@@ -279,7 +278,7 @@ AOS.init();
     </script>
     <script type="text/javascript">
     $(window).ready(function(){
-        if
+    	$(".pagination").css("display","none");
     });
     </script>
 </body>

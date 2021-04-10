@@ -40,7 +40,7 @@
 					<span class="icon icon-bar"></span> <span class="icon icon-bar"></span>
 					<span class="icon icon-bar"></span>
 				</button>
-				<a href="main.do" class="navbar-brand"><img src="./resources/images/logo.png"/></a>
+				<a href="main.do" class="navbar-brand"><img src="./resources/images/logo3.png"/></a>
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">

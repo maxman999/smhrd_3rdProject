@@ -21,9 +21,9 @@ button#btn_dtail {
 }
 
 div#image_box2_1 {
-    position: absolute;
-    bottom: 228px;
-    left: 439px;
+    position: relative;
+    bottom: 170px;
+    left: 258px;
 }
 
 
@@ -77,7 +77,7 @@ ul.info_list{
     overflow: scroll;
     overflow-x: hidden;
     overflow-y: auto;
-    width: 800px;
+    width: 689px;
     height: 200px;
     position: absolute;
     bottom: -14px;

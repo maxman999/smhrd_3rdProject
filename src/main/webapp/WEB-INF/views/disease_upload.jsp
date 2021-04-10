@@ -60,7 +60,7 @@
       <input type="submit" id="btnUpload" value="진단">
       </div>
       <!-- <div id="noneDiv" style="background-color: #dff3d6;" ><p id="upload_eyes">&#128064;</p></div> -->
-      <div>
+      <div style="height: 366px;">
       <div class="info-box" id="info_box_css">
       <table style=" position: relative; bottom: 30px;">
       <tr>
@@ -76,8 +76,7 @@
       <!--style="visibility: hidden;"-->
       <div id="hiddenContent02" class="example01" >
       <div class="image_box2" id="image_box2_1">
-         <div> 
-         <table style="border-style: solid;position: absolute;bottom: 50px;left: 425px;text-align : center;">
+         <table style="border-style: solid;position: absolute;bottom: 4px;border-top: hidden;">
                  <c:forEach var="i" begin="0" end="2">
                      <tr>
                      <td id = "info_title${i}"  style="border-style: solid; text-align: center; height: 50px; font-weight: 900"></td>
@@ -86,7 +85,6 @@
             </c:forEach>
          </table>
         </div>
-         </div>
             </div>
            	<div id="autoKeyword">
 		<div id="noneDiv" style="background-color: #dff3d6;" ><p id="upload_eyes">&#128064; <p id="upload_take">식물 전체가 나올 수 있도록 찍어주세요</p></p></div>
@@ -202,15 +200,16 @@ $('#btnUpload').on('click', function(event) {
         ],
         formatter: function (x, data) { return data.formatted; }
    		});
+        document.getElementById("ex_img").src = "./resources/images/img_samples/"+dname.diagnosis+".jpg";
 		document.getElementById("autoKeyword").style.display = "none";
     	 ///////////////
 		
-		
     	document.getElementById("info_title0").innerText = "원인";
-    	document.getElementById("info0").innerText = "이러이러한 원인";
+    	document.getElementById("info0").innerText = "곰팡이의 형태로 병든 식물체에서 겨울을 지내고 이 곰팡이균이 전염원이 되며, 공기전염 되어 계속해서 다른 식물에게 영향을 끼칩니다. 일반적으로 15～28℃에서 많이 발생하며, 32℃ 이상의 고온에서는 발생하지 않습니다. 특히 일조가 부족하고, 밤, 낮의 온도 차가 심할 때 자주 발생합니다.";
     	document.getElementById("info_title1").innerText = "증상";
-    	document.getElementById("info1").innerText = "이러이러한 증상.";
-       
+    	document.getElementById("info1").innerText = "잎, 줄기, 과실에 발생하며, 주로 잎에 많이 발생합니다. 감염부위에는 하얀색의 균들이 표면에 부분적으로 나타나고, 심하면 잎 전면에 밀가루를 뿌려놓은 것 같은 증상이 나타납니다.";
+    	document.getElementById("info_title2").innerText = "대처방법";
+    	document.getElementById("info2").innerText = "병든 잎은 바로 제거해주세요. 넓은 곳에서 키우는 것이 좋고, 통풍이 잘되게 해주세요. 발병 초기에 식물에 적절한 약을 사용하여 초기에 균이 전파되는 것을 방지해주세요.";
      })
    
 })

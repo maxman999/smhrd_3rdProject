@@ -40,6 +40,7 @@ public class MemberController {
 		session.removeAttribute("info");
 		session.removeAttribute("imgName");
 		session.removeAttribute("plist");
+		session.removeAttribute("imgCheck");
 		return "main";
 	}
 	
