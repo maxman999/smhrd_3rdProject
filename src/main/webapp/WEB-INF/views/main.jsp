@@ -67,13 +67,8 @@
     <div class="container" id="main_introduce">
         <div class="row">
             <div class="col-xs-12 col-md-12 section-container-spacer">
-<<<<<<< HEAD
                 <h2 class="text-center"><b>AI로 케어하는 식물 질병진단 서비스!</b></h2>
                 <p class="main_introduce">SeekSick은 딥러닝을 사용해 식물의 질병을 분석하고 알맞은 대처법을 알려드립니다.</p>
-=======
-                <h2 class="text-center"><b>AI로 진단하는 반려식물 케어 서비스!</b></h2>
-                <p class="main_introduce">SeekSick는 딥러닝을 사용해 반려식물의 질병을 분석하고 알맞은 치료법을 알려드립니다.</p>
->>>>>>> 05b637a70d1112fb520f7e66d07e803904f1a24f
                 <hr id="main_hr">
             </div>
         </div>

@@ -197,6 +197,7 @@ $('#btnUpload').on('click', function(event) {
           {value: Number(dname.leafSpot), label: "점무늬병", formatted: dname.leafSpot, color:'#2e8700' },
           {value: Number(dname.powderyMildew), label: "흰가루병", formatted: dname.powderyMildew, color:'#75d45b' },
           {value: Number(dname.nomal), label: "정상", formatted: dname.nomal, color:'#cdffb3' },
+          {value: Number(dname.mosaic), label: "모자이크", formatted: dname.mosaic, color:'#cdffb3' },
         ],
         formatter: function (x, data) { return data.formatted; }
    		});

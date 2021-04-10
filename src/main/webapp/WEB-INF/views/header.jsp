@@ -50,7 +50,7 @@
 							<%-- 로그인o --%>
 							<li class="active"><a href="main.do">홈</a></li>
 							<li><a href="#target1" class="scroll">서비스 소개</a></li>
-							<li><a href="#target2" class="scroll" >히스토리</a></li> 
+							<li><a href="#target2" class="scroll" >도감보기</a></li> 
 							<li><a href="mypage.do">마이페이지</a></li> 
 							<li><a href="logout.do">로그아웃</a></li>
 							<li>
@@ -59,7 +59,7 @@
 							<%--로그인x --%>
 							<li class="active"><a href="main.do">홈</a></li>
 							<li><a href="#target1" class="scroll">서비스 소개</a></li>
-							<li><a href="#target2">히스토리</a></li>
+							<li><a href="#target2">도감보기</a></li>
 							<li><a href="#" class="loginbu" id="right_link">로그인</a></li>
                    			<li><a href="join.do">회원가입</a></li>
 							<!-- login/Register-btn -->
